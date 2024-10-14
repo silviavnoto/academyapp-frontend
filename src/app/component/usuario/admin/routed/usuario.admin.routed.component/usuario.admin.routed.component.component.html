@@ -1,0 +1,46 @@
+<h1>Soy el componente plist</h1>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Buscar"
+        [(ngModel)]="page"
+      />
+      <button class="btn btn-primary" (click)="getPage()">Cargar página</button>
+
+      <table class="table table-striped mt-5 p-5">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Primer Apellido</th>
+            <th>Segundo Apellido</th>
+            <th>Correo</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let usuario of lUsuarios">
+            <td>{{ usuario.id }}</td>
+            <td>{{ usuario.nombre }}</td>
+            <td>{{ usuario.apellido1 }}</td>
+            <td>{{ usuario.apellido2 }}</td>
+            <td>{{ usuario.email }}</td>
+            <td>
+              <button class="btn btn-primary mx-2" (click)="editar(usuario)">
+                Editar
+              </button>
+              <button class="btn btn-danger" (click)="eliminar(usuario)">
+                Eliminar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
