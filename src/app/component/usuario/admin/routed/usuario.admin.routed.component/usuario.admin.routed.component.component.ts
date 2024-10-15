@@ -14,8 +14,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class UsuarioAdminRoutedComponent implements OnInit {
   lUsuarios: IUsuario[] = [];
-  page: number = 0;
-
+  page: number = 0; // 0-based server count
+  totalPages: number = 0;
   arrBotonera: string[] = [];
 
   constructor(private oUsuarioService: UsuarioService) {}
@@ -30,15 +30,17 @@ export class UsuarioAdminRoutedComponent implements OnInit {
         this.lUsuarios = arrUsuario.content;
         console.log(arrUsuario);
 
+        this.totalPages = arrUsuario.totalPages;
+        let paginaCliente = this.page + 1;
         this.arrBotonera = [];
         for (let i = 1; i <= arrUsuario.totalPages; i++) {
           if (i == 1) {
             this.arrBotonera.push('1');
-          } else if (i >= this.page - 2 && i <= this.page - -2) {
+          } else if (i >= paginaCliente - 2 && i <= paginaCliente - -2) {
             this.arrBotonera.push(i.toString());
           } else if (i == arrUsuario.totalPages) {
             this.arrBotonera.push(arrUsuario.totalPages.toString());
-          } else if (i == this.page - 3 || i == this.page - -3) {
+          } else if (i == paginaCliente - 3 || i == paginaCliente - -3) {
             this.arrBotonera.push('...');
           }
         }
@@ -59,19 +61,21 @@ export class UsuarioAdminRoutedComponent implements OnInit {
     console.log('Borrar', oUsuario);
   }
 
-  goToPage(p:number){
-    this.page = p;
-    this.getPage();
+  goToPage(p: number) {
+    if (p) {
+      this.page = p - 1;
+      this.getPage();
+    }
     return false;
   }
 
-  goToNext(){
+  goToNext() {
     this.page++;
     this.getPage();
     return false;
   }
-  
-  goToPrev(){
+
+  goToPrev() {
     this.page--;
     this.getPage();
     return false;
