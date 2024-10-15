@@ -59,7 +59,8 @@
           </thead>
 
           <tbody>
-            <tr *ngFor="let usuario of arrUsuarios">
+            <tr>
+              @for (usuario of arrUsuarios; track usuario.id) {
               <td>{{ usuario.id }}</td>
               <td>{{ usuario.nombre }}</td>
               <td>{{ usuario.apellido1 }}</td>
@@ -73,11 +74,13 @@
                   Eliminar
                 </button>
               </td>
+              } @empty {
+              <td colspan="6">No hay usuarios</td>
+              }
             </tr>
           </tbody>
         </table>
       </div>
-      
     </div>
   </div>
 </div>
