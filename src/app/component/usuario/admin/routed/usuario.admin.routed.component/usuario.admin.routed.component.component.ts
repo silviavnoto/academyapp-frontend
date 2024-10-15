@@ -4,6 +4,7 @@ import { IUsuario } from '../../../../../model/usuario.interface';
 import { CommonModule } from '@angular/common';
 import { IPage } from '../../../../../model/model.interface';
 import { FormsModule } from '@angular/forms';
+import { BotoneraService } from '../../../../../service/botonera.service';
 
 @Component({
   selector: 'app-usuario.admin.routed',
@@ -14,11 +15,11 @@ import { FormsModule } from '@angular/forms';
 })
 export class UsuarioAdminRoutedComponent implements OnInit {
   lUsuarios: IUsuario[] = [];
-  page: number = 0;
+  page: number = 0; // 0-based server count
+  totalPages: number = 0;
+  arrBotonera: string[] = [];
 
-  botonera: string[] = [];
-
-  constructor(private oUsuarioService: UsuarioService) {}
+  constructor(private oUsuarioService: UsuarioService, private oBotoneraService: BotoneraService) {}
 
   ngOnInit() {
     this.getPage();
@@ -30,15 +31,25 @@ export class UsuarioAdminRoutedComponent implements OnInit {
         this.lUsuarios = arrUsuario.content;
         console.log(arrUsuario);
 
-        for (let i = 1; i <= arrUsuario.totalPages; i++) {
-          if (i == 1) this.botonera.push('1');
-          else if (i >= this.page - 2 && i <= this.page + 2)
-            this.botonera.push(i.toString());
-          else if (i == arrUsuario.totalPages)
-            this.botonera.push(arrUsuario.totalPages.toString());
-        }
+        this.arrBotonera = this.oBotoneraService.getBotonera(this.page, arrUsuario.totalPages);
+        this.totalPages = arrUsuario.totalPages;
 
-        console.log(this.botonera);
+        /*
+        let paginaCliente = this.page + 1;
+        this.arrBotonera = [];
+        for (let i = 1; i <= arrUsuario.totalPages; i++) {
+          if (i == 1) {
+            this.arrBotonera.push('1');
+          } else if (i >= paginaCliente - 2 && i <= paginaCliente - -2) {
+            this.arrBotonera.push(i.toString());
+          } else if (i == arrUsuario.totalPages) {
+            this.arrBotonera.push(arrUsuario.totalPages.toString());
+          } else if (i == paginaCliente - 3 || i == paginaCliente - -3) {
+            this.arrBotonera.push('...');
+          }
+        }
+*/
+        console.log(this.arrBotonera);
       },
       error: (err) => {
         console.log(err);
@@ -52,5 +63,25 @@ export class UsuarioAdminRoutedComponent implements OnInit {
 
   eliminar(oUsuario: IUsuario) {
     console.log('Borrar', oUsuario);
+  }
+
+  goToPage(p: number) {
+    if (p) {
+      this.page = p - 1;
+      this.getPage();
+    }
+    return false;
+  }
+
+  goToNext() {
+    this.page++;
+    this.getPage();
+    return false;
+  }
+
+  goToPrev() {
+    this.page--;
+    this.getPage();
+    return false;
   }
 }
