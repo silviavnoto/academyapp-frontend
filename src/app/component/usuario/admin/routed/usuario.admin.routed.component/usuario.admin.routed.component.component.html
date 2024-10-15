@@ -1,12 +1,13 @@
 <h1>Soy el componente plist</h1>
 
-<div class="container mt-5">
+<div class="container mt-5 d-flex align-items-center justify-content-center">
   <div class="row">
-    <div class="col-12">
+    <div class="col text-center">
+      <h2 class="my-4">Lista de Usuarios</h2>
+      <button class="btn btn-primary my-4">Crear nuevo usuario</button>
 
-
-      <nav aria-label="...">
-        <ul class="pagination">
+      <nav class="my-4">
+        <ul class="pagination justify-content-center">
           <li class="page-item">
             <a
               class="page-link"
@@ -44,36 +45,39 @@
         </ul>
       </nav>
 
-      <table class="table table-striped mt-5 p-5">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Primer Apellido</th>
-            <th>Segundo Apellido</th>
-            <th>Correo</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
+      <div class="d-flex flex-column">
+        <table class="table table-striped table-bordered my-5">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Primer Apellido</th>
+              <th>Segundo Apellido</th>
+              <th>Correo</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
 
-        <tbody>
-          <tr *ngFor="let usuario of lUsuarios">
-            <td>{{ usuario.id }}</td>
-            <td>{{ usuario.nombre }}</td>
-            <td>{{ usuario.apellido1 }}</td>
-            <td>{{ usuario.apellido2 }}</td>
-            <td>{{ usuario.email }}</td>
-            <td>
-              <button class="btn btn-primary mx-2" (click)="editar(usuario)">
-                Editar
-              </button>
-              <button class="btn btn-danger" (click)="eliminar(usuario)">
-                Eliminar
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+          <tbody>
+            <tr *ngFor="let usuario of arrUsuarios">
+              <td>{{ usuario.id }}</td>
+              <td>{{ usuario.nombre }}</td>
+              <td>{{ usuario.apellido1 }}</td>
+              <td>{{ usuario.apellido2 }}</td>
+              <td>{{ usuario.email }}</td>
+              <td>
+                <button class="btn btn-primary mx-2" (click)="editar(usuario)">
+                  Editar
+                </button>
+                <button class="btn btn-danger" (click)="eliminar(usuario)">
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
     </div>
   </div>
 </div>
