@@ -16,7 +16,7 @@ export class UsuarioAdminRoutedComponent implements OnInit {
   lUsuarios: IUsuario[] = [];
   page: number = 0;
 
-  botonera: string[] = [];
+  arrBotonera: string[] = [];
 
   constructor(private oUsuarioService: UsuarioService) {}
 
@@ -30,15 +30,20 @@ export class UsuarioAdminRoutedComponent implements OnInit {
         this.lUsuarios = arrUsuario.content;
         console.log(arrUsuario);
 
+        this.arrBotonera = [];
         for (let i = 1; i <= arrUsuario.totalPages; i++) {
-          if (i == 1) this.botonera.push('1');
-          else if (i >= this.page - 2 && i <= this.page + 2)
-            this.botonera.push(i.toString());
-          else if (i == arrUsuario.totalPages)
-            this.botonera.push(arrUsuario.totalPages.toString());
+          if (i == 1) {
+            this.arrBotonera.push('1');
+          } else if (i >= this.page - 2 && i <= this.page - -2) {
+            this.arrBotonera.push(i.toString());
+          } else if (i == arrUsuario.totalPages) {
+            this.arrBotonera.push(arrUsuario.totalPages.toString());
+          } else if (i == this.page - 3 || i == this.page - -3) {
+            this.arrBotonera.push('...');
+          }
         }
 
-        console.log(this.botonera);
+        console.log(this.arrBotonera);
       },
       error: (err) => {
         console.log(err);
@@ -52,5 +57,23 @@ export class UsuarioAdminRoutedComponent implements OnInit {
 
   eliminar(oUsuario: IUsuario) {
     console.log('Borrar', oUsuario);
+  }
+
+  goToPage(p:number){
+    this.page = p;
+    this.getPage();
+    return false;
+  }
+
+  goToNext(){
+    this.page++;
+    this.getPage();
+    return false;
+  }
+  
+  goToPrev(){
+    this.page--;
+    this.getPage();
+    return false;
   }
 }
