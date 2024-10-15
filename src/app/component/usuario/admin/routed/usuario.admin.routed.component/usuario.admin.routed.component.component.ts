@@ -4,6 +4,7 @@ import { IUsuario } from '../../../../../model/usuario.interface';
 import { CommonModule } from '@angular/common';
 import { IPage } from '../../../../../model/model.interface';
 import { FormsModule } from '@angular/forms';
+import { BotoneraService } from '../../../../../service/botonera.service';
 
 @Component({
   selector: 'app-usuario.admin.routed',
@@ -13,12 +14,13 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, FormsModule],
 })
 export class UsuarioAdminRoutedComponent implements OnInit {
-  lUsuarios: IUsuario[] = [];
+
+  arrUsuarios: IUsuario[] = [];
   page: number = 0; // 0-based server count
   totalPages: number = 0;
   arrBotonera: string[] = [];
 
-  constructor(private oUsuarioService: UsuarioService) {}
+  constructor(private oUsuarioService: UsuarioService, private oBotoneraService: BotoneraService) {}
 
   ngOnInit() {
     this.getPage();
@@ -27,25 +29,9 @@ export class UsuarioAdminRoutedComponent implements OnInit {
   getPage() {
     this.oUsuarioService.getPage(this.page, 10).subscribe({
       next: (arrUsuario: IPage<IUsuario>) => {
-        this.lUsuarios = arrUsuario.content;
-        console.log(arrUsuario);
-
-        this.totalPages = arrUsuario.totalPages;
-        let paginaCliente = this.page + 1;
-        this.arrBotonera = [];
-        for (let i = 1; i <= arrUsuario.totalPages; i++) {
-          if (i == 1) {
-            this.arrBotonera.push('1');
-          } else if (i >= paginaCliente - 2 && i <= paginaCliente - -2) {
-            this.arrBotonera.push(i.toString());
-          } else if (i == arrUsuario.totalPages) {
-            this.arrBotonera.push(arrUsuario.totalPages.toString());
-          } else if (i == paginaCliente - 3 || i == paginaCliente - -3) {
-            this.arrBotonera.push('...');
-          }
-        }
-
-        console.log(this.arrBotonera);
+        this.arrUsuarios = arrUsuario.content;      
+        this.arrBotonera = this.oBotoneraService.getBotonera(this.page, arrUsuario.totalPages);
+        this.totalPages = arrUsuario.totalPages;        
       },
       error: (err) => {
         console.log(err);
