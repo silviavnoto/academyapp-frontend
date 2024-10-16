@@ -13,12 +13,27 @@ export class UsuarioService {
   constructor(private oHttp: HttpClient) {}
 
   getPage(page: number, size: number): Observable<IPage<IUsuario>> {
+    if (!page) {
+      page = 0;
+    }
+    if (!size) {
+      size = 10;
+    }
     return this.oHttp.get<IPage<IUsuario>>(
       'http://localhost:8085' + '/usuario?page=' + page + '&size=' + size
     );
   }
 
   getPageSort(page: number, size: number, sort: string): Observable<IPage<IUsuario>> {
+    if (!page) {
+      page = 0;
+    }
+    if (!size) {
+      size = 10;
+    }
+    if (!sort) {
+      sort = 'id,asc';
+    }
     return this.oHttp.get<IPage<IUsuario>>(
       'http://localhost:8085' + '/usuario?page=' + page + '&size=' + size + '&sort=' + sort
     );
