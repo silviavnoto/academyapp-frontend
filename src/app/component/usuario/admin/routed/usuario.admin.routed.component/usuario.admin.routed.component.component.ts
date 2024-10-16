@@ -17,6 +17,7 @@ export class UsuarioAdminRoutedComponent implements OnInit {
   arrUsuarios: IUsuario[] = [];
   page: number = 0; // 0-based server count
   totalPages: number = 0;
+  rpp: number = 10;
   arrBotonera: string[] = [];
   field: string = '';
   dir: string = 'desc';
@@ -32,7 +33,7 @@ export class UsuarioAdminRoutedComponent implements OnInit {
 
   getPage() {
     this.oUsuarioService
-      .getPage(this.page, 10, this.field, this.dir)
+      .getPage(this.page, this.rpp, this.field, this.dir)
       .subscribe({
         next: (arrUsuario: IPage<IUsuario>) => {
           this.arrUsuarios = arrUsuario.content;
@@ -80,6 +81,12 @@ export class UsuarioAdminRoutedComponent implements OnInit {
     this.field = field;
     this.dir = this.dir === 'asc' ? 'desc' : 'asc';
     this.getPage();
+  }
+
+  goToRpp(nrpp:number) {
+    this.rpp = nrpp;
+    this.getPage();
+    return false;
   }
 
 }

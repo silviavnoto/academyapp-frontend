@@ -8,6 +8,20 @@
 
       <nav class="my-4">
         <ul class="pagination justify-content-center">
+          <li class="page-item" [class.active]="rpp === 10">
+            <a class="page-link" (click)="goToRpp(10)" href="#">10</a>
+          </li>
+          <li class="page-item" [class.active]="rpp === 50">
+            <a class="page-link" (click)="goToRpp(50)" href="#">50</a>
+          </li>
+          <li class="page-item" [class.active]="rpp === 100">
+            <a class="page-link" (click)="goToRpp(100)" href="#">100</a>
+          </li>
+        </ul>
+      </nav>
+
+      <nav class="my-4">
+        <ul class="pagination justify-content-center">
           <li class="page-item">
             <a
               class="page-link"
