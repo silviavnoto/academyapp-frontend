@@ -14,29 +14,38 @@ import { BotoneraService } from '../../../../../service/botonera.service';
   imports: [CommonModule, FormsModule],
 })
 export class UsuarioAdminRoutedComponent implements OnInit {
-
   arrUsuarios: IUsuario[] = [];
   page: number = 0; // 0-based server count
   totalPages: number = 0;
   arrBotonera: string[] = [];
+  field: string = '';
+  dir: string = 'desc';
 
-  constructor(private oUsuarioService: UsuarioService, private oBotoneraService: BotoneraService) {}
+  constructor(
+    private oUsuarioService: UsuarioService,
+    private oBotoneraService: BotoneraService
+  ) {}
 
   ngOnInit() {
     this.getPage();
   }
 
   getPage() {
-    this.oUsuarioService.getPage(this.page, 10).subscribe({
-      next: (arrUsuario: IPage<IUsuario>) => {
-        this.arrUsuarios = arrUsuario.content;      
-        this.arrBotonera = this.oBotoneraService.getBotonera(this.page, arrUsuario.totalPages);
-        this.totalPages = arrUsuario.totalPages;        
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
+    this.oUsuarioService
+      .getPage(this.page, 10, this.field, this.dir)
+      .subscribe({
+        next: (arrUsuario: IPage<IUsuario>) => {
+          this.arrUsuarios = arrUsuario.content;
+          this.arrBotonera = this.oBotoneraService.getBotonera(
+            this.page,
+            arrUsuario.totalPages
+          );
+          this.totalPages = arrUsuario.totalPages;
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
   }
 
   editar(oUsuario: IUsuario) {
@@ -66,4 +75,11 @@ export class UsuarioAdminRoutedComponent implements OnInit {
     this.getPage();
     return false;
   }
+
+  sort(field:string){
+    this.field = field;
+    this.dir = this.dir === 'asc' ? 'desc' : 'asc';
+    this.getPage();
+  }
+
 }
