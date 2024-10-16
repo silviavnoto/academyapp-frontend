@@ -17,4 +17,10 @@ export class UsuarioService {
       'http://localhost:8085' + '/usuario?page=' + page + '&size=' + size
     );
   }
+
+  getPageSort(page: number, size: number, sort: string): Observable<IPage<IUsuario>> {
+    return this.oHttp.get<IPage<IUsuario>>(
+      'http://localhost:8085' + '/usuario?page=' + page + '&size=' + size + '&sort=' + sort
+    );
+  }
 }

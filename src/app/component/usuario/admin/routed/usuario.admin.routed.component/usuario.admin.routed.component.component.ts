@@ -17,6 +17,7 @@ export class UsuarioAdminRoutedComponent implements OnInit {
 
   arrUsuarios: IUsuario[] = [];
   page: number = 0; // 0-based server count
+  size: number = 10;
   totalPages: number = 0;
   arrBotonera: string[] = [];
 
@@ -27,7 +28,7 @@ export class UsuarioAdminRoutedComponent implements OnInit {
   }
 
   getPage() {
-    this.oUsuarioService.getPage(this.page, 10).subscribe({
+    this.oUsuarioService.getPage(this.page, this.size).subscribe({
       next: (arrUsuario: IPage<IUsuario>) => {
         this.arrUsuarios = arrUsuario.content;      
         this.arrBotonera = this.oBotoneraService.getBotonera(this.page, arrUsuario.totalPages);
@@ -37,6 +38,25 @@ export class UsuarioAdminRoutedComponent implements OnInit {
         console.log(err);
       },
     });
+  }
+
+  getPageSort(sort: string) {
+    this.oUsuarioService.getPageSort(this.page, this.size,sort).subscribe({
+      next: (arrUsuario: IPage<IUsuario>) => {
+        this.arrUsuarios = arrUsuario.content;      
+        this.arrBotonera = this.oBotoneraService.getBotonera(this.page, arrUsuario.totalPages);
+        this.totalPages = arrUsuario.totalPages;        
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+    return false;
+  }
+  setSize(newSize: number) {
+    this.size = newSize;
+    this.getPage();
+    return false;
   }
 
   editar(oUsuario: IUsuario) {

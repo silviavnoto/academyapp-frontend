@@ -45,21 +45,67 @@
         </ul>
       </nav>
 
+      <nav aria-label="my-4">
+        <ul class="pagination pagination-sm justify-content-center">
+          <li class="page-item">
+            <a class="page-link" href="#" tabindex="-1" (click)="setSize(10)">10</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#" (click)="setSize(100)">100</a></li>
+          <li class="page-item"><a class="page-link" href="#" (click)="setSize(1000)">1000</a></li>
+        </ul>
+      </nav>
+
       <div class="d-flex flex-column">
         <table class="table table-striped table-bordered my-5">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Nombre</th>
-              <th>Primer Apellido</th>
-              <th>Segundo Apellido</th>
-              <th>Correo</th>
+              <th>
+                <a
+                  href="#"
+                  (click)="getPageSort('id,asc')"
+                  (dblclick)="getPageSort('id,desc')"
+                  >ID</a
+                >
+              </th>
+              <th>
+                <a
+                  href="#"
+                  (click)="getPageSort('nombre,asc')"
+                  (dblclick)="getPageSort('nombre,desc')"
+                  >Nombre</a
+                >
+              </th>
+              <th>
+                <a
+                  href="#"
+                  (click)="getPageSort('apellido1,asc')"
+                  (dblclick)="getPageSort('apellido1,desc')"
+                  >Primer Apellido</a
+                >
+              </th>
+              <th>
+                <a
+                  href="#"
+                  (click)="getPageSort('apellido2,asc')"
+                  (dblclick)="getPageSort('apellido2,desc')"
+                  >Segundo Apellido</a
+                >
+              </th>
+              <th>
+                <a
+                  href="#"
+                  (click)="getPageSort('email,asc')"
+                  (dblclick)="getPageSort('email,desc')"
+                  >Correo</a
+                >
+              </th>
               <th>Acciones</th>
             </tr>
           </thead>
 
           <tbody>
-            <tr *ngFor="let usuario of arrUsuarios">
+            @for (usuario of arrUsuarios; track usuario.id) {
+            <tr>
               <td>{{ usuario.id }}</td>
               <td>{{ usuario.nombre }}</td>
               <td>{{ usuario.apellido1 }}</td>
@@ -74,10 +120,14 @@
                 </button>
               </td>
             </tr>
+            } @empty {
+            <tr>
+              <td colspan="6">No hay usuarios</td>
+            </tr>
+            }
           </tbody>
         </table>
       </div>
-      
     </div>
   </div>
 </div>
