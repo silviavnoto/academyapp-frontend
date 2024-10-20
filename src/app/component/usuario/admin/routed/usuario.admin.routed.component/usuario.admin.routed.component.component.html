@@ -58,6 +58,18 @@
         </ul>
       </nav>
 
+
+      <!-- Filtro input debounce-->
+      <input
+      type="text"
+      class="form-control my-4"
+      placeholder="Filtrar por nombre"
+      [ngModel]="filter"
+      (ngModelChange)="onFilterChange($event)"
+    />
+
+    <h1>{{ filter }}</h1>
+
       <div class="d-flex flex-column">
         <table class="table table-striped table-bordered my-5">
           <thead>
