@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioService } from '../../../../../service/usuario.service';
-import { IUsuario } from '../../../../../model/usuario.interface';
+import { UsuarioService } from '../../../../../../service/usuario.service';
+import { IUsuario } from '../../../../../../model/usuario.interface';
 import { CommonModule } from '@angular/common';
-import { IPage } from '../../../../../model/model.interface';
+import { IPage } from '../../../../../../model/model.interface';
 import { FormsModule } from '@angular/forms';
-import { BotoneraService } from '../../../../../service/botonera.service';
+import { BotoneraService } from '../../../../../../service/botonera.service';
 import { debounceTime, filter, first, map, repeat, Subject } from 'rxjs';
 
 @Component({
