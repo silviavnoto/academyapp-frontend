@@ -41,4 +41,13 @@ export class UsuarioService {
     }
     return this.oHttp.get<IPage<IUsuario>>(URL);
   }
+
+
+  get (id: number): Observable<IUsuario> {
+    let URL: string = '';
+    URL += 'http://localhost:8085';
+    URL += '/usuario';
+    URL += '/' + id;
+    return this.oHttp.get<IUsuario>(URL);
+  }
 }

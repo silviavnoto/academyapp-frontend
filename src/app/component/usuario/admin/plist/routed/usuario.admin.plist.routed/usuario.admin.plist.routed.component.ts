@@ -6,6 +6,7 @@ import { IPage } from '../../../../../../model/model.interface';
 import { FormsModule } from '@angular/forms';
 import { BotoneraService } from '../../../../../../service/botonera.service';
 import { debounceTime, filter, first, map, repeat, Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-usuario.admin.routed',
@@ -14,7 +15,7 @@ import { debounceTime, filter, first, map, repeat, Subject } from 'rxjs';
   standalone: true,
   imports: [CommonModule, FormsModule],
 })
-export class UsuarioAdminRoutedComponent implements OnInit {
+export class UsuarioAdminPlistRoutedComponent implements OnInit {
   arrUsuarios: IUsuario[] = [];
   page: number = 0; // 0-based server count
   totalPages: number = 0;
@@ -28,7 +29,8 @@ export class UsuarioAdminRoutedComponent implements OnInit {
 
   constructor(
     private oUsuarioService: UsuarioService,
-    private oBotoneraService: BotoneraService
+    private oBotoneraService: BotoneraService,
+    private oRouter: Router 
   ) {
     this.debounceSubject.pipe(debounceTime(1000)).subscribe((value) => {      
       this.getPage();
@@ -70,6 +72,8 @@ export class UsuarioAdminRoutedComponent implements OnInit {
 
   editar(oUsuario: IUsuario) {
     console.log('Editar', oUsuario);
+    //navegar a la página de edición
+    this.oRouter.navigate(['admin/usuario/edit', oUsuario.id]);
   }
 
   eliminar(oUsuario: IUsuario) {
