@@ -41,7 +41,17 @@ export class UsuarioAdminRoutedComponent implements OnInit {
 
   getPage() {
     this.oUsuarioService
-      .getPage(this.page, this.rpp, this.field, this.dir, this.strFiltro)
+      .getPage(this.page, this.rpp, this.field, this.dir, this.strFiltro)      
+      .pipe(
+        map((oPage: IPage<IUsuario>) => {
+          oPage.content.forEach((oUsuario) => {
+            oUsuario.nombre = oUsuario.nombre.toUpperCase();
+            oUsuario.apellido1 = oUsuario.apellido1.toUpperCase();
+            oUsuario.apellido2 = oUsuario.apellido2.toUpperCase();
+          });
+          return oPage;
+        })
+      )
       .subscribe({
         next: (arrUsuario: IPage<IUsuario>) => {
           console.log("llegan datos");

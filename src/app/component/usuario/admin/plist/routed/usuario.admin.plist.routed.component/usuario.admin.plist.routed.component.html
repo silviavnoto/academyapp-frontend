@@ -69,7 +69,7 @@
       </nav>
 
       <div class="d-flex flex-column">
-        <table class="table table-striped table-bordered my-5">
+        <table class="table table-striped table-bordered my-5" style="table-layout: fixed;width: 100%;word-break: break-all ">
           <thead>
             <tr>
               <th (click)="sort('id')">ID</th>
@@ -84,11 +84,11 @@
           <tbody>
             @for (usuario of arrUsuarios; track usuario.id) {
             <tr>
-              <td>{{ usuario.id }}</td>
-              <td>{{ usuario.nombre }}</td>
-              <td>{{ usuario.apellido1 }}</td>
-              <td>{{ usuario.apellido2 }}</td>
-              <td>{{ usuario.email }}</td>
+              <td class="text-center">{{ usuario.id }}</td>
+              <td class="text-start">{{ usuario.nombre }}</td>
+              <td class="text-start">{{ usuario.apellido1 }}</td>
+              <td class="text-start">{{ usuario.apellido2 }}</td>
+              <td class="text-start">{{ usuario.email }}</td>
               <td>
                 <button class="btn btn-primary mx-2" (click)="editar(usuario)">
                   Editar
