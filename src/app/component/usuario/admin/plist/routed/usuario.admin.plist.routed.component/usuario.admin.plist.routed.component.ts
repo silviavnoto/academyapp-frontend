@@ -9,8 +9,8 @@ import { debounceTime, filter, first, map, repeat, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-usuario.admin.routed',
-  templateUrl: './usuario.admin.routed.component.component.html',
-  styleUrls: ['./usuario.admin.routed.component.component.css'],
+  templateUrl: './usuario.admin.plist.routed.component.html',
+  styleUrls: ['./usuario.admin.plist.routed.component.css'],
   standalone: true,
   imports: [CommonModule, FormsModule],
 })
