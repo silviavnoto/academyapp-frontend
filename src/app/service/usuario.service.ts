@@ -14,7 +14,8 @@ export class UsuarioService {
     page: number,
     size: number,
     field: string,
-    dir: string
+    dir: string,
+    filtro: string
   ): Observable<IPage<IUsuario>> {
     let URL: string = '';
     URL += 'http://localhost:8085';
@@ -34,6 +35,9 @@ export class UsuarioService {
       } else {
         URL += ',desc';
       }
+    }
+    if (filtro) {
+      URL += '&filter=' + filtro;
     }
     return this.oHttp.get<IPage<IUsuario>>(URL);
   }

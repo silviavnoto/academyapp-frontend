@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { IPage } from '../../../../../model/model.interface';
 import { FormsModule } from '@angular/forms';
 import { BotoneraService } from '../../../../../service/botonera.service';
+import { debounceTime, filter, first, map, repeat, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-usuario.admin.routed',
@@ -21,11 +22,18 @@ export class UsuarioAdminRoutedComponent implements OnInit {
   arrBotonera: string[] = [];
   field: string = '';
   dir: string = 'desc';
+  strFiltro: string = '';
+
+  private debounceSubject = new Subject<string>();
 
   constructor(
     private oUsuarioService: UsuarioService,
     private oBotoneraService: BotoneraService
-  ) {}
+  ) {
+    this.debounceSubject.pipe(debounceTime(1000)).subscribe((value) => {      
+      this.getPage();
+    });
+  }
 
   ngOnInit() {
     this.getPage();
@@ -33,9 +41,10 @@ export class UsuarioAdminRoutedComponent implements OnInit {
 
   getPage() {
     this.oUsuarioService
-      .getPage(this.page, this.rpp, this.field, this.dir)
+      .getPage(this.page, this.rpp, this.field, this.dir, this.strFiltro)
       .subscribe({
         next: (arrUsuario: IPage<IUsuario>) => {
+          console.log("llegan datos");
           this.arrUsuarios = arrUsuario.content;
           this.arrBotonera = this.oBotoneraService.getBotonera(
             this.page,
@@ -77,16 +86,20 @@ export class UsuarioAdminRoutedComponent implements OnInit {
     return false;
   }
 
-  sort(field:string){
+  sort(field: string) {
     this.field = field;
     this.dir = this.dir === 'asc' ? 'desc' : 'asc';
     this.getPage();
   }
 
-  goToRpp(nrpp:number) {
+  goToRpp(nrpp: number) {
     this.rpp = nrpp;
     this.getPage();
     return false;
   }
 
+  buscar(event: KeyboardEvent) {
+    console.log(KeyboardEvent);
+    this.debounceSubject.next(this.strFiltro);
+  }
 }

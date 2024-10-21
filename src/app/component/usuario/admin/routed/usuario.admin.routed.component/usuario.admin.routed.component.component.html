@@ -6,6 +6,11 @@
       <h2 class="my-4">Lista de Usuarios</h2>
       <button class="btn btn-primary my-4">Crear nuevo usuario</button>
 
+      <input type="text" class="form-control" placeholder="Buscar" (keyup)="buscar($event)" [(ngModel)]="strFiltro" />
+
+
+
+
       <nav class="my-4">
         <ul class="pagination justify-content-center">
           <li class="page-item" [class.active]="rpp === 10">
@@ -19,6 +24,10 @@
           </li>
         </ul>
       </nav>
+
+
+
+
 
       <nav class="my-4">
         <ul class="pagination justify-content-center">
