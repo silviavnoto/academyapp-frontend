@@ -94,11 +94,8 @@ export class UsuarioAdminPlistRoutedComponent implements OnInit {
 
   goToRpp(nrpp: number) {
     this.rpp = nrpp;
+    this.page = 0;
     this.getPage();
-    const button = document.querySelector('#btn-1') as HTMLButtonElement;
-    if (button) {
-      button.click();
-    }
     return false;
   }
 
