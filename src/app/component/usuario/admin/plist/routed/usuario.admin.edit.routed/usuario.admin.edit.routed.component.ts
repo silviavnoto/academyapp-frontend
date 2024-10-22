@@ -18,7 +18,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   standalone: true,
   imports: [MatFormFieldModule, MatInputModule, ReactiveFormsModule],
 })
-
 export class UsuarioAdminEditRoutedComponent implements OnInit {
   id: number = 0;
   usuarioForm: FormGroup | undefined = undefined;
@@ -41,10 +40,18 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
   crearFormulario() {
     this.usuarioForm = new FormGroup({
       id: new FormControl('', [Validators.required]),
-      nombre: new FormControl('', [Validators.required]),
-      apellido1: new FormControl('', [Validators.required]),
-      apellido2: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required])
+      nombre: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(50),
+      ]),
+      apellido1: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(50),
+      ]),
+      apellido2: new FormControl(''),
+      email: new FormControl('', [Validators.required, Validators.email]),
     });
   }
 
@@ -69,15 +76,20 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
   }
 
   onSubmit() {
-    this.oUsuarioService.update(this.usuarioForm?.value).subscribe({
-      next: (oUsuario: IUsuario) => {
-        this.oUsuario = oUsuario;
-        this.actualizarFormulario();
-        alert('Usuario actualizado');
-      },
-      error: (error) => {
-        console.error(error);
-      },
-    });
+    if (!this.usuarioForm?.valid) {
+      alert('Formulario no válido');
+      return;
+    } else {
+      this.oUsuarioService.update(this.usuarioForm?.value).subscribe({
+        next: (oUsuario: IUsuario) => {
+          this.oUsuario = oUsuario;
+          this.actualizarFormulario();
+          alert('Usuario actualizado');
+        },
+        error: (error) => {
+          console.error(error);
+        },
+      });
+    }
   }
 }
