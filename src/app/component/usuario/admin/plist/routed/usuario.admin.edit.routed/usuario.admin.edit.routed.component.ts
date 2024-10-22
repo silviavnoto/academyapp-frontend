@@ -5,7 +5,6 @@ import { IUsuario } from '../../../../../../model/usuario.interface';
 import {
   FormControl,
   FormGroup,
-  FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -17,16 +16,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   templateUrl: './usuario.admin.edit.routed.component.html',
   styleUrls: ['./usuario.admin.edit.routed.component.css'],
   standalone: true,
-  imports: [
-    FormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-  ],
+  imports: [MatFormFieldModule, MatInputModule, ReactiveFormsModule],
 })
+
 export class UsuarioAdminEditRoutedComponent implements OnInit {
   id: number = 0;
-  usuarioForm: FormGroup | null = null;
+  usuarioForm: FormGroup | undefined = undefined;
   oUsuario: IUsuario | null = null;
 
   constructor(
@@ -39,20 +34,46 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.crearFormulario();
     this.get();
-    this.inicializarFormulario();
   }
 
-  inicializarFormulario() {
+  crearFormulario() {
     this.usuarioForm = new FormGroup({
-      nombre: new FormControl(this.oUsuario?.nombre, [Validators.required]),
+      id: new FormControl('', [Validators.required]),
+      nombre: new FormControl('', [Validators.required]),
+      apellido1: new FormControl('', [Validators.required]),
+      apellido2: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required])
     });
+  }
+
+  actualizarFormulario() {
+    this.usuarioForm?.controls['id'].setValue(this.oUsuario?.id);
+    this.usuarioForm?.controls['nombre'].setValue(this.oUsuario?.nombre);
+    this.usuarioForm?.controls['apellido1'].setValue(this.oUsuario?.apellido1);
+    this.usuarioForm?.controls['apellido2'].setValue(this.oUsuario?.apellido2);
+    this.usuarioForm?.controls['email'].setValue(this.oUsuario?.email);
   }
 
   get() {
     this.oUsuarioService.get(this.id).subscribe({
       next: (oUsuario: IUsuario) => {
         this.oUsuario = oUsuario;
+        this.actualizarFormulario();
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
+  }
+
+  onSubmit() {
+    this.oUsuarioService.update(this.usuarioForm?.value).subscribe({
+      next: (oUsuario: IUsuario) => {
+        this.oUsuario = oUsuario;
+        this.actualizarFormulario();
+        alert('Usuario actualizado');
       },
       error: (error) => {
         console.error(error);

@@ -1,9 +1,60 @@
-<p>
-  usuario.admin.edit.routed works!
-</p>
+<div class="container mt-5 d-flex align-items-center justify-content-center">
+  <div class="row">
+    <div class="col text-center">
+      <h2 class="my-4">Lista de Usuarios</h2>
+
+      <form [formGroup]="usuarioForm!" (ngSubmit)="onSubmit()" novalidate>
+
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Id</mat-label>
+            <input matInput formControlName="id" placeholder="Id" />
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="nombre" placeholder="Nombre" />
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Primer Apellido</mat-label>
+            <input
+              matInput
+              formControlName="apellido1"
+              placeholder="Primer Apellido"
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Segundo Apellido</mat-label>
+            <input
+              matInput
+              formControlName="apellido2"
+              placeholder="Segundo Apellido"
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              formControlName="email"
+              placeholder="Email"
+            />
+          </mat-form-field>
+        </div>
 
 
-<mat-form-field>
-  <mat-label>Nombre</mat-label>
-  <input matInput formControlName="nombre" placeholder="Nombre" >
-</mat-form-field>
+        <button mat-raised-button color="primary" type="submit">Guardar</button>
+      </form>
+    </div>
+  </div>
+</div>

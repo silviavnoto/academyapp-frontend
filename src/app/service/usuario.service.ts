@@ -50,4 +50,12 @@ export class UsuarioService {
     URL += '/' + id;
     return this.oHttp.get<IUsuario>(URL);
   }
+
+  update (oUsuario: IUsuario): Observable<IUsuario> {
+    let URL: string = '';
+    URL += 'http://localhost:8085';
+    URL += '/usuario';
+    return this.oHttp.put<IUsuario>(URL, oUsuario);
+  }
+
 }
