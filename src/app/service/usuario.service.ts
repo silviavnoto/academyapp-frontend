@@ -7,9 +7,7 @@ import { IPage } from '../model/model.interface';
 @Injectable({
   providedIn: 'root',
 })
-
 export class UsuarioService {
-
   constructor(private oHttp: HttpClient) {}
 
   getPage(
@@ -17,7 +15,7 @@ export class UsuarioService {
     size: number,
     field: string,
     dir: string,
-    filter: string
+    filtro: string
   ): Observable<IPage<IUsuario>> {
     let URL: string = '';
     URL += 'http://localhost:8085';
@@ -38,26 +36,26 @@ export class UsuarioService {
         URL += ',desc';
       }
     }
-    if (filter) {
-      URL += '&filter=' + filter;
+    if (filtro) {
+      URL += '&filter=' + filtro;
     }
     return this.oHttp.get<IPage<IUsuario>>(URL);
   }
 
-  getPageSort(page: number, size: number, sort: string): Observable<IPage<IUsuario>> {
-    if (!page) {
-      page = 0;
-    }
-    if (!size) {
-      size = 10;
-    }
-    if (!sort) {
-      sort = 'id,asc';
-    }
-    return this.oHttp.get<IPage<IUsuario>>(
-      'http://localhost:8085' + '/usuario?page=' + page + '&size=' + size + '&sort=' + sort
-    );
+  deleteUser(id: number):Observable<IUsuario> {
+    let URL: string = '';
+    URL += 'http://localhost:8085';
+    URL += '/usuario';
+    URL += '/' + id;
+    return this.oHttp.delete<IUsuario>(URL);
   }
 
+  getUser(id: number): Observable<IUsuario> {
+    let URL: string = '';
+    URL += 'http://localhost:8085';
+    URL += '/usuario';
+    URL += '/' + id;
+    return this.oHttp.get<IUsuario>(URL);
+  }
 
 }
