@@ -10,9 +10,5 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
 .icon-20 { font-size: 20px; }
 .icon-50 { font-size: 50px; }
 
-.icon-100 { font-size: 100px; }
-.icon-200 { font-size: 200px; }
-.icon-300 { font-size: 300px; }
-
 .table tr th  { padding: 0.3rem; }
 .table tr td { padding: 0.1rem; align-content: center;}
