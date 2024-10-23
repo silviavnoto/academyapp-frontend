@@ -21,6 +21,7 @@ export class UsuarioAdminCreateRoutedComponent implements OnInit {
   oUsuario: IUsuario | undefined = undefined;
   usuarioForm: FormGroup | undefined = undefined;
   constructor(private oUsuarioService: UsuarioService) {}
+  isCreated: boolean = false;
 
   ngOnInit() {
     this.crearFormulario();
@@ -49,6 +50,13 @@ export class UsuarioAdminCreateRoutedComponent implements OnInit {
     this.usuarioForm?.controls['email'].setValue(this.oUsuario?.email);
   }
 
+  vaciarFormulario() {
+    this.usuarioForm?.controls['nombre'].setValue('');
+    this.usuarioForm?.controls['apellido1'].setValue('');
+    this.usuarioForm?.controls['apellido2'].setValue('');
+    this.usuarioForm?.controls['email'].setValue('');
+  } 
+
   onSubmit() {
     if (this.usuarioForm?.invalid) {
       alert('Formulario invalido');
@@ -59,7 +67,9 @@ export class UsuarioAdminCreateRoutedComponent implements OnInit {
         next: (oUsuario: IUsuario) => {
           this.oUsuario = oUsuario;
           this.actualizarFormulario();
-          alert('Usuario creado');
+          this.isCreated = true;
+          this.vaciarFormulario();
+          this.crearFormulario();
         },
         error: (err) => {
           console.log(err);
