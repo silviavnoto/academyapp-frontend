@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { UsuarioService } from '../../../../../../service/usuario.service';
-import { IUsuario } from '../../../../../../model/usuario.interface';
+import { UsuarioService } from '../../../service/usuario.service';
+import { IUsuario } from '../../../model/usuario.interface';
 import {
   FormControl,
   FormGroup,

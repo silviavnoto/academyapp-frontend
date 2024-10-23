@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "userges": {
+    "contante": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/userges",
+            "outputPath": "dist/contante",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -63,10 +63,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "userges:build:production"
+              "buildTarget": "contante:build:production"
             },
             "development": {
-              "buildTarget": "userges:build:development"
+              "buildTarget": "contante:build:development"
             }
           },
           "defaultConfiguration": "development"

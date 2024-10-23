@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioService } from '../../../../../../service/usuario.service';
-import { IUsuario } from '../../../../../../model/usuario.interface';
+import { UsuarioService } from '../../../service/usuario.service';
+import { IUsuario } from '../../../model/usuario.interface';
 import { CommonModule } from '@angular/common';
-import { IPage } from '../../../../../../model/model.interface';
+import { IPage } from '../../../model/model.interface';
 import { FormsModule } from '@angular/forms';
-import { BotoneraService } from '../../../../../../service/botonera.service';
+import { BotoneraService } from '../../../service/botonera.service';
 import { debounceTime, filter, first, map, repeat, Subject } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -30,9 +30,9 @@ export class UsuarioAdminPlistRoutedComponent implements OnInit {
   constructor(
     private oUsuarioService: UsuarioService,
     private oBotoneraService: BotoneraService,
-    private oRouter: Router 
+    private oRouter: Router
   ) {
-    this.debounceSubject.pipe(debounceTime(1000)).subscribe((value) => {      
+    this.debounceSubject.pipe(debounceTime(1000)).subscribe((value) => {
       this.getPage();
     });
   }
@@ -43,7 +43,7 @@ export class UsuarioAdminPlistRoutedComponent implements OnInit {
 
   getPage() {
     this.oUsuarioService
-      .getPage(this.page, this.rpp, this.field, this.dir, this.strFiltro)      
+      .getPage(this.page, this.rpp, this.field, this.dir, this.strFiltro)
       .pipe(
         map((oPage: IPage<IUsuario>) => {
           oPage.content.forEach((oUsuario) => {
