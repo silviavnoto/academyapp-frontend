@@ -3,11 +3,14 @@ import { IUsuario } from '../model/usuario.interface';
 import { Observable } from 'rxjs/internal/Observable';
 import { HttpClient } from '@angular/common/http';
 import { IPage } from '../model/model.interface';
+import { httpOptions, serverUrl } from '../environment/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UsuarioService {
+
+  serverUrl: string = serverUrl + '/usuario';
   constructor(private oHttp: HttpClient) {}
 
   getPage(
@@ -18,8 +21,8 @@ export class UsuarioService {
     filtro: string
   ): Observable<IPage<IUsuario>> {
     let URL: string = '';
-    URL += 'http://localhost:8085';
-    URL += '/usuario';
+    URL += this.serverUrl;
+
     if (!page) {
       page = 0;
     }
@@ -39,38 +42,33 @@ export class UsuarioService {
     if (filtro) {
       URL += '&filter=' + filtro;
     }
-    return this.oHttp.get<IPage<IUsuario>>(URL);
+    return this.oHttp.get<IPage<IUsuario>>(URL, httpOptions);
   }
 
-  deleteUser(id: number):Observable<IUsuario> {
+  deleteUser(id: number): Observable<IUsuario> {
     let URL: string = '';
-    URL += 'http://localhost:8085';
-    URL += '/usuario';
+    URL += this.serverUrl;
     URL += '/' + id;
     return this.oHttp.delete<IUsuario>(URL);
   }
 
   getUser(id: number): Observable<IUsuario> {
     let URL: string = '';
-    URL += 'http://localhost:8085';
-    URL += '/usuario';
+    URL += this.serverUrl;
     URL += '/' + id;
     return this.oHttp.get<IUsuario>(URL);
   }
 
   updateUser(oUsuario: IUsuario): Observable<IUsuario> {
     let URL: string = '';
-    URL += 'http://localhost:8085';
-    URL += '/usuario';
+    URL += this.serverUrl;
     return this.oHttp.post<IUsuario>(URL, oUsuario);
   }
 
   createUser(oUsuario: IUsuario): Observable<IUsuario> {
     let URL: string = '';
-    URL += 'http://localhost:8085';
-    URL += '/usuario';
+    URL += this.serverUrl;
     URL += '/create';
     return this.oHttp.put<IUsuario>(URL, oUsuario);
   }
-
 }
