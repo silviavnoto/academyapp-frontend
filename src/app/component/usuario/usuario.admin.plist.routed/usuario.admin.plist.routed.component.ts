@@ -7,14 +7,15 @@ import { FormsModule } from '@angular/forms';
 import { BotoneraService } from '../../../service/botonera.service';
 import { debounceTime, filter, first, map, repeat, Subject } from 'rxjs';
 import { Router } from '@angular/router';
-import { TrimPipe } from '../../../pipe/trim.pipe';
+import { TrimPipe } from "../../../pipe/trim.pipe";
+
 
 @Component({
   selector: 'app-usuario.admin.routed',
   templateUrl: './usuario.admin.plist.routed.component.html',
   styleUrls: ['./usuario.admin.plist.routed.component.css'],
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TrimPipe],
 })
 export class UsuarioAdminPlistRoutedComponent implements OnInit {
   arrUsuarios: IUsuario[] = [];
