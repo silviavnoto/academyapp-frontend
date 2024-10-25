@@ -86,7 +86,7 @@
             @for (usuario of arrUsuarios; track usuario.id) {
             <tr>
               <td>{{ usuario.id }}</td>
-              <td>{{ usuario.nombre }}</td>
+              <td>{{ usuario.nombre  | trim:10}}</td>
               <td>{{ usuario.apellido1 }}</td>
               <td>{{ usuario.apellido2 }}</td>
               <td>{{ usuario.email }}</td>

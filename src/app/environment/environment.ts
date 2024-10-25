@@ -9,6 +9,6 @@ export const serverUrl = 'http://localhost:8085';
 
 export const httpOptions = {
     headers: new HttpHeaders ({
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json; charset=utf-8',
     }),
 };
