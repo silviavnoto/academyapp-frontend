@@ -99,7 +99,7 @@
             @for (usuario of arrUsuarios; track usuario.id) {
             <tr>
               <td class="text-center">{{ usuario.id }}</td>
-              <td class="text-start">{{ usuario.nombre }}</td>
+              <td class="text-start">{{ usuario.nombre | trim:10 }}</td>
               <td class="text-start">{{ usuario.apellido1 }}</td>
               <td class="text-start">{{ usuario.apellido2 }}</td>
               <td class="text-start" style="font-size: small">

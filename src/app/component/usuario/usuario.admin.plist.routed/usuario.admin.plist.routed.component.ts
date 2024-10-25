@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { BotoneraService } from '../../../service/botonera.service';
 import { debounceTime, filter, first, map, repeat, Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { TrimPipe } from '../../../pipe/trim.pipe';
 
 @Component({
   selector: 'app-usuario.admin.routed',
