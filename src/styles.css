@@ -12,3 +12,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
 
 .table tr th  { padding: 0.3rem; }
 .table tr td { padding: 0.1rem; align-content: center;}
+
+
+.navbar-nav .nav-link.active {
+    color: #fff !important;
+    background-color: #007bff;
+}
