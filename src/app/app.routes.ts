@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { UsuarioAdminPlistRoutedComponent } from './component/usuario/usuario.admin.plist.routed/usuario.admin.plist.routed.component';
 import { UsuarioAdminEditRoutedComponent } from './component/usuario/usuario.admin.edit.routed/usuario.admin.edit.routed.component';
-import { SharedHomeRoutedComponent } from './component/shared/shared-home-routed/shared.home.routed.component';
+import { SharedHomeRoutedComponent } from './component/shared/shared.home.routed/shared.home.routed.component';
 
 
 
