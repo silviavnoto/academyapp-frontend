@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { UsuarioService } from '../../../service/usuario.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
+declare let bootstrap: any;
+
 @Component({
   selector: 'app-usuario.admin.delete',
   standalone: true,
@@ -15,6 +17,8 @@ export class UsuarioAdminDeleteRoutedComponent {
   apellido1: string = '';
   apellido2: string = '';
   email: string = '';
+
+  message: string = '';
 
   constructor(
     private oUsuarioService: UsuarioService,
@@ -32,18 +36,28 @@ export class UsuarioAdminDeleteRoutedComponent {
     });
   }
 
+  showModal(mensaje: string) {
+    this.message = mensaje;
+    let myModal = new bootstrap.Modal(document.getElementById('mimodal'), { 
+      keyboard: false
+    })      
+    myModal.show()
+  }
+
   delete(): void {
     this.oUsuarioService.delete(this.id).subscribe({
       next: (data) => {
         console.log(data);
-        alert('Usuario eliminado');
+        this.showModal('Usuario borrado');
         this.router.navigate(['/admin/usuario/plist']);
       },
-      error: (err) => {
-        console.log(err);
+      error: (error) => {
+        this.showModal('Error al actualizar el usuario');
+        console.error(error);
       },
     });
   }
+
 
   cancel(): void {
     this.router.navigate(['/admin/usuario/plist']);
