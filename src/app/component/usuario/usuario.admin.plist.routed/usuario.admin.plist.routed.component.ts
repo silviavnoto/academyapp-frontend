@@ -69,6 +69,12 @@ export class UsuarioAdminPlistRoutedComponent implements OnInit {
     this.oRouter.navigate(['admin/usuario/edit', oUsuario.id]);
   }
 
+  view(oUsuario: IUsuario) {
+    console.log('Ver', oUsuario);
+    //navegar a la página de edición
+    this.oRouter.navigate(['admin/usuario/view', oUsuario.id]);
+  }
+
   remove(oUsuario: IUsuario) {
     console.log('Borrar', oUsuario);
   }
