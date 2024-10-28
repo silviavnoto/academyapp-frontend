@@ -38,7 +38,7 @@ export class UsuarioAdminCreateRoutedComponent implements OnInit {
       nombre: new FormControl('',[Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
       apellido1: new FormControl('',[Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
       apellido2: new FormControl(''),
-      email: new FormControl('',[Validators.required]),
+      email: new FormControl('',[Validators.required, Validators.email]),
     })
   }
 
@@ -55,6 +55,7 @@ export class UsuarioAdminCreateRoutedComponent implements OnInit {
         next: (oUsuario: IUsuario) => {
           this.oUsuario = oUsuario;
           console.log(oUsuario);
+          alert("Usuario creado");
         },
         error: (err) => {
           console.log(err);
