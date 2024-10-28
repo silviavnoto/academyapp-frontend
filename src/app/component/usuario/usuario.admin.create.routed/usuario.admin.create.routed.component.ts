@@ -81,7 +81,7 @@ export class UsuarioAdminCreateRoutedComponent implements OnInit {
         next: (oUsuario: IUsuario) => {
           this.oUsuario = oUsuario;
           console.log(oUsuario);
-          this.showModal('Usuario creado');
+          this.showModal('Usuario creado con el id: '+ this.oUsuario.id);
         },
         error: (err) => {
           console.log(err);
