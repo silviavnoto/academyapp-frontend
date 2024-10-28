@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { UsuarioService } from '../../../service/usuario.service';
 import { IUsuario } from '../../../model/usuario.interface';
 import {
@@ -10,6 +10,8 @@ import {
 } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+
+declare let bootstrap: any;
 
 @Component({
   selector: 'app-usuario.admin.edit.routed',
@@ -27,6 +29,7 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
   id: number = 0;
   usuarioForm: FormGroup | undefined = undefined;
   oUsuario: IUsuario | null = null;
+  message="";
 
   constructor(
     private oActivatedRoute: ActivatedRoute,
@@ -80,6 +83,14 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
     });
   }
 
+  showModal(mensaje: string) {
+    this.message = mensaje;
+    let myModal = new bootstrap.Modal(document.getElementById('mimodal'), { 
+      keyboard: false
+    })      
+    myModal.show()
+  }
+
   onSubmit() {
     if (!this.usuarioForm?.valid) {
       alert('Formulario no válido');
@@ -89,7 +100,7 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
         next: (oUsuario: IUsuario) => {
           this.oUsuario = oUsuario;
           this.updateForm();
-          alert('Usuario actualizado');
+          this.showModal('Usuario actualizado');
         },
         error: (error) => {
           console.error(error);
