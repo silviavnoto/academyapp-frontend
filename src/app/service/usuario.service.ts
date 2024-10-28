@@ -71,4 +71,11 @@ export class UsuarioService {
     URL += '/create';
     return this.oHttp.put<IUsuario>(URL, oUsuario);
   }
+
+  countUsers(): Observable<number> {
+    let URL: string = '';
+    URL += this.serverUrl;
+    URL += '/';
+    return this.oHttp.get<number>(URL);
+  }
 }

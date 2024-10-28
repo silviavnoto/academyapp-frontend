@@ -20,8 +20,8 @@ import { UsuarioService } from '../../../../../../service/usuario.service';
 export class UsuarioAdminCreateRoutedComponent implements OnInit {
   oUsuario: IUsuario | undefined = undefined;
   usuarioForm: FormGroup | undefined = undefined;
-  constructor(private oUsuarioService: UsuarioService) {}
   isCreated: boolean = false;
+  constructor(private oUsuarioService: UsuarioService) {}
 
   ngOnInit() {
     this.crearFormulario();
@@ -43,7 +43,7 @@ export class UsuarioAdminCreateRoutedComponent implements OnInit {
       email: new FormControl('', [Validators.required, Validators.email]),
     });
   }
-  actualizarFormulario() {
+  updateForm() {
     this.usuarioForm?.controls['nombre'].setValue(this.oUsuario?.nombre);
     this.usuarioForm?.controls['apellido1'].setValue(this.oUsuario?.apellido1);
     this.usuarioForm?.controls['apellido2'].setValue(this.oUsuario?.apellido2);
@@ -66,7 +66,7 @@ export class UsuarioAdminCreateRoutedComponent implements OnInit {
       this.oUsuarioService.createUser(this.usuarioForm?.value).subscribe({
         next: (oUsuario: IUsuario) => {
           this.oUsuario = oUsuario;
-          this.actualizarFormulario();
+          this.updateForm();
           this.isCreated = true;
           this.vaciarFormulario();
           this.crearFormulario();

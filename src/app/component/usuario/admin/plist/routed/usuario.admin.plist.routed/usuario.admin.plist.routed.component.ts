@@ -7,23 +7,24 @@ import { FormsModule } from '@angular/forms';
 import { BotoneraService } from '../../../../../../service/botonera.service';
 import { debounceTime, filter, first, map, repeat, Subject } from 'rxjs';
 import { TrimPipe } from '../../../../../../pipe/trim.pipe';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-usuario.admin.routed',
   templateUrl: './usuario.admin.plist.routed.component.html',
   styleUrls: ['./usuario.admin.plist.routed.component.css'],
   standalone: true,
-  imports: [CommonModule, FormsModule, TrimPipe],
+  imports: [CommonModule, FormsModule, TrimPipe, RouterModule],
 })
 export class UsuarioAdminPlistRoutedComponent implements OnInit {
-  arrUsuarios: IUsuario[] = [];
-  page: number = 0; // 0-based server count
-  totalPages: number = 0;
-  rpp: number = 10;
+  oPage: IPage<IUsuario> | null = null;
+  nPage: number = 0; // 0-based server count
+  nRpp: number = 10;
   arrBotonera: string[] = [];
-  field: string = '';
-  dir: string = 'desc';
+  strField: string = '';
+  strDir: string = 'desc';
   strFiltro: string = '';
+  totalUsers: number = 0;
 
   private debounceSubject = new Subject<string>();
 
@@ -31,7 +32,7 @@ export class UsuarioAdminPlistRoutedComponent implements OnInit {
     private oUsuarioService: UsuarioService,
     private oBotoneraService: BotoneraService
   ) {
-    this.debounceSubject.pipe(debounceTime(1000)).subscribe((value) => {      
+    this.debounceSubject.pipe(debounceTime(1000)).subscribe((value) => {
       this.getPage();
     });
   }
@@ -42,66 +43,69 @@ export class UsuarioAdminPlistRoutedComponent implements OnInit {
 
   getPage() {
     this.oUsuarioService
-      .getPage(this.page, this.rpp, this.field, this.dir, this.strFiltro)
+      .getPage(this.nPage, this.nRpp, this.strField, this.strDir, this.strFiltro)
       .subscribe({
-        next: (arrUsuario: IPage<IUsuario>) => {
-          console.log("llegan datos");
-          this.arrUsuarios = arrUsuario.content;
+        next: (oPageFromServer: IPage<IUsuario>) => {
+          this.oPage = oPageFromServer;
+          
+          
           this.arrBotonera = this.oBotoneraService.getBotonera(
-            this.page,
-            arrUsuario.totalPages
+            this.nPage,
+            this.oPage?.totalPages
           );
-          this.totalPages = arrUsuario.totalPages;
         },
         error: (err) => {
           console.log(err);
         },
       });
+    this.oUsuarioService.countUsers().subscribe({
+      next: (totalUsers: number) => {
+        this.totalUsers = totalUsers;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
 
-  editar(oUsuario: IUsuario) {
-    console.log('Editar', oUsuario);
-  }
 
-  eliminar(oUsuario: IUsuario) {
-    console.log('Borrar', oUsuario);
-  }
 
   goToPage(p: number) {
     if (p) {
-      this.page = p - 1;
+      this.nPage = p - 1;
       this.getPage();
     }
     return false;
   }
 
   goToNext() {
-    this.page++;
+    this.nPage++;
     this.getPage();
     return false;
   }
 
   goToPrev() {
-    this.page--;
+    this.nPage--;
     this.getPage();
     return false;
   }
 
   sort(field: string) {
-    this.field = field;
-    this.dir = this.dir === 'asc' ? 'desc' : 'asc';
+    this.strField = field;
+    this.strDir = this.strDir === 'asc' ? 'desc' : 'asc';
     this.getPage();
   }
 
   goToRpp(nrpp: number) {
-    this.rpp = nrpp;
-    this.page = 0;
+    this.nRpp = nrpp;
+    this.nPage = 0;
     this.getPage();
     return false;
   }
 
   buscar(event: KeyboardEvent) {
     console.log(KeyboardEvent);
+    this.nPage = 0;
     this.debounceSubject.next(this.strFiltro);
   }
 }

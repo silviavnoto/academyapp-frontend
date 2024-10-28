@@ -32,11 +32,11 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.crearFormulario();
+    this.createForm();
     this.get();
   }
 
-  crearFormulario() {
+  createForm() {
     this.usuarioForm = new FormGroup({
       id: new FormControl('', [Validators.required]),
       nombre: new FormControl('', [
@@ -55,7 +55,7 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
     this.usuarioForm?.controls['id'].setValue(this.id);
   }
 
-  actualizarFormulario() {
+  updateForm() {
     this.usuarioForm?.controls['nombre'].setValue(this.oUsuario?.nombre);
     this.usuarioForm?.controls['apellido1'].setValue(this.oUsuario?.apellido1);
     this.usuarioForm?.controls['apellido2'].setValue(this.oUsuario?.apellido2);
@@ -67,7 +67,7 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
       next: (oUsuario: IUsuario) => {
         console.log(oUsuario);
         this.oUsuario = oUsuario;
-        this.actualizarFormulario();
+        this.updateForm();
       },
       error: (err) => {
         console.log(err);
@@ -83,7 +83,7 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
       this.oUsuarioService.updateUser(this.usuarioForm?.value).subscribe({
         next: (oUsuario: IUsuario) => {
           this.oUsuario = oUsuario;
-          this.actualizarFormulario();
+          this.updateForm();
           alert('Usuario actualizado');
         },
         error: (err) => {
