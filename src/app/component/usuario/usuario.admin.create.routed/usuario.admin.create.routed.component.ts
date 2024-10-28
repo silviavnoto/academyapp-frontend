@@ -30,9 +30,11 @@ export class UsuarioAdminCreateRoutedComponent implements OnInit {
   message: string = "";
 
 
-  constructor(private oUsuarioService: UsuarioService) { 
+  constructor(private oUsuarioService: UsuarioService , private activatedRoute: ActivatedRoute) {
+    
+  } 
 
-  }
+  
 
   ngOnInit() {
     this.createForm();
@@ -61,6 +63,12 @@ export class UsuarioAdminCreateRoutedComponent implements OnInit {
       keyboard: false
     })      
     myModal.show()
+  }
+  hideModal(){
+    let myModalEl = document.getElementById('mimodal');
+    let modal = bootstrap.Modal.getInstance(myModalEl);
+    modal?.hide();
+    this.activatedRoute
   }
 
 
