@@ -1,6 +1,7 @@
 <div class="container mt-5 d-flex align-items-center justify-content-center">
   <div class="row">
     <div class="col text-center">
+      <h2 class="my-2">Creación de Usuario</h2>
     <form [formGroup]="usuarioForm!" (ngSubmit)="onSubmit()" novalidate>
       <div class="row mt-4">
         <mat-form-field>
@@ -64,13 +65,21 @@
         </mat-form-field>
       </div>
       <br>
-      <div class="row mt-2">
-        <button class="btn btn-primary" type="submit" [disabled]="usuarioForm?.invalid">Guardar cambios</button>
-      </div>
-    </form>
-    <br><br>
-      <a href="admin/usuario/plist"> <button class="btn btn-primary">Volver</button> </a>
-      <br><br>
+      <button
+      class="btn btn-warning mt-4 mx-1"
+      [routerLink]="['/admin', 'usuario', 'plist']"
+    >
+      Volver
+    </button>
+
+    <button
+      class="btn btn-primary mt-4 mx-1"
+      type="submit"
+      [disabled]="!usuarioForm?.valid"
+    >
+      Guardar
+    </button>
+  </form>
       <div class="row">
         <h3 [class.visually-hidden]="!usuarioCreado">USUARIO CREADO</h3>
       </div>
