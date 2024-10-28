@@ -1,0 +1,10 @@
+<div class="container">
+  <h3 class="mb-3">¿Desea eliminar el usuario?</h3>
+  <p><strong>ID:</strong> {{ id }}</p>
+  <p><strong>Nombre:</strong> {{ nombre }}</p>
+  <p><strong>Apellido 1:</strong> {{ apellido1 }}</p>
+  <p><strong>Apellido 2:</strong> {{ apellido2 }}</p>
+  <p><strong>Email:</strong> {{ email }}</p>
+  <button class="btn btn-danger mx-2" (click)="delete()">Eliminar</button>
+  <button class="btn btn-primary" (click)="cancel()">Cancelar</button>
+</div>
