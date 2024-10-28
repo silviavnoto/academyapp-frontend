@@ -51,6 +51,12 @@ export class UsuarioService {
     return this.oHttp.get<IUsuario>(URL);
   }
 
+  create(oUsuario: IUsuario): Observable<IUsuario> {
+    let URL: string = '';
+    URL += this.serverURL;
+    return this.oHttp.put<IUsuario>(URL, oUsuario);
+  }
+
   update(oUsuario: IUsuario): Observable<IUsuario> {
     let URL: string = '';
     URL += this.serverURL;
@@ -65,4 +71,7 @@ export class UsuarioService {
     return this.oHttp.get<IUsuario>(URL);
   }
 
+  delete(id: number) {
+    return this.oHttp.delete('http://localhost:8085/usuario/' + id);
+  }
 }
