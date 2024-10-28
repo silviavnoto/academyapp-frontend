@@ -1,62 +1,35 @@
-<div class="container mt-5 d-flex align-items-center justify-content-center">
-  <div class="row">
-    <div class="col text-center">
-      <h2 class="my-4">Ver Usuario</h2>
-
-      <form [formGroup]="usuarioForm!">
-        <div class="row mt-4">
-          <mat-form-field>
-            <mat-label>Id</mat-label>
-            <input matInput formControlName="id" placeholder="Id" readonly />
-          </mat-form-field>
-        </div>
-
-        <div class="row mt-4">
-          <mat-form-field>
-            <mat-label>Nombre</mat-label>
-            <input matInput formControlName="nombre" placeholder="Nombre" readonly />
-          </mat-form-field>
-        </div>
-
-        <div class="row mt-4">
-          <mat-form-field>
-            <mat-label>Primer Apellido</mat-label>
-            <input
-              matInput
-              formControlName="apellido1"
-              placeholder="Primer Apellido"
-              readonly
-            />
-          </mat-form-field>
-        </div>
-
-        <div class="row mt-4">
-          <mat-form-field>
-            <mat-label>Segundo Apellido</mat-label>
-            <input
-              matInput
-              formControlName="apellido2"
-              placeholder="Segundo Apellido"
-              readonly
-            />
-          </mat-form-field>
-        </div>
-
-        <div class="row mt-4">
-          <mat-form-field>
-            <mat-label>Email</mat-label>
-            <input matInput formControlName="email" placeholder="Email" readonly/>
-          </mat-form-field>
-        </div>
-
-        <button
-          class="btn btn-warning mt-4 mx-1"
-          [routerLink]="['/admin', 'usuario', 'plist']"
-        >
-          Volver
-        </button>
-
-      </form>
-    </div>
+<div class="row justify-content-center">
+  <div class="col-lg-10"> 
+    
+    <h1 class="my-5 text-center">Ver usuario</h1> 
+    <br>
+    
+    <table class="table table-striped table-bordered my-5 text-center">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col" class="bg-danger text-white h4">Id</th> 
+          <th scope="col" class="bg-primary text-white h4">Nombre</th>
+          <th scope="col" class="bg-primary text-white h4">Primer Apellido</th>
+          <th scope="col" class="bg-primary text-white h4">Segundo Apellido</th>
+          <th scope="col" class="bg-primary text-white h4">Correo</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        <tr class="h5 text-center "> 
+          <td class="p-3">{{ oUsuario.id }}</td>
+          <td>{{ oUsuario.nombre }}</td>
+          <td>{{ oUsuario.apellido1 }}</td>
+          <td>{{ oUsuario.apellido2 }}</td>
+          <td>{{ oUsuario.email }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div class="d-flex justify-content-center mt-4">
+    <a class="btn btn-secondary btn-lg m-2" href="admin/usuario/plist"> 
+      Volver atrás
+    </a>
   </div>
 </div>
