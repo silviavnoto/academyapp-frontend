@@ -11,6 +11,7 @@ declare let bootstrap: any;
   templateUrl: './usuario.admin.delete.component.html',
   styleUrl: './usuario.admin.delete.component.css',
 })
+
 export class UsuarioAdminDeleteRoutedComponent {
   id: number = 0;
   nombre: string = '';
