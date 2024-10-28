@@ -63,6 +63,14 @@ export class UsuarioService {
     return this.oHttp.put<IUsuario>(URL, oUsuario);
   }
 
+  getOne(id: number): Observable<IUsuario> {
+    let URL: string = '';
+    URL += 'http://localhost:8085';
+    URL += '/usuario';
+    URL += '/' + id;
+    return this.oHttp.get<IUsuario>(URL);
+  }
+
   delete(id: number) {
     return this.oHttp.delete('http://localhost:8085/usuario/' + id);
   }
