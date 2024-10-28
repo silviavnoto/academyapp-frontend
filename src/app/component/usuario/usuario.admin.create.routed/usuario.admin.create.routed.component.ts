@@ -9,6 +9,9 @@ import { IUsuario } from '../../../model/usuario.interface';
 import { UsuarioService } from '../../../service/usuario.service';
 
 
+declare let bootstrap: any;
+
+
 @Component({
   standalone: true,
   selector: 'app-usuario.admin.create.routed',
@@ -24,16 +27,20 @@ export class UsuarioAdminCreateRoutedComponent implements OnInit {
 
   usuarioCreado: boolean = false; // Para controlar la visibilidad del mensaje
 
+  message: string = "";
+
+  myModal: any;
+
 
   constructor(private oUsuarioService: UsuarioService) { 
 
   }
 
   ngOnInit() {
-    this.crearFormulario();
+    this.createForm();
   }
 
-  crearFormulario() {
+  createForm() {
     this.usuarioForm = new FormGroup({
       nombre: new FormControl('',[Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
       apellido1: new FormControl('',[Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
@@ -42,11 +49,37 @@ export class UsuarioAdminCreateRoutedComponent implements OnInit {
     })
   }
 
+  updateForm() {
+    this.usuarioForm?.controls['nombre'].setValue('');
+    this.usuarioForm?.controls['apellido1'].setValue('');
+    this.usuarioForm?.controls['apellido2'].setValue('');
+    this.usuarioForm?.controls['email'].setValue('');
+  }
+
+
+  showModal(mensaje: string) {
+    this.message = mensaje;
+    this.myModal = new bootstrap.Modal(document.getElementById('mimodal'), { 
+      keyboard: false
+    })      
+    this.myModal.show()
+  }
+
+
+  onReset() {
+   this.updateForm();
+   return false;
+  }
+
+  hideModal = () => {
+    this.myModal.hide();
+    console.log('Modal ocultado');
+  }
 
   onSubmit() {
 
     if (this.usuarioForm?.invalid) {
-      alert("Formulario inválido");
+      this.showModal('Formulario inválido');
       return;
     }else{
 
@@ -55,7 +88,7 @@ export class UsuarioAdminCreateRoutedComponent implements OnInit {
         next: (oUsuario: IUsuario) => {
           this.oUsuario = oUsuario;
           console.log(oUsuario);
-          alert("Usuario creado");
+          this.showModal('Usuario creado con el id: '+ this.oUsuario.id);
         },
         error: (err) => {
           console.log(err);
