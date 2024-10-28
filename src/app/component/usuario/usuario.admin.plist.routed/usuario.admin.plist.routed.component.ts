@@ -37,7 +37,7 @@ export class UsuarioAdminPlistRoutedComponent implements OnInit {
     private oBotoneraService: BotoneraService,
     private oRouter: Router
   ) {
-    this.debounceSubject.pipe(debounceTime(1000)).subscribe((value) => {
+    this.debounceSubject.pipe(debounceTime(10)).subscribe((value) => {
       this.getPage();
     });
   }
@@ -71,6 +71,7 @@ export class UsuarioAdminPlistRoutedComponent implements OnInit {
 
   remove(oUsuario: IUsuario) {
     console.log('Borrar', oUsuario);
+    this.oRouter.navigate(['admin/usuario/delete/', oUsuario.id]);
   }
 
   goToPage(p: number) {
