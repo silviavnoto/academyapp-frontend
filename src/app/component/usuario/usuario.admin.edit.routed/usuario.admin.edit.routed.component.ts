@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { UsuarioService } from '../../../service/usuario.service';
 import { IUsuario } from '../../../model/usuario.interface';
 import {
@@ -16,7 +16,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   templateUrl: './usuario.admin.edit.routed.component.html',
   styleUrls: ['./usuario.admin.edit.routed.component.css'],
   standalone: true,
-  imports: [MatFormFieldModule, MatInputModule, ReactiveFormsModule],
+  imports: [
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    RouterModule,
+  ],
 })
 export class UsuarioAdminEditRoutedComponent implements OnInit {
   id: number = 0;
@@ -33,11 +38,11 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.crearFormulario();
+    this.createForm();
     this.get();
   }
 
-  crearFormulario() {
+  createForm() {
     this.usuarioForm = new FormGroup({
       id: new FormControl('', [Validators.required]),
       nombre: new FormControl('', [
@@ -55,7 +60,7 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
     });
   }
 
-  actualizarFormulario() {
+  updateForm() {
     this.usuarioForm?.controls['id'].setValue(this.oUsuario?.id);
     this.usuarioForm?.controls['nombre'].setValue(this.oUsuario?.nombre);
     this.usuarioForm?.controls['apellido1'].setValue(this.oUsuario?.apellido1);
@@ -67,7 +72,7 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
     this.oUsuarioService.get(this.id).subscribe({
       next: (oUsuario: IUsuario) => {
         this.oUsuario = oUsuario;
-        this.actualizarFormulario();
+        this.updateForm();
       },
       error: (error) => {
         console.error(error);
@@ -83,7 +88,7 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
       this.oUsuarioService.update(this.usuarioForm?.value).subscribe({
         next: (oUsuario: IUsuario) => {
           this.oUsuario = oUsuario;
-          this.actualizarFormulario();
+          this.updateForm();
           alert('Usuario actualizado');
         },
         error: (error) => {

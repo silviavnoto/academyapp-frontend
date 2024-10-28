@@ -63,16 +63,22 @@
             <input matInput formControlName="email" placeholder="Email" />
             <mat-hint align="end">Formato email</mat-hint>
             @if (usuarioForm?.get('email')?.hasError('required')) {
-              <mat-error>Debes introducir un primer apellido</mat-error>
-              } @if (usuarioForm?.get('email')?.hasError('email')) {
-              <mat-error>Debes introducir un email correcto</mat-error>
-              }
+            <mat-error>Debes introducir un primer apellido</mat-error>
+            } @if (usuarioForm?.get('email')?.hasError('email')) {
+            <mat-error>Debes introducir un email correcto</mat-error>
+            }
           </mat-form-field>
         </div>
 
         <button
-          class="btn btn-primary mt-4"
-          color="primary"
+          class="btn btn-warning mt-4 mx-1"
+          [routerLink]="['/admin', 'usuario', 'plist']"
+        >
+          Volver
+        </button>
+
+        <button
+          class="btn btn-primary mt-4 mx-1"
           type="submit"
           [disabled]="!usuarioForm?.valid"
         >
