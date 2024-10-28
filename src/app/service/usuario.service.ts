@@ -56,4 +56,8 @@ export class UsuarioService {
     URL += this.serverURL;
     return this.oHttp.put<IUsuario>(URL, oUsuario);
   }
+
+  delete(id: number) {
+    return this.oHttp.delete('http://localhost:8085/usuario/' + id);
+  }
 }
