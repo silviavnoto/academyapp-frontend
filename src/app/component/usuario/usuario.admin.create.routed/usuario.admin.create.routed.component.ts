@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -29,9 +29,10 @@ export class UsuarioAdminCreateRoutedComponent implements OnInit {
 
   message: string = "";
 
+  myModal: any;
 
-  constructor(private oUsuarioService: UsuarioService , private activatedRoute: ActivatedRoute) {
-    
+
+  constructor(private oUsuarioService: UsuarioService , private  oRouter: Router) {
   } 
 
   
@@ -59,22 +60,23 @@ export class UsuarioAdminCreateRoutedComponent implements OnInit {
 
   showModal(mensaje: string) {
     this.message = mensaje;
-    let myModal = new bootstrap.Modal(document.getElementById('mimodal'), { 
+    this.myModal = new bootstrap.Modal(document.getElementById('mimodal'), { 
       keyboard: false
     })      
-    myModal.show()
+    this.myModal.show()
   }
-  hideModal(){
-    let myModalEl = document.getElementById('mimodal');
-    let modal = bootstrap.Modal.getInstance(myModalEl);
-    modal?.hide();
-    this.activatedRoute
-  }
+  
 
 
   onReset() {
    this.updateForm();
    return false;
+  }
+
+  hideModal = () => {
+    this.myModal.hide();
+    console.log('Modal ocultado');
+    this.oRouter.navigate(['/admin/usuario/view/'+this.oUsuario?.id]);
   }
 
   onSubmit() {

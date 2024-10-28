@@ -2,94 +2,91 @@
   <div class="row">
     <div class="col text-center">
       <h2 class="my-2">Creación de Usuario</h2>
-    <form [formGroup]="usuarioForm!" (ngSubmit)="onSubmit()" novalidate>
-      <div class="row mt-4">
-        <mat-form-field>
-          <mat-label>Nombre</mat-label>
-          <input matInput formControlName="nombre" placeholder="Pon aquí tu nombre">
-          <mat-hint align="start">De 3 caracteres a 50 caracteres</mat-hint>
-          @if (usuarioForm?.get('nombre')?.hasError('required')){
-            <mat-error>
-              El campo nombre es obligatorio
-            </mat-error>
-          }
-          @if (usuarioForm?.get('nombre')?.hasError('minlength')){
-            <mat-error>
-              El nombre debe ser mas largo
-            </mat-error>
-          }
-          @if (usuarioForm?.get('nombre')?.hasError('maxlength')){
-            <mat-error>
-              El nombre debe ser mas corto
-            </mat-error>
-          }
-  
-        </mat-form-field>
-      </div>
-      <div class="row mt-4">
-        <mat-form-field>
-          <mat-label>Primer Apellido</mat-label>
-          <input matInput formControlName="apellido1" placeholder="Escribe tu primer apellido">
-          <mat-hint align="start">De 3 caracteres a 50 caracteres</mat-hint>
-          @if (usuarioForm?.get('apellido1')?.hasError('required')) {
+      <form [formGroup]="usuarioForm!" (ngSubmit)="onSubmit()" novalidate>
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input
+              matInput
+              formControlName="nombre"
+              placeholder="Pon aquí tu nombre"
+            />
+            <mat-hint align="start">De 3 caracteres a 50 caracteres</mat-hint>
+            @if (usuarioForm?.get('nombre')?.hasError('required')){
+            <mat-error> El campo nombre es obligatorio </mat-error>
+            } @if (usuarioForm?.get('nombre')?.hasError('minlength')){
+            <mat-error> El nombre debe ser mas largo </mat-error>
+            } @if (usuarioForm?.get('nombre')?.hasError('maxlength')){
+            <mat-error> El nombre debe ser mas corto </mat-error>
+            }
+          </mat-form-field>
+        </div>
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Primer Apellido</mat-label>
+            <input
+              matInput
+              formControlName="apellido1"
+              placeholder="Escribe tu primer apellido"
+            />
+            <mat-hint align="start">De 3 caracteres a 50 caracteres</mat-hint>
+            @if (usuarioForm?.get('apellido1')?.hasError('required')) {
             <mat-error>Debes introducir un primer apellido</mat-error>
             } @if (usuarioForm?.get('apellido1')?.hasError('minlength')) {
             <mat-error>Debes introducir un apellido mas largo</mat-error>
             } @if (usuarioForm?.get('nombre')?.hasError('maxlength')) {
             <mat-error>Debes introducir un apellido mas corto</mat-error>
             }
-  
-        </mat-form-field>
-      </div>
-      <div class="row mt-4">
-        <mat-form-field>
-          <mat-label>Segundo Apellido</mat-label>
-          <input matInput formControlName="apellido2" placeholder="Escribe tu segundo apellido">
-        </mat-form-field>
-      </div>
-      <div class="row mt-4">
-        <mat-form-field>
-          <mat-label>Email</mat-label>
-          <input
-            matInput
-            formControlName="email"
-            placeholder="Pon aquí tu email"
-            required
-          />
-          <mat-hint align="start">Formato email</mat-hint>
-          @if (usuarioForm?.get('email')?.hasError('required')) {
+          </mat-form-field>
+        </div>
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Segundo Apellido</mat-label>
+            <input
+              matInput
+              formControlName="apellido2"
+              placeholder="Escribe tu segundo apellido"
+            />
+          </mat-form-field>
+        </div>
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              formControlName="email"
+              placeholder="Pon aquí tu email"
+              required
+            />
+            <mat-hint align="start">Formato email</mat-hint>
+            @if (usuarioForm?.get('email')?.hasError('required')) {
             <mat-error>Debes introducir un email</mat-error>
             } @if (usuarioForm?.get('email')?.hasError('email')) {
             <mat-error>Debes introducir un email correcto</mat-error>
             }
-        </mat-form-field>
-      </div>
-      <br>
-      <button
-      class="btn btn-warning mt-4 mx-1"
-      [routerLink]="['/admin', 'usuario', 'plist']"
-    >
-      Volver
-    </button>
+          </mat-form-field>
+        </div>
+        <br />
+        <button
+          class="btn btn-warning mt-4 mx-1"
+          [routerLink]="['/admin', 'usuario', 'plist']"
+        >
+          Volver
+        </button>
 
+        <button class="btn btn-secondary mt-4 mx-1" (click)="onReset()">
+          Reset
+        </button>
 
-
-    <button
-    class="btn btn-secondary mt-4 mx-1"
-    (click)="onReset()"
-    >
-    Reset
-  </button>
-
-  <button
-  class="btn btn-primary mt-4 mx-1"
-  type="submit"
-  [disabled]="!usuarioForm?.valid"
->
-  Guardar
-</button>
-  </form>
-  </div>
+        <button
+          class="btn btn-primary mt-4 mx-1"
+          type="submit"
+          [disabled]="!usuarioForm?.valid"
+        >
+          Guardar
+        </button>
+      </form>
+    </div>
   </div>
 </div>
 
@@ -109,18 +106,22 @@
           class="btn-close"
           data-bs-dismiss="modal"
           aria-label="Close"
+          (click)="hideModal()"
         ></button>
       </div>
       <div class="modal-body">
         <p>{{ message }}</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" >
-          <!-- [routerLink]="['/admin', 'usuario', 'view','{{oUsuario.id}}'] -->
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+          (click)="hideModal()"
+        >
           Cerrar
         </button>
       </div>
     </div>
   </div>
 </div>
-  
