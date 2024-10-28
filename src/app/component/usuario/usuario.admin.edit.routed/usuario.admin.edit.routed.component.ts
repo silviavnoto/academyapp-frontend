@@ -93,7 +93,7 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
 
   onSubmit() {
     if (!this.usuarioForm?.valid) {
-      alert('Formulario no válido');
+      this.showModal('Formulario no válido');
       return;
     } else {
       this.oUsuarioService.update(this.usuarioForm?.value).subscribe({
@@ -103,6 +103,7 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
           this.showModal('Usuario actualizado');
         },
         error: (error) => {
+          this.showModal('Error al actualizar el usuario');
           console.error(error);
         },
       });
