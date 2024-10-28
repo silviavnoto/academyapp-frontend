@@ -1,0 +1,80 @@
+<div class="container mt-5 d-flex align-items-center justify-content-center">
+  <div class="row">
+    <div class="col text-center">
+    <form [formGroup]="usuarioForm!" (ngSubmit)="onSubmit()" novalidate>
+      <div class="row mt-4">
+        <mat-form-field>
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="nombre" placeholder="Pon aquí tu nombre">
+          <mat-hint align="start">De 3 caracteres a 50 caracteres</mat-hint>
+          @if (usuarioForm?.get('nombre')?.hasError('required')){
+            <mat-error>
+              El campo nombre es obligatorio
+            </mat-error>
+          }
+          @if (usuarioForm?.get('nombre')?.hasError('minlength')){
+            <mat-error>
+              El nombre debe ser mas largo
+            </mat-error>
+          }
+          @if (usuarioForm?.get('nombre')?.hasError('maxlength')){
+            <mat-error>
+              El nombre debe ser mas corto
+            </mat-error>
+          }
+  
+        </mat-form-field>
+      </div>
+      <div class="row mt-4">
+        <mat-form-field>
+          <mat-label>Primer Apellido</mat-label>
+          <input matInput formControlName="apellido1" placeholder="Escribe tu primer apellido">
+          <mat-hint align="start">De 3 caracteres a 50 caracteres</mat-hint>
+          @if (usuarioForm?.get('apellido1')?.hasError('required')) {
+            <mat-error>Debes introducir un primer apellido</mat-error>
+            } @if (usuarioForm?.get('apellido1')?.hasError('minlength')) {
+            <mat-error>Debes introducir un apellido mas largo</mat-error>
+            } @if (usuarioForm?.get('nombre')?.hasError('maxlength')) {
+            <mat-error>Debes introducir un apellido mas corto</mat-error>
+            }
+  
+        </mat-form-field>
+      </div>
+      <div class="row mt-4">
+        <mat-form-field>
+          <mat-label>Segundo Apellido</mat-label>
+          <input matInput formControlName="apellido2" placeholder="Escribe tu segundo apellido">
+        </mat-form-field>
+      </div>
+      <div class="row mt-4">
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            formControlName="email"
+            placeholder="Pon aquí tu email"
+            required
+          />
+          <mat-hint align="start">Formato email</mat-hint>
+          @if (usuarioForm?.get('email')?.hasError('required')) {
+            <mat-error>Debes introducir un email</mat-error>
+            } @if (usuarioForm?.get('email')?.hasError('email')) {
+            <mat-error>Debes introducir un email correcto</mat-error>
+            }
+        </mat-form-field>
+      </div>
+      <br>
+      <div class="row mt-2">
+        <button class="btn btn-primary" type="submit" [disabled]="usuarioForm?.invalid">Guardar cambios</button>
+      </div>
+    </form>
+    <br><br>
+      <a href="admin/usuario/plist"> <button class="btn btn-primary">Volver</button> </a>
+      <br><br>
+      <div class="row">
+        <h3 [class.visually-hidden]="!usuarioCreado">USUARIO CREADO</h3>
+      </div>
+  </div>
+  </div>
+</div>
+  

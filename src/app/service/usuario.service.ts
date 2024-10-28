@@ -51,6 +51,12 @@ export class UsuarioService {
     return this.oHttp.get<IUsuario>(URL);
   }
 
+  create(oUsuario: IUsuario): Observable<IUsuario> {
+    let URL: string = '';
+    URL += this.serverURL + '/create';
+    return this.oHttp.put<IUsuario>(URL, oUsuario);
+  }
+
   update(oUsuario: IUsuario): Observable<IUsuario> {
     let URL: string = '';
     URL += this.serverURL;
