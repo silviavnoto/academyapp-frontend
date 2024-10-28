@@ -1,7 +1,7 @@
 <div class="container mt-5 d-flex align-items-center justify-content-center">
   <div class="row">
     <div class="col text-center">
-      <h2 class="my-4">Edición de Usuario</h2>
+      <h2 class="my-5">Edición de Usuario</h2>
 
       <form [formGroup]="usuarioForm!" (ngSubmit)="onSubmit()" novalidate>
         <div class="row mt-4">
@@ -70,38 +70,57 @@
           </mat-form-field>
         </div>
 
-        <button
-          class="btn btn-warning mt-4 mx-1"
-          [routerLink]="['/admin', 'usuario', 'plist']"
-        >
-          Volver
-        </button>
+        <div class="mt-4">
+          <button
+            class="btn btn-warning mt-4 mx-1"
+            [routerLink]="['/admin', 'usuario', 'plist']"
+          >
+            Volver
+          </button>
 
-        <button
-          class="btn btn-primary mt-4 mx-1"
-          type="submit"
-          [disabled]="!usuarioForm?.valid"
-        >
-          Guardar
-        </button>
+          <button class="btn btn-secondary mt-4 mx-1" (click)="onReset()">
+            Reset
+          </button>
+
+          <button
+            class="btn btn-primary mt-4 mx-1"
+            type="submit"
+            [disabled]="!usuarioForm?.valid"
+          >
+            Guardar
+          </button>
+        </div>
       </form>
     </div>
   </div>
 </div>
 
-<div class="modal fade" [id]="'mimodal'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div
+  class="modal fade"
+  [id]="'mimodal'"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
   <div class="modal-dialog">
-      <div class="modal-content">
-          <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Contante</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-              <p>{{message}}</p>
-          </div>
-          <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
-          </div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Contante</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
+      <div class="modal-body">
+        <p>{{ message }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+          Cerrar
+        </button>
+      </div>
+    </div>
   </div>
 </div>

@@ -63,6 +63,19 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
     });
   }
 
+  onReset() {
+    this.oUsuarioService.get(this.id).subscribe({
+      next: (oUsuario: IUsuario) => {
+        this.oUsuario = oUsuario;
+        this.updateForm();
+      },
+      error: (error) => {
+        console.error(error);
+      },
+    });
+    return false;
+  }
+
   updateForm() {
     this.usuarioForm?.controls['id'].setValue(this.oUsuario?.id);
     this.usuarioForm?.controls['nombre'].setValue(this.oUsuario?.nombre);
