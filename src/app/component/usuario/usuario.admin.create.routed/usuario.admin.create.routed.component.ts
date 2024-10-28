@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -13,7 +13,7 @@ import { UsuarioService } from '../../../service/usuario.service';
   standalone: true,
   selector: 'app-usuario.admin.create.routed',
   templateUrl: './usuario.admin.create.routed.component.html',
-  imports: [MatFormFieldModule, MatInputModule, MatSelectModule, ReactiveFormsModule],
+  imports: [MatFormFieldModule, MatInputModule, MatSelectModule, ReactiveFormsModule, RouterModule],
   styleUrls: ['./usuario.admin.create.routed.component.css']
 })
 export class UsuarioAdminCreateRoutedComponent implements OnInit {
