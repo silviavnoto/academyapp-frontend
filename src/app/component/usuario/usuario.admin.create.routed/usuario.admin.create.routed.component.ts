@@ -29,6 +29,8 @@ export class UsuarioAdminCreateRoutedComponent implements OnInit {
 
   message: string = "";
 
+  myModal: any;
+
 
   constructor(private oUsuarioService: UsuarioService) { 
 
@@ -57,16 +59,21 @@ export class UsuarioAdminCreateRoutedComponent implements OnInit {
 
   showModal(mensaje: string) {
     this.message = mensaje;
-    let myModal = new bootstrap.Modal(document.getElementById('mimodal'), { 
+    this.myModal = new bootstrap.Modal(document.getElementById('mimodal'), { 
       keyboard: false
     })      
-    myModal.show()
+    this.myModal.show()
   }
 
 
   onReset() {
    this.updateForm();
    return false;
+  }
+
+  hideModal = () => {
+    this.myModal.hide();
+    console.log('Modal ocultado');
   }
 
   onSubmit() {
