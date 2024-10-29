@@ -1,6 +1,10 @@
 <div class="row justify-content-center m-3">
   <div class="col-lg-7 col-md-10 col-sm-12">
-    <h1 class="my-5 text-center">Borrar usuario</h1>
+    <h1 class="my-5 text-center">
+      <i class="bi bi-trash"></i>
+      Borrar usuario
+      <i class="bi bi-person-circle"></i>
+    </h1>
     <br />
     <table class="table table-striped table-bordered my-5 text-center">
       <tbody>
@@ -45,9 +49,11 @@
       class="btn btn-warning mt-4 mx-1"
       [routerLink]="['/admin', 'usuario', 'plist']"
     >
+      <i class="bi bi-list"></i>
       Ir a listado de Usuarios
     </button>
     <button class="btn btn-danger mt-4 mx-1" (click)="delete()">
+      <i class="bi bi-trash"></i>
       Borrar usuario
     </button>
   </div>
