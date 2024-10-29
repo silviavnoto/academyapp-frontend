@@ -14,7 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 declare let bootstrap: any;
 
 @Component({
-  selector: 'app-usuario.admin.edit.routed',
+  selector: 'app-usuario-admin-edit-routed',
   templateUrl: './usuario.admin.edit.routed.component.html',
   styleUrls: ['./usuario.admin.edit.routed.component.css'],
   standalone: true,
@@ -29,7 +29,7 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
   id: number = 0;
   usuarioForm: FormGroup | undefined = undefined;
   oUsuario: IUsuario | null = null;
-  message="";
+  message: string = '';
 
   constructor(
     private oActivatedRoute: ActivatedRoute,
@@ -98,10 +98,10 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
 
   showModal(mensaje: string) {
     this.message = mensaje;
-    let myModal = new bootstrap.Modal(document.getElementById('mimodal'), { 
-      keyboard: false
-    })      
-    myModal.show()
+    let myModal = new bootstrap.Modal(document.getElementById('mimodal'), {
+      keyboard: false,
+    });
+    myModal.show();
   }
 
   onSubmit() {

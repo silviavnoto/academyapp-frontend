@@ -12,13 +12,9 @@ declare let bootstrap: any;
   templateUrl: './usuario.admin.delete.component.html',
   styleUrl: './usuario.admin.delete.component.css',
 })
-
 export class UsuarioAdminDeleteRoutedComponent implements OnInit {
-
-  oUsuario: IUsuario | null = null
-
+  oUsuario: IUsuario | null = null;
   message: string = '';
-
   myModal: any;
 
   constructor(
@@ -30,29 +26,30 @@ export class UsuarioAdminDeleteRoutedComponent implements OnInit {
   ngOnInit(): void {
     let id = this.oActivatedRoute.snapshot.params['id'];
     this.oUsuarioService.get(id).subscribe({
-
       next: (oUsuario: IUsuario) => {
         this.oUsuario = oUsuario;
       },
       error: (err) => {
-        console.log(err)
+        console.log(err);
       },
     });
   }
 
   showModal(mensaje: string) {
     this.message = mensaje;
-    this.myModal = new bootstrap.Modal(document.getElementById('mimodal'), { 
-      keyboard: false
-    })      
-    this.myModal.show()
+    this.myModal = new bootstrap.Modal(document.getElementById('mimodal'), {
+      keyboard: false,
+    });
+    this.myModal.show();
   }
 
   delete(): void {
     this.oUsuarioService.delete(this.oUsuario!.id).subscribe({
       next: (data) => {
         console.log(data);
-        this.showModal('Usuario ' + this.oUsuario!.id + ' ha sido borrado');
+        this.showModal(
+          'Usuario con id ' + this.oUsuario!.id + ' ha sido borrado'
+        );
       },
       error: (error) => {
         this.showModal('Error al borrar el usuario');
@@ -63,7 +60,6 @@ export class UsuarioAdminDeleteRoutedComponent implements OnInit {
 
   hideModal = () => {
     this.myModal.hide();
-    console.log('Modal ocultado');
     this.oRouter.navigate(['/admin/usuario/plist']);
   }
   
