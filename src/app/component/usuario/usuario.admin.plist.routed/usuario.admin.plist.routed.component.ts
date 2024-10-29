@@ -24,7 +24,7 @@ export class UsuarioAdminPlistRoutedComponent implements OnInit {
   nRpp: number = 10;
   //
   strField: string = '';
-  strDir: string = 'desc';
+  strDir: string = '';
   //
   strFiltro: string = '';
   //

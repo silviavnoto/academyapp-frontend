@@ -79,6 +79,8 @@
           Mostrando {{ oPage?.numberOfElements | number : "1.0-0" }} de
           {{ oPage?.totalElements | number : "1.0-0" }}
         </h5>
+
+
       </div>
 
       <div class="d-flex flex-column">
@@ -88,18 +90,50 @@
         >
           <thead>
             <tr>
-              <th (click)="sort('id')" class="bg-danger text-white">ID</th>
+              <th (click)="sort('id')" class="bg-danger text-white">
+                ID 
+                @if (strDir == 'desc' && strField == 'id'){
+                  <i class="bi bi-arrow-down-circle"></i>
+                }
+                @if (strDir == 'asc' && strField == 'id'){
+                 <i class="bi bi-arrow-up-circle"></i>
+                }
+              </th>
               <th (click)="sort('nombre')" class="bg-primary text-white">
                 Nombre
+                @if (strDir == 'desc' && strField == 'nombre'){
+                  <i class="bi bi-arrow-down-circle"></i>
+                }
+                @if (strDir == 'asc' && strField == 'nombre'){
+                 <i class="bi bi-arrow-up-circle"></i>
+                }
               </th>
               <th (click)="sort('apellido1')" class="bg-primary text-white">
                 Primer Apellido
+                @if (strDir == 'desc' && strField == 'apellido1'){
+                  <i class="bi bi-arrow-down-circle"></i>
+                }
+                @if (strDir == 'asc' && strField == 'apellido1'){
+                 <i class="bi bi-arrow-up-circle"></i>
+                }
               </th>
               <th (click)="sort('apellido2')" class="bg-primary text-white">
                 Segundo Apellido
+                @if (strDir == 'desc' && strField == 'apellido2'){
+                  <i class="bi bi-arrow-down-circle"></i>
+                }
+                @if (strDir == 'asc' && strField == 'apellido2'){
+                 <i class="bi bi-arrow-up-circle"></i>
+                }
               </th>
               <th (click)="sort('email')" class="bg-primary text-white">
                 Correo
+                @if (strDir == 'desc' && strField == 'email'){
+                  <i class="bi bi-arrow-down-circle"></i>
+                }
+                @if (strDir == 'asc' && strField == 'email'){
+                 <i class="bi bi-arrow-up-circle"></i>
+                }
               </th>
               <th class="bg-warning text-black">Acciones</th>
             </tr>
