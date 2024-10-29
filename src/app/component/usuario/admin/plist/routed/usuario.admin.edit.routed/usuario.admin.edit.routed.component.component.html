@@ -1,0 +1,95 @@
+<div class="container mt-4 d-flex align-items-center justify-content-center">
+  <form [formGroup]="usuarioForm!" (ngSubmit)="onSubmit()" novalidate>
+    <div class="row mt-4">
+      <mat-form-field>
+        <mat-label>Id</mat-label>
+        <input
+          readonly="readonly"
+          matInput
+          formControlName="id"
+          placeholder="Id"
+        />
+        <mat-hint align="end">No se puede cambiar</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="row mt-4">
+      <mat-form-field>
+        <mat-label>Nombre</mat-label>
+        <input matInput formControlName="nombre" placeholder="Nombre" />
+        <mat-hint align="end">Mínimo 3 caracteres, máximo 50</mat-hint>
+        @if (usuarioForm?.get('nombre')?.hasError('required')) {
+          <mat-error>Debes introducir un nombre</mat-error>
+        }
+        @if (usuarioForm?.get('nombre')?.hasError('minlength')) {
+          <mat-error>Debes introducir un nombre mas largo</mat-error>
+        }
+        @if (usuarioForm?.get('nombre')?.hasError('maxlength')) {
+          <mat-error>Debes introducir un nombre mas corto</mat-error>
+        }
+      </mat-form-field>
+    </div>
+    <div class="row mt-4">
+      <mat-form-field>
+        <mat-label>Primer Apellido</mat-label>
+        <input
+          matInput
+          formControlName="apellido1"
+          placeholder="Primer Apellido"
+        />
+        <mat-hint align="end">Mínimo 3 caracteres, máximo 50</mat-hint>
+        @if (usuarioForm?.get('apellido1')?.hasError('required')) {
+          <mat-error>Debes introducir un apellido</mat-error>
+        }
+        @if (usuarioForm?.get('apellido1')?.hasError('minlength')) {
+          <mat-error>Debes introducir un apellido mas largo</mat-error>
+        }
+        @if (usuarioForm?.get('apellido1')?.hasError('maxlength')) {
+          <mat-error>Debes introducir un apellido mas corto</mat-error>
+        }
+      </mat-form-field>
+    </div>
+    <div class="row mt-4">
+      <mat-form-field>
+        <mat-label>Segundo Apellido</mat-label>
+        <input
+          matInput
+          formControlName="apellido2"
+          placeholder="Primer Apellido"
+        />
+      </mat-form-field>
+    </div>
+    <div class="row mt-4">
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" placeholder="Email" />
+        <mat-hint align="end">Formato email</mat-hint>
+        @if (usuarioForm?.get('email')?.hasError('required')) {
+          <mat-error>Debes introducir un email</mat-error>
+        }
+        @if (usuarioForm?.get('email')?.hasError('email')) {
+          <mat-error>Debes introducir un email valido</mat-error>
+        }
+
+      </mat-form-field>
+    </div>
+    <div class="col mt-4">
+    <button
+      class="btn btn-primary"
+      type="button"
+      (click)="onSubmit()"
+      [disabled]="usuarioForm?.invalid"
+    >
+      Guardar
+    </button>
+    <a class="btn btn-secondary" href="admin/usuario/plist">Volver</a>
+
+  </div>
+    
+  </form>
+</div>
+<!--
+  <mat-form-field>
+    <mat-label>Textarea</mat-label>
+    <textarea matInput></textarea>
+  </mat-form-field>
+  -->
