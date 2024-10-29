@@ -88,51 +88,54 @@
           class="table table-striped table-bordered my-2"
           style="table-layout: fixed; width: 100%; word-break: break-all"
         >
+
+        
           <thead>
             <tr>
-              <th (click)="sort('id')" class="bg-danger text-white">
-                ID 
-                @if (strDir == 'desc' && strField == 'id'){
-                  <i class="bi bi-arrow-down-circle"></i>
+              <th (click)="sort('id')" class="bg-danger text-white">           
+                ID
+                @if (strField === 'id') {
+                  @if (strDir === 'desc') { 
+                  <i class="bi bi-caret-down-fill"></i>
+                  } @else {
+                  <i class="bi bi-caret-up-fill"></i>}
                 }
-                @if (strDir == 'asc' && strField == 'id'){
-                 <i class="bi bi-arrow-up-circle"></i>
-                }
+              
               </th>
               <th (click)="sort('nombre')" class="bg-primary text-white">
                 Nombre
-                @if (strDir == 'desc' && strField == 'nombre'){
-                  <i class="bi bi-arrow-down-circle"></i>
-                }
-                @if (strDir == 'asc' && strField == 'nombre'){
-                 <i class="bi bi-arrow-up-circle"></i>
+                @if (strField === 'nombre') {
+                  @if (strDir === 'desc') { 
+                  <i class="bi bi-caret-down-fill"></i>
+                  } @else {
+                  <i class="bi bi-caret-up-fill"></i>}
                 }
               </th>
               <th (click)="sort('apellido1')" class="bg-primary text-white">
                 Primer Apellido
-                @if (strDir == 'desc' && strField == 'apellido1'){
-                  <i class="bi bi-arrow-down-circle"></i>
-                }
-                @if (strDir == 'asc' && strField == 'apellido1'){
-                 <i class="bi bi-arrow-up-circle"></i>
+                @if (strField === 'apellido1') {
+                  @if (strDir === 'desc') { 
+                  <i class="bi bi-caret-down-fill"></i>
+                  } @else {
+                  <i class="bi bi-caret-up-fill"></i>}
                 }
               </th>
               <th (click)="sort('apellido2')" class="bg-primary text-white">
                 Segundo Apellido
-                @if (strDir == 'desc' && strField == 'apellido2'){
-                  <i class="bi bi-arrow-down-circle"></i>
-                }
-                @if (strDir == 'asc' && strField == 'apellido2'){
-                 <i class="bi bi-arrow-up-circle"></i>
+                @if (strField === 'apellido2') {
+                  @if (strDir === 'desc') { 
+                  <i class="bi bi-caret-down-fill"></i>
+                  } @else {
+                  <i class="bi bi-caret-up-fill"></i>}
                 }
               </th>
               <th (click)="sort('email')" class="bg-primary text-white">
                 Correo
-                @if (strDir == 'desc' && strField == 'email'){
-                  <i class="bi bi-arrow-down-circle"></i>
-                }
-                @if (strDir == 'asc' && strField == 'email'){
-                 <i class="bi bi-arrow-up-circle"></i>
+                @if (strField === 'email') {
+                  @if (strDir === 'desc') { 
+                  <i class="bi bi-caret-down-fill"></i>
+                  } @else {
+                  <i class="bi bi-caret-up-fill"></i>}
                 }
               </th>
               <th class="bg-warning text-black">Acciones</th>

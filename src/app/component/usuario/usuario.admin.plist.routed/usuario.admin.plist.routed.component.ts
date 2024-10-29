@@ -64,19 +64,16 @@ export class UsuarioAdminPlistRoutedComponent implements OnInit {
   }
 
   edit(oUsuario: IUsuario) {
-    console.log('Editar', oUsuario);
     //navegar a la página de edición
     this.oRouter.navigate(['admin/usuario/edit', oUsuario.id]);
   }
 
   view(oUsuario: IUsuario) {
-    console.log('Ver', oUsuario);
     //navegar a la página de edición
     this.oRouter.navigate(['admin/usuario/view', oUsuario.id]);
   }
 
   remove(oUsuario: IUsuario) {
-    console.log('Borrar', oUsuario);
     this.oRouter.navigate(['admin/usuario/delete/', oUsuario.id]);
   }
 
@@ -114,7 +111,6 @@ export class UsuarioAdminPlistRoutedComponent implements OnInit {
   }
 
   filter(event: KeyboardEvent) {
-    console.log(KeyboardEvent);
     this.debounceSubject.next(this.strFiltro);
   }
 }
