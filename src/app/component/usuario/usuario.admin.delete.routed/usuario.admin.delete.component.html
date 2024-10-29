@@ -41,11 +41,11 @@
   </div>
 
   <div class="d-flex justify-content-center mt-4">
-    <button class="btn btn-secondary btn-lg m-2" [routerLink]="['/admin', 'usuario', 'plist']">
+    <button class="btn btn-secondary mt-4 mx-1" [routerLink]="['/admin', 'usuario', 'plist']">
       Volver
     </button>
 
-    <button class="btn btn-danger btn-lg m-2" (click)="delete()">
+    <button class="btn btn-danger mt-4 mx-1" (click)="delete()">
       Borrar usuario
     </button>
   </div>
@@ -68,13 +68,19 @@
           class="btn-close"
           data-bs-dismiss="modal"
           aria-label="Close"
+          (click)="hideModal()"
         ></button>
       </div>
       <div class="modal-body">
         <p>{{ message }}</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+          (click)="hideModal()"
+        >
           Cerrar
         </button>
       </div>
