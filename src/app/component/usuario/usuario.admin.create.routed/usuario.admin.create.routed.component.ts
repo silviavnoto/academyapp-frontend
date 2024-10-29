@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-
+import { Router, RouterModule } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import {
   FormControl,
-  FormGroup,
-  FormsModule,
+  FormGroup,  
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -30,7 +28,7 @@ declare let bootstrap: any;
   styleUrls: ['./usuario.admin.create.routed.component.css'],
 })
 export class UsuarioAdminCreateRoutedComponent implements OnInit {
-  
+
   id: number = 0;
   usuarioForm: FormGroup | undefined = undefined;
   oUsuario: IUsuario | null = null;
@@ -48,6 +46,7 @@ export class UsuarioAdminCreateRoutedComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
+    this.usuarioForm?.markAllAsTouched();
   }
 
   createForm() {

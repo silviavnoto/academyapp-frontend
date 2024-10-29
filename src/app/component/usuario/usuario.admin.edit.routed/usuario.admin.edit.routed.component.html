@@ -75,7 +75,7 @@
             class="btn btn-warning mt-4 mx-1"
             [routerLink]="['/admin', 'usuario', 'plist']"
           >
-            Volver
+            Ir a listado de Usuarios
           </button>
 
           <button class="btn btn-secondary mt-4 mx-1" (click)="onReset()">
@@ -111,13 +111,19 @@
           class="btn-close"
           data-bs-dismiss="modal"
           aria-label="Close"
+          (click)="hideModal()"
         ></button>
       </div>
       <div class="modal-body">
         <p>{{ message }}</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+          (click)="hideModal()"
+        >
           Cerrar
         </button>
       </div>
