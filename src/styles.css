@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-<<<<<<< HEAD
 @import "bootstrap-icons/font/bootstrap-icons.css";
 
 html, body { height: 100%; font-size: 0.9rem;}
@@ -19,7 +18,3 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
     color: #fff !important;
     background-color: #007bff;
 }
-=======
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
->>>>>>> userges-dani/master
