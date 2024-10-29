@@ -30,12 +30,9 @@ declare let bootstrap: any;
 export class UsuarioAdminCreateRoutedComponent implements OnInit {
 
   id: number = 0;
-  usuarioForm: FormGroup | undefined = undefined;
+  oUsuarioForm: FormGroup | undefined = undefined;
   oUsuario: IUsuario | null = null;
-
-  usuarioCreado: boolean = false; // Para controlar la visibilidad del mensaje
-
-  message: string = '';
+  strMessage: string = '';
 
   myModal: any;
 
@@ -46,11 +43,11 @@ export class UsuarioAdminCreateRoutedComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
-    this.usuarioForm?.markAllAsTouched();
+    this.oUsuarioForm?.markAllAsTouched();
   }
 
   createForm() {
-    this.usuarioForm = new FormGroup({
+    this.oUsuarioForm = new FormGroup({
       nombre: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
@@ -67,14 +64,14 @@ export class UsuarioAdminCreateRoutedComponent implements OnInit {
   }
 
   updateForm() {
-    this.usuarioForm?.controls['nombre'].setValue('');
-    this.usuarioForm?.controls['apellido1'].setValue('');
-    this.usuarioForm?.controls['apellido2'].setValue('');
-    this.usuarioForm?.controls['email'].setValue('');
+    this.oUsuarioForm?.controls['nombre'].setValue('');
+    this.oUsuarioForm?.controls['apellido1'].setValue('');
+    this.oUsuarioForm?.controls['apellido2'].setValue('');
+    this.oUsuarioForm?.controls['email'].setValue('');
   }
 
   showModal(mensaje: string) {
-    this.message = mensaje;
+    this.strMessage = mensaje;
     this.myModal = new bootstrap.Modal(document.getElementById('mimodal'), {
       keyboard: false,
     });
@@ -88,23 +85,21 @@ export class UsuarioAdminCreateRoutedComponent implements OnInit {
 
   hideModal = () => {
     this.myModal.hide();
-    console.log('Modal ocultado');
     this.oRouter.navigate(['/admin/usuario/view/' + this.oUsuario?.id]);
   };
 
   onSubmit() {
-    if (this.usuarioForm?.invalid) {
+    if (this.oUsuarioForm?.invalid) {
       this.showModal('Formulario inválido');
       return;
-    } else {
-      this.usuarioCreado = true; // Mostrar el mensaje cuando el formulario se envíe correctamente
-      this.oUsuarioService.create(this.usuarioForm?.value).subscribe({
+    } else {      
+      this.oUsuarioService.create(this.oUsuarioForm?.value).subscribe({
         next: (oUsuario: IUsuario) => {
           this.oUsuario = oUsuario;
-          console.log(oUsuario);
           this.showModal('Usuario creado con el id: ' + this.oUsuario.id);
         },
         error: (err) => {
+          this.showModal('Error al crear el usuario');
           console.log(err);
         },
       });

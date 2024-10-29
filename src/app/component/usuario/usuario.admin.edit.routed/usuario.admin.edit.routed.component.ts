@@ -27,7 +27,7 @@ declare let bootstrap: any;
 })
 export class UsuarioAdminEditRoutedComponent implements OnInit {
   id: number = 0;
-  usuarioForm: FormGroup | undefined = undefined;
+  oUsuarioForm: FormGroup | undefined = undefined;
   oUsuario: IUsuario | null = null;
   message: string = '';
   myModal: any;
@@ -45,11 +45,11 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
   ngOnInit() {
     this.createForm();
     this.get();
-    this.usuarioForm?.markAllAsTouched();
+    this.oUsuarioForm?.markAllAsTouched();
   }
 
   createForm() {
-    this.usuarioForm = new FormGroup({
+    this.oUsuarioForm = new FormGroup({
       id: new FormControl('', [Validators.required]),
       nombre: new FormControl('', [
         Validators.required,
@@ -80,11 +80,11 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
   }
 
   updateForm() {
-    this.usuarioForm?.controls['id'].setValue(this.oUsuario?.id);
-    this.usuarioForm?.controls['nombre'].setValue(this.oUsuario?.nombre);
-    this.usuarioForm?.controls['apellido1'].setValue(this.oUsuario?.apellido1);
-    this.usuarioForm?.controls['apellido2'].setValue(this.oUsuario?.apellido2);
-    this.usuarioForm?.controls['email'].setValue(this.oUsuario?.email);
+    this.oUsuarioForm?.controls['id'].setValue(this.oUsuario?.id);
+    this.oUsuarioForm?.controls['nombre'].setValue(this.oUsuario?.nombre);
+    this.oUsuarioForm?.controls['apellido1'].setValue(this.oUsuario?.apellido1);
+    this.oUsuarioForm?.controls['apellido2'].setValue(this.oUsuario?.apellido2);
+    this.oUsuarioForm?.controls['email'].setValue(this.oUsuario?.email);
   }
 
   get() {
@@ -113,11 +113,11 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
   };
 
   onSubmit() {
-    if (!this.usuarioForm?.valid) {
+    if (!this.oUsuarioForm?.valid) {
       this.showModal('Formulario no válido');
       return;
     } else {
-      this.oUsuarioService.update(this.usuarioForm?.value).subscribe({
+      this.oUsuarioService.update(this.oUsuarioForm?.value).subscribe({
         next: (oUsuario: IUsuario) => {
           this.oUsuario = oUsuario;
           this.updateForm();

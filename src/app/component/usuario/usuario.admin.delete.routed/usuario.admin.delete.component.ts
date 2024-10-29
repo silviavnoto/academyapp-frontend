@@ -14,7 +14,7 @@ declare let bootstrap: any;
 })
 export class UsuarioAdminDeleteRoutedComponent implements OnInit {
   oUsuario: IUsuario | null = null;
-  message: string = '';
+  strMessage: string = '';
   myModal: any;
 
   constructor(
@@ -30,13 +30,13 @@ export class UsuarioAdminDeleteRoutedComponent implements OnInit {
         this.oUsuario = oUsuario;
       },
       error: (err) => {
-        console.log(err);
+        this.showModal('Error al cargar el usuario');
       },
     });
   }
 
   showModal(mensaje: string) {
-    this.message = mensaje;
+    this.strMessage = mensaje;
     this.myModal = new bootstrap.Modal(document.getElementById('mimodal'), {
       keyboard: false,
     });
@@ -46,14 +46,12 @@ export class UsuarioAdminDeleteRoutedComponent implements OnInit {
   delete(): void {
     this.oUsuarioService.delete(this.oUsuario!.id).subscribe({
       next: (data) => {
-        console.log(data);
         this.showModal(
           'Usuario con id ' + this.oUsuario!.id + ' ha sido borrado'
         );
       },
       error: (error) => {
         this.showModal('Error al borrar el usuario');
-        console.error(error);
       },
     });
   }
