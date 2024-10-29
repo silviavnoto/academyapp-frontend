@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { UsuarioService } from '../../../service/usuario.service';
 import { IUsuario } from '../../../model/usuario.interface';
 import {
@@ -31,9 +31,12 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
   oUsuario: IUsuario | null = null;
   message: string = '';
 
+  myModal: any;
+
   constructor(
     private oActivatedRoute: ActivatedRoute,
-    private oUsuarioService: UsuarioService
+    private oUsuarioService: UsuarioService,
+    private oRouter: Router
   ) {
     this.oActivatedRoute.params.subscribe((params) => {
       this.id = params['id'];
@@ -43,6 +46,7 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
   ngOnInit() {
     this.createForm();
     this.get();
+    this.usuarioForm?.markAllAsTouched();
   }
 
   createForm() {
@@ -104,6 +108,11 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
     myModal.show();
   }
 
+  hideModal = () => {
+    this.myModal.hide();
+    this.oRouter.navigate(['/admin/usuario/view/' + this.oUsuario?.id]);
+  }
+
   onSubmit() {
     if (!this.usuarioForm?.valid) {
       this.showModal('Formulario no válido');
@@ -113,7 +122,7 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
         next: (oUsuario: IUsuario) => {
           this.oUsuario = oUsuario;
           this.updateForm();
-          this.showModal('Usuario actualizado');
+          this.showModal('Usuario '+this.oUsuario?.id+' actualizado');
         },
         error: (error) => {
           this.showModal('Error al actualizar el usuario');

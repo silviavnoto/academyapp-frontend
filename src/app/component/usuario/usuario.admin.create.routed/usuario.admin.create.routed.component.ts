@@ -7,7 +7,6 @@ import { MatSelectModule } from '@angular/material/select';
 import {
   FormControl,
   FormGroup,
-  FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -41,6 +40,8 @@ export class UsuarioAdminCreateRoutedComponent implements OnInit {
 
   myModal: any;
 
+  form: FormGroup = new FormGroup({});
+
   constructor(
     private oUsuarioService: UsuarioService,
     private oRouter: Router
@@ -48,6 +49,7 @@ export class UsuarioAdminCreateRoutedComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
+    this.usuarioForm?.markAllAsTouched();
   }
 
   createForm() {
@@ -89,9 +91,8 @@ export class UsuarioAdminCreateRoutedComponent implements OnInit {
 
   hideModal = () => {
     this.myModal.hide();
-    console.log('Modal ocultado');
     this.oRouter.navigate(['/admin/usuario/view/' + this.oUsuario?.id]);
-  };
+  }
 
   onSubmit() {
     if (this.usuarioForm?.invalid) {
@@ -111,4 +112,7 @@ export class UsuarioAdminCreateRoutedComponent implements OnInit {
       });
     }
   }
+
+
+
 }
