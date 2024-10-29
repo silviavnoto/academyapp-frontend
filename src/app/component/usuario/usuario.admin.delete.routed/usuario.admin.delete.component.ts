@@ -1,23 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../../service/usuario.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { IUsuario } from '../../../model/usuario.interface';
 
 declare let bootstrap: any;
 
 @Component({
-  selector: 'app-usuario.admin.delete',
+  selector: 'app-usuario-admin-delete-routed',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './usuario.admin.delete.component.html',
   styleUrl: './usuario.admin.delete.component.css',
 })
 
-export class UsuarioAdminDeleteRoutedComponent {
-  id: number = 0;
-  nombre: string = '';
-  apellido1: string = '';
-  apellido2: string = '';
-  email: string = '';
+export class UsuarioAdminDeleteRoutedComponent implements OnInit {
+
+  oUsuario: IUsuario | null = null
 
   message: string = '';
 
@@ -28,12 +26,15 @@ export class UsuarioAdminDeleteRoutedComponent {
   ) {}
 
   ngOnInit(): void {
-    this.id = this.activatedRoute.snapshot.params['id'];
-    this.oUsuarioService.get(this.id).subscribe((usuario) => {
-      this.nombre = usuario.nombre;
-      this.apellido1 = usuario.apellido1;
-      this.apellido2 = usuario.apellido2;
-      this.email = usuario.email;
+    let id = this.activatedRoute.snapshot.params['id'];
+    this.oUsuarioService.get(id).subscribe({
+
+      next: (oUsuario: IUsuario) => {
+        this.oUsuario = oUsuario;
+      },
+      error: (err) => {
+        console.log(err)
+      },
     });
   }
 
@@ -46,14 +47,14 @@ export class UsuarioAdminDeleteRoutedComponent {
   }
 
   delete(): void {
-    this.oUsuarioService.delete(this.id).subscribe({
+    this.oUsuarioService.delete(this.oUsuario!.id).subscribe({
       next: (data) => {
         console.log(data);
-        this.showModal('Usuario borrado');
+        this.showModal('Usuario ' + this.oUsuario!.id + ' ha sido borrado');
         this.router.navigate(['/admin/usuario/plist']);
       },
       error: (error) => {
-        this.showModal('Error al actualizar el usuario');
+        this.showModal('Error al borrar el usuario');
         console.error(error);
       },
     });
