@@ -30,7 +30,6 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
   usuarioForm: FormGroup | undefined = undefined;
   oUsuario: IUsuario | null = null;
   message: string = '';
-  myModal: any;
 
   myModal: any;
 
@@ -112,11 +111,7 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
   hideModal = () => {
     this.myModal.hide();
     this.oRouter.navigate(['/admin/usuario/view/' + this.oUsuario?.id]);
-<<<<<<< HEAD
-  }
-=======
   };
->>>>>>> rafafrontend/master
 
   onSubmit() {
     if (!this.usuarioForm?.valid) {
@@ -127,11 +122,7 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
         next: (oUsuario: IUsuario) => {
           this.oUsuario = oUsuario;
           this.updateForm();
-<<<<<<< HEAD
-          this.showModal('Usuario '+this.oUsuario?.id+' actualizado');
-=======
           this.showModal('Usuario ' + this.oUsuario.id + ' actualizado');
->>>>>>> rafafrontend/master
         },
         error: (error) => {
           this.showModal('Error al actualizar el usuario');

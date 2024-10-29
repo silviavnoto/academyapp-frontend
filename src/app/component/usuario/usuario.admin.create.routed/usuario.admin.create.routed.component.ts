@@ -5,11 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import {
   FormControl,
-<<<<<<< HEAD
-  FormGroup,
-=======
   FormGroup,  
->>>>>>> rafafrontend/master
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
