@@ -6,31 +6,31 @@
       <tbody>
         <tr class="text-center">
           <th scope="row" class="bg-danger text-white text-end pe-5">Id</th>
-          <td class="text-start ps-5">{{ id }}</td>
+          <td class="text-start ps-5">{{ oUsuario!.id }}</td>
         </tr>
         <tr class="text-center">
-          <th scope="row" class="bg-primary text-white h4 text-end pe-5">
+          <th scope="row" class="bg-primary text-white text-end pe-5">
             Nombre
           </th>
-          <td class="text-start ps-5">{{ nombre }}</td>
+          <td class="text-start ps-5">{{ oUsuario!.nombre }}</td>
         </tr>
         <tr class="text-center">
-          <th scope="row" class="bg-primary text-white h4 text-end pe-5">
+          <th scope="row" class="bg-primary text-white text-end pe-5">
             Primer Apellido
           </th>
-          <td class="text-start ps-5">{{ apellido1 }}</td>
+          <td class="text-start ps-5">{{ oUsuario!.apellido1 }}</td>
         </tr>
         <tr class="text-center">
-          <th scope="row" class="bg-primary text-white h4 text-end pe-5">
+          <th scope="row" class="bg-primary text-white text-end pe-5">
             Segundo Apellido
           </th>
-          <td class="text-start ps-5">{{ apellido2 }}</td>
+          <td class="text-start ps-5">{{ oUsuario!.apellido2 }}</td>
         </tr>
         <tr class="text-center">
-          <th scope="row" class="bg-primary text-white h4 text-end pe-5">
+          <th scope="row" class="bg-primary text-white text-end pe-5">
             Correo
           </th>
-          <td class="text-start ps-5">{{ email }}</td>
+          <td class="text-start ps-5">{{ oUsuario!.email }}</td>
         </tr>
       </tbody>
     </table>
@@ -41,11 +41,13 @@
   </div>
 
   <div class="d-flex justify-content-center mt-4">
-    <button class="btn btn-secondary btn-lg m-2" href="admin/usuario/plist">
+    <button
+      class="btn btn-secondary mt-4 mx-1"
+      [routerLink]="['/admin', 'usuario', 'plist']"
+    >
       Volver
     </button>
-
-    <button class="btn btn-danger btn-lg m-2" (click)="delete()">
+    <button class="btn btn-danger mt-4 mx-1" (click)="delete()">
       Borrar usuario
     </button>
   </div>
