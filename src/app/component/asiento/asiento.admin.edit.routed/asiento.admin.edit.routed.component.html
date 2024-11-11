@@ -19,7 +19,7 @@
           <mat-form-field>
             <mat-label>Descripcion</mat-label>
             <input matInput formControlName="descripcion" placeholder="Descripcion" />
-            <mat-hint align="end">De 3 a 50 caracteres</mat-hint>
+            <mat-hint align="end">De 5 a 255 caracteres</mat-hint>
             @if (oAsientoForm?.get('descripcion')?.hasError('required')) {
             <mat-error>Debes introducir una descripcion</mat-error>
             } @if (oAsientoForm?.get('descripcion')?.hasError('minlength')) {
@@ -38,7 +38,7 @@
               formControlName="comentarios"
               placeholder="Comentarios"
             />
-            <mat-hint align="end">De 3 a 50 caracteres</mat-hint>
+            <mat-hint align="end">De 0 a 255 caracteres</mat-hint>
             @if (oAsientoForm?.get('comentarios')?.hasError('required')) {
             <mat-error>Debes introducir un comentario</mat-error>
             } @if (oAsientoForm?.get('comentarios')?.hasError('minlength')) {
@@ -50,25 +50,9 @@
         </div>
 
         <div class="row mt-4">
-          <mat-form-field>
-            <mat-label>Inventariable</mat-label>
-            <input matInput formControlName="inventariable" placeholder="inventariable" />
-            <mat-hint align="end">Inventariable</mat-hint>
-            @if (oAsientoForm?.get('inventariable')?.hasError('required')) {
-            <mat-error>Debes introducir un inventariable</mat-error>
-            }
-          </mat-form-field>
-        </div>
-
-        <div class="row mt-4">
-          <mat-form-field>
-            <mat-label>Momentstamp</mat-label>
-            <input matInput formControlName="momentstamp" placeholder="Momentstamp" />
-            <mat-hint align="end">Formato fecha y hora</mat-hint>
-            @if (oAsientoForm?.get('momentstamp')?.hasError('required')) {
-            <mat-error>Debes introducir un momentstamp</mat-error>
-            }
-          </mat-form-field>
+          <mat-checkbox formControlName="inventariable" [(ngModel)]="checkboxValue" (change)="onCheckboxChange($event)">
+            Inventariable
+          </mat-checkbox>
         </div>
 
         <div class="row mt-4">

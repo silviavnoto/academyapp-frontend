@@ -5,11 +5,14 @@ import { IAsiento } from '../../../model/asiento.interface';
 import {
   FormControl,
   FormGroup,
+  FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 
 declare let bootstrap: any;
 
@@ -23,6 +26,8 @@ declare let bootstrap: any;
     MatInputModule,
     ReactiveFormsModule,
     RouterModule,
+    MatCheckboxModule,
+    FormsModule,
   ],
 })
 export class AsientoAdminEditRoutedComponent implements OnInit {
@@ -30,6 +35,7 @@ export class AsientoAdminEditRoutedComponent implements OnInit {
   oAsientoForm: FormGroup | undefined = undefined;
   oAsiento: IAsiento | null = null;
   message: string = '';
+  checkboxValue: number = 0;  // Inicia con 0
 
   myModal: any;
 
@@ -54,16 +60,15 @@ export class AsientoAdminEditRoutedComponent implements OnInit {
       id: new FormControl('', [Validators.required]),
       descripcion: new FormControl('', [
         Validators.required,
-        Validators.minLength(1),
+        Validators.minLength(5),
         Validators.maxLength(255),
       ]),
       comentarios: new FormControl('', [
-        Validators.required,
-        Validators.minLength(1),
+        Validators.minLength(0),
         Validators.maxLength(255),
       ]),
       inventariable: new FormControl(''),
-      momentstamp: new FormControl('', [
+      momentstamp: new FormControl(new Date(Date.now()), [
         Validators.required,
         //Validators.pattern(
           //'^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}$'
@@ -98,7 +103,6 @@ export class AsientoAdminEditRoutedComponent implements OnInit {
     this.oAsientoForm?.controls['id_tipoasiento'].setValue(this.oAsiento?.id_tipoasiento);
     this.oAsientoForm?.controls['id_usuario'].setValue(this.oAsiento?.id_usuario);
     this.oAsientoForm?.controls['id_periodo'].setValue(this.oAsiento?.id_periodo);
-
   }
 
   get() {
@@ -111,6 +115,10 @@ export class AsientoAdminEditRoutedComponent implements OnInit {
         console.error(error);
       },
     });
+  }
+
+  onCheckboxChange(event: any): void {
+    this.checkboxValue = event.checked ? 1 : 0;
   }
 
   showModal(mensaje: string) {

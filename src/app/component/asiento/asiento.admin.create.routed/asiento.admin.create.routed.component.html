@@ -3,98 +3,121 @@
     <div class="col text-center">
       <h2 class="my-2">
         <i class="bi bi-plus-square"></i>
-        Creación de Usuario
+        Creación de Asiento
         <i class="bi bi-journal-text"></i>      </h2>
-      <form [formGroup]="oUsuarioForm!" (ngSubmit)="onSubmit()" novalidate>
+      <form [formGroup]="oAsientoForm!" (ngSubmit)="onSubmit()" novalidate>
         <div class="row mt-4">
           <mat-form-field>
-            <mat-label>Nombre</mat-label>
-            <input
-              matInput
-              formControlName="nombre"
-              placeholder="Pon aquí tu nombre"
-            />
-            <mat-hint align="start">De 3 caracteres a 50 caracteres</mat-hint>
-            @if (oUsuarioForm?.get('nombre')?.hasError('required')){
-            <mat-error> El campo nombre es obligatorio </mat-error>
-            } @if (oUsuarioForm?.get('nombre')?.hasError('minlength')){
-            <mat-error> El nombre debe ser mas largo </mat-error>
-            } @if (oUsuarioForm?.get('nombre')?.hasError('maxlength')){
-            <mat-error> El nombre debe ser mas corto </mat-error>
+            <mat-label>Descripcion</mat-label>
+            <input matInput formControlName="descripcion" placeholder="Descripcion" />
+            <mat-hint align="end">De  5 a 255 caracteres</mat-hint>
+            @if (oAsientoForm?.get('descripcion')?.hasError('required')) {
+            <mat-error>Debes introducir una descripcion</mat-error>
+            } @if (oAsientoForm?.get('descripcion')?.hasError('minlength')) {
+            <mat-error>Debes introducir una descripcion más larga</mat-error>
+            } @if (oAsientoForm?.get('descripcion')?.hasError('maxlength')) {
+            <mat-error>Debes introducir una descripcion más corta</mat-error>
             }
           </mat-form-field>
         </div>
-        <div class="row mt-4">
-          <mat-form-field>
-            <mat-label>Primer Apellido</mat-label>
-            <input
-              matInput
-              formControlName="apellido1"
-              placeholder="Escribe tu primer apellido"
-            />
-            <mat-hint align="start">De 3 caracteres a 50 caracteres</mat-hint>
-            @if (oUsuarioForm?.get('apellido1')?.hasError('required')) {
-            <mat-error>Debes introducir un primer apellido</mat-error>
-            } @if (oUsuarioForm?.get('apellido1')?.hasError('minlength')) {
-            <mat-error>Debes introducir un apellido mas largo</mat-error>
-            } @if (oUsuarioForm?.get('nombre')?.hasError('maxlength')) {
-            <mat-error>Debes introducir un apellido mas corto</mat-error>
-            }
-          </mat-form-field>
-        </div>
-        <div class="row mt-4">
-          <mat-form-field>
-            <mat-label>Segundo Apellido</mat-label>
-            <input
-              matInput
-              formControlName="apellido2"
-              placeholder="Escribe tu segundo apellido"
-            />
-          </mat-form-field>
-        </div>
-        <div class="row mt-4">
-          <mat-form-field>
-            <mat-label>Email</mat-label>
-            <input
-              matInput
-              formControlName="email"
-              placeholder="Pon aquí tu email"
-              required
-            />
-            <mat-hint align="start">Formato email</mat-hint>
-            @if (oUsuarioForm?.get('email')?.hasError('required')) {
-            <mat-error>Debes introducir un email</mat-error>
-            } @if (oUsuarioForm?.get('email')?.hasError('email')) {
-            <mat-error>Debes introducir un email correcto</mat-error>
-            }
-          </mat-form-field>
-        </div>
-        <br />
-        <button
-          class="btn btn-warning mt-4 mx-1"
-          [routerLink]="['/admin', 'usuario', 'plist']"
-        >
-          <i class="bi bi-list"></i>
-          Ir a listado de Usuarios
-        </button>
 
-        <button class="btn btn-secondary mt-4 mx-1" (click)="onReset()">
-          <i class="bi bi-x-lg"></i>
-          Reset
-        </button>
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Comentarios</mat-label>
+            <input
+              matInput
+              formControlName="comentarios"
+              placeholder="Comentarios"
+            />
+            <mat-hint align="end">De 0 a 255 caracteres</mat-hint>
+            @if (oAsientoForm?.get('comentarios')?.hasError('required')) {
+            <mat-error>Debes introducir un comentario</mat-error>
+            } @if (oAsientoForm?.get('comentarios')?.hasError('minlength')) {
+            <mat-error>Debes introducir un comentario más largo</mat-error>
+            } @if (oAsientoForm?.get('comentarios')?.hasError('maxlength')) {
+            <mat-error>Debes introducir un comentario más corto</mat-error>
+            }
+          </mat-form-field>
+        </div>
 
-        <button
-          class="btn btn-primary mt-4 mx-1"
-          type="submit"
-          [disabled]="!oUsuarioForm?.valid"
-        >
-        <i class="bi bi-floppy"></i>
-          Guardar
-        </button>
+        <div class="row mt-4">
+          <mat-checkbox formControlName="inventariable" [(ngModel)]="checkboxValue" (change)="onCheckboxChange($event)">
+            Inventariable
+          </mat-checkbox>
+        </div>
+
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Momentstamp</mat-label>
+            <input matInput formControlName="momentstamp" placeholder="Momentstamp" />
+            <mat-hint align="end">Formato fecha y hora</mat-hint>
+            @if (oAsientoForm?.get('momentstamp')?.hasError('required')) {
+            <mat-error>Debes introducir un momentstamp</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Id Tipo de Asiento</mat-label>
+            <input matInput formControlName="id_tipoasiento" placeholder="Id Tipo de Asiento"/>
+            <mat-hint align="end">No se puede cambiar</mat-hint>
+            @if (oAsientoForm?.get('id_tipoasiento')?.hasError('required')) {
+            <mat-error>Debes introducir el id del tipo de asiento</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Id de Usuario</mat-label>
+            <input matInput formControlName="id_usuario" placeholder="Id de Usuario"/>
+            <mat-hint align="end">No se puede cambiar</mat-hint>
+            @if (oAsientoForm?.get('id_usuario')?.hasError('required')) {
+            <mat-error>Debes introducir el id de usuario</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Id de Periodo</mat-label>
+            <input matInput formControlName="id_periodo" placeholder="Id de Periodo"/>
+            <mat-hint align="end">No se puede cambiar</mat-hint>
+            @if (oAsientoForm?.get('id_periodo')?.hasError('required')) {
+            <mat-error>Debes introducir el id del periodo</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="mt-4">
+          <button
+            class="btn btn-warning mt-4 mx-1"
+            [routerLink]="['/admin', 'asiento', 'plist']"
+          >
+            <i class="bi bi-list"></i>
+            Ir a listado de asientos
+          </button>
+
+          <button class="btn btn-secondary mt-4 mx-1" (click)="onReset()">
+            <i class="bi bi-x-lg"></i>
+            Reset
+          </button>
+
+          <button
+            class="btn btn-primary mt-4 mx-1"
+            type="submit"
+            [disabled]="!oAsientoForm?.valid"
+          >
+            <i class="bi bi-save"></i>
+            Guardar
+          </button>
+        </div>
       </form>
     </div>
   </div>
 </div>
+
 
 <div
   class="modal fade"

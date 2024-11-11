@@ -9,8 +9,9 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { IUsuario } from '../../../model/usuario.interface';
-import { UsuarioService } from '../../../service/usuario.service';
+import { IAsiento } from '../../../model/asiento.interface';
+import { AsientoService } from '../../../service/asiento.service';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 declare let bootstrap: any;
 
@@ -23,6 +24,7 @@ declare let bootstrap: any;
     MatInputModule,
     MatSelectModule,
     ReactiveFormsModule,
+    MatCheckboxModule,
     RouterModule,
   ],
   styleUrls: ['./asiento.admin.create.routed.component.css'],
@@ -30,46 +32,67 @@ declare let bootstrap: any;
 export class AsientoAdminCreateRoutedComponent implements OnInit {
 
   id: number = 0;
-  oUsuarioForm: FormGroup | undefined = undefined;
-  oUsuario: IUsuario | null = null;
+  oAsientoForm: FormGroup | undefined = undefined;
+  oAsiento: IAsiento | null = null;
   strMessage: string = '';
+  checkboxValue: number = 0;  // Inicia con 0
 
   myModal: any;
 
   form: FormGroup = new FormGroup({});
 
   constructor(
-    private oUsuarioService: UsuarioService,
+    private oAsientoService: AsientoService,
     private oRouter: Router
   ) {}
 
   ngOnInit() {
     this.createForm();
-    this.oUsuarioForm?.markAllAsTouched();
+    this.oAsientoForm?.markAllAsTouched();
   }
 
   createForm() {
-    this.oUsuarioForm = new FormGroup({
-      nombre: new FormControl('', [
+    this.oAsientoForm = new FormGroup({
+      descripcion: new FormControl('', [
         Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(50),
+        Validators.minLength(5),
+        Validators.maxLength(255),
       ]),
-      apellido1: new FormControl('', [
+      comentarios: new FormControl('', [
+        Validators.minLength(0),
+        Validators.maxLength(255),
+      ]),
+      inventariable: new FormControl(''),
+      momentstamp: new FormControl('2024-11-11T16:29:42	', [
         Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(50),
+        //Validators.pattern(
+          //'^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}$'
+        //),
       ]),
-      apellido2: new FormControl(''),
-      email: new FormControl('', [Validators.required, Validators.email]),
+      id_tipoasiento: new FormControl('',[Validators.required]),
+      id_usuario: new FormControl('',[Validators.required]),
+      id_periodo: new FormControl('',[Validators.required]),
+
     });
   }
 
   updateForm() {
-    this.oUsuarioForm?.controls['nombre'].setValue('');
-    this.oUsuarioForm?.controls['apellido1'].setValue('');
-    this.oUsuarioForm?.controls['apellido2'].setValue('');
-    this.oUsuarioForm?.controls['email'].setValue('');
+    this.oAsientoForm?.controls['descripcion'].setValue('');
+    this.oAsientoForm?.controls['comentarios'].setValue('');
+    this.oAsientoForm?.controls['inventariable'].setValue('');
+    this.oAsientoForm?.controls['momentstamp'].setValue('');
+    this.oAsientoForm?.controls['id_tipoasiento'].setValue('');
+    this.oAsientoForm?.controls['id_usuario'].setValue('');
+    this.oAsientoForm?.controls['id_periodo'].setValue('');
+  }
+
+  onCheckboxChange(event: any): void {
+    this.checkboxValue = event.checked ? 1 : 0;
+  }
+
+  onReset() {
+    this.updateForm();
+    return false;
   }
 
   showModal(mensaje: string) {
@@ -80,28 +103,23 @@ export class AsientoAdminCreateRoutedComponent implements OnInit {
     this.myModal.show();
   }
 
-  onReset() {
-    this.updateForm();
-    return false;
-  }
-
   hideModal = () => {
     this.myModal.hide();
-    this.oRouter.navigate(['/admin/usuario/view/' + this.oUsuario?.id]);
+    this.oRouter.navigate(['/admin/asiento/view/' + this.oAsiento?.id]);
   }
 
   onSubmit() {
-    if (this.oUsuarioForm?.invalid) {
+    if (this.oAsientoForm?.invalid) {
       this.showModal('Formulario inválido');
       return;
     } else {      
-      this.oUsuarioService.create(this.oUsuarioForm?.value).subscribe({
-        next: (oUsuario: IUsuario) => {
-          this.oUsuario = oUsuario;
-          this.showModal('Usuario creado con el id: ' + this.oUsuario.id);
+      this.oAsientoService.create(this.oAsientoForm?.value).subscribe({
+        next: (oAsiento: IAsiento) => {
+          this.oAsiento = oAsiento;
+          this.showModal('Asiento creado con el id: ' + this.oAsiento.id);
         },
         error: (err) => {
-          this.showModal('Error al crear el usuario');
+          this.showModal('Error al crear el asiento');
           console.log(err);
         },
       });
