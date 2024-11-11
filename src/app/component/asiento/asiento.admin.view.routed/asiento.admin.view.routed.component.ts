@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { UsuarioService } from '../../../service/usuario.service';
-import { IUsuario } from '../../../model/usuario.interface';
+import { AsientoService } from '../../../service/asiento.service';
+import { IAsiento } from '../../../model/asiento.interface';
 
 
 @Component({
@@ -12,23 +12,26 @@ import { IUsuario } from '../../../model/usuario.interface';
 export class AsientoAdminViewRoutedComponent implements OnInit {
   id: number = 0;
   route: string = '';
-  oUsuario: IUsuario = {
+  oAsiento: IAsiento = {
     id: 0,
-    nombre: '',
-    apellido1: '',
-    apellido2: '',
-    email: '',
+    descripcion: '',
+    comentarios: '',
+    inventariable: 0,
+    momentstamp: new Date(),
+    id_tipoasiento: 0,
+    id_usuario: 0,
+    id_periodo: 0,
   };
-  constructor(private oActivatedRoute: ActivatedRoute, private oUsuarioService: UsuarioService) { }
+  constructor(private oActivatedRoute: ActivatedRoute, private oAsientoService: AsientoService) { }
 
   ngOnInit() {
     this.id = this.oActivatedRoute.snapshot.params['id'];
     this.getOne();
   }
   getOne() {
-    this.oUsuarioService.getOne(this.id).subscribe({
-      next: (data: IUsuario) => {
-        this.oUsuario = data;
+    this.oAsientoService.getOne(this.id).subscribe({
+      next: (data: IAsiento) => {
+        this.oAsiento = data;
       },
     });
   }

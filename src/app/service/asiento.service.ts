@@ -66,7 +66,7 @@ export class AsientoService {
   getOne(id: number): Observable<IAsiento> {
     let URL: string = '';
     URL += 'http://localhost:8085';
-    URL += '/usuario';
+    URL += '/asiento';
     URL += '/' + id;
     return this.oHttp.get<IAsiento>(URL);
   }

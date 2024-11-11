@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioService } from '../../../service/usuario.service';
-import { IUsuario } from '../../../model/usuario.interface';
+import { AsientoService } from '../../../service/asiento.service';
+import { IAsiento } from '../../../model/asiento.interface';
 import { CommonModule } from '@angular/common';
 import { IPage } from '../../../model/model.interface';
 import { FormsModule } from '@angular/forms';
@@ -10,7 +10,7 @@ import { Router, RouterModule } from '@angular/router';
 import { TrimPipe } from '../../../pipe/trim.pipe';
 
 @Component({
-  selector: 'app-usuario.admin.routed',
+  selector: 'app-asiento.admin.routed',
   templateUrl: './asiento.admin.plist.routed.component.html',
   styleUrls: ['./asiento.admin.plist.routed.component.css'],
   standalone: true,
@@ -18,7 +18,7 @@ import { TrimPipe } from '../../../pipe/trim.pipe';
 })
 export class AsientoAdminPlistRoutedComponent implements OnInit {
   
-  oPage: IPage<IUsuario> | null = null;
+  oPage: IPage<IAsiento> | null = null;
   //
   nPage: number = 0; // 0-based server count
   nRpp: number = 10;
@@ -33,7 +33,7 @@ export class AsientoAdminPlistRoutedComponent implements OnInit {
   private debounceSubject = new Subject<string>();
 
   constructor(
-    private oUsuarioService: UsuarioService,
+    private oAsientoService: AsientoService,
     private oBotoneraService: BotoneraService,
     private oRouter: Router
   ) {
@@ -46,41 +46,41 @@ export class AsientoAdminPlistRoutedComponent implements OnInit {
     this.getPage();
   }
 
-  getPage() {
-    this.oUsuarioService
-      .getPage(this.nPage, this.nRpp, this.strField, this.strDir, this.strFiltro)
-      .subscribe({
-        next: (oPageFromServer: IPage<IUsuario>) => {
+   getPage() {
+     this.oAsientoService
+       .getPage(this.nPage, this.nRpp, this.strField, this.strDir, this.strFiltro)
+       .subscribe({
+         next: (oPageFromServer: IPage<IAsiento>) => {
           this.oPage = oPageFromServer;
-          this.arrBotonera = this.oBotoneraService.getBotonera(
+         this.arrBotonera = this.oBotoneraService.getBotonera(
             this.nPage,
             oPageFromServer.totalPages
           );
         },
         error: (err) => {
-          console.log(err);
-        },
-      });
-  }
+           console.log(err);
+         },
+       });
+   }
 
-  edit(oUsuario: IUsuario) {
+  edit(oAsiento: IAsiento) {
     //navegar a la página de edición
-    this.oRouter.navigate(['admin/usuario/edit', oUsuario.id]);
+    this.oRouter.navigate(['admin/asiento/edit', oAsiento.id]);
   }
 
-  view(oUsuario: IUsuario) {
+  view(oAsiento: IAsiento) {
     //navegar a la página de edición
-    this.oRouter.navigate(['admin/usuario/view', oUsuario.id]);
+    this.oRouter.navigate(['admin/asiento/view', oAsiento.id]);
   }
 
-  remove(oUsuario: IUsuario) {
-    this.oRouter.navigate(['admin/usuario/delete/', oUsuario.id]);
+  remove(oAsiento: IAsiento) {
+    this.oRouter.navigate(['admin/asiento/delete/', oAsiento.id]);
   }
 
   goToPage(p: number) {
     if (p) {
       this.nPage = p - 1;
-      this.getPage();
+      //this.getPage();
     }
     return false;
   }
