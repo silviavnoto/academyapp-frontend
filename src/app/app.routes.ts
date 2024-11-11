@@ -10,6 +10,11 @@ import { ApunteAdminPlistRoutedComponent } from './component/apunte/apunte.admin
 import { ApunteAdminEditRoutedComponent } from './component/apunte/apunte.admin.edit.routed/apunte.admin.edit.routed.component';
 import { ApunteAdminViewRoutedComponent } from './component/apunte/apunte.admin.view.routed/apunte.admin.view.routed.component';
 import { ApunteAdminCreateRoutedComponent } from './component/apunte/apunte.admin.create.routed/apunte.admin.create.routed.component';
+import { BalanceAdminPlistRoutedComponent } from './component/balance/balance.admin.plist.routed/balance.admin.plist.routed.component';
+import { BalanceAdminCreateRoutedComponent } from './component/balance/balance.admin.create.routed/balance.admin.create.routed.component';
+import { BalanceAdminDeleteRoutedComponent } from './component/balance/balance.admin.delete.routed/balance.admin.delete.routed.component';
+import { BalanceAdminEditRoutedComponent } from './component/balance/balance.admin.edit.routed/balance.admin.edit.routed.component';
+import { BalanceAdminViewRoutedComponent } from './component/balance/balance.admin.view.routed/balance.admin.view.routed.component';
 
 
 
@@ -27,5 +32,11 @@ export const routes: Routes = [
   { path: 'admin/apunte/view/:id', component: ApunteAdminViewRoutedComponent },
   { path: 'admin/apunte/create', component: ApunteAdminCreateRoutedComponent, pathMatch: 'full' },
   { path: 'admin/apunte/delete/:id', component: ApunteAdminDeleteRoutedComponent },
+
+  { path: 'admin/balance/plist', component: BalanceAdminPlistRoutedComponent },
+  { path: 'admin/balance/edit/:id', component: BalanceAdminEditRoutedComponent },
+  { path: 'admin/balance/view/:id', component: BalanceAdminViewRoutedComponent },
+  { path: 'admin/balance/create', component: BalanceAdminCreateRoutedComponent, pathMatch: 'full' },
+  { path: 'admin/balance/delete/:id', component: BalanceAdminDeleteRoutedComponent },
 
 ];
