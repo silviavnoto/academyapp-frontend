@@ -6,6 +6,11 @@ import { UsuarioAdminViewRoutedComponent } from './component/usuario/usuario.adm
 import { UsuarioAdminCreateRoutedComponent } from './component/usuario/usuario.admin.create.routed/usuario.admin.create.routed.component';
 import { UsuarioAdminDeleteRoutedComponent } from './component/usuario/usuario.admin.delete.routed/usuario.admin.delete.component';
 import { CuentaAdminPlistRoutedComponent } from './component/cuenta/cuenta.admin.plist.routed/cuenta.admin.plist.routed.component';
+import { ApunteAdminDeleteRoutedComponent } from './component/apunte/apunte.admin.delete.routed/apunte.admin.delete.component';
+import { ApunteAdminPlistRoutedComponent } from './component/apunte/apunte.admin.plist.routed/apunte.admin.plist.routed.component';
+import { ApunteAdminEditRoutedComponent } from './component/apunte/apunte.admin.edit.routed/apunte.admin.edit.routed.component';
+import { ApunteAdminViewRoutedComponent } from './component/apunte/apunte.admin.view.routed/apunte.admin.view.routed.component';
+import { ApunteAdminCreateRoutedComponent } from './component/apunte/apunte.admin.create.routed/apunte.admin.create.routed.component';
 
 export const routes: Routes = [
   { path: '', component: SharedHomeRoutedComponent },
@@ -29,4 +34,34 @@ export const routes: Routes = [
     component: UsuarioAdminDeleteRoutedComponent,
   },
   { path: 'admin/cuenta/plist', component: CuentaAdminPlistRoutedComponent },
+  {
+    path: 'admin/usuario/edit/:id',
+    component: UsuarioAdminEditRoutedComponent,
+  },
+  {
+    path: 'admin/usuario/view/:id',
+    component: UsuarioAdminViewRoutedComponent,
+  },
+  {
+    path: 'admin/usuario/create',
+    component: UsuarioAdminCreateRoutedComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'admin/usuario/delete/:id',
+    component: UsuarioAdminDeleteRoutedComponent,
+  },
+
+  { path: 'admin/apunte/plist', component: ApunteAdminPlistRoutedComponent },
+  { path: 'admin/apunte/edit/:id', component: ApunteAdminEditRoutedComponent },
+  { path: 'admin/apunte/view/:id', component: ApunteAdminViewRoutedComponent },
+  {
+    path: 'admin/apunte/create',
+    component: ApunteAdminCreateRoutedComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'admin/apunte/delete/:id',
+    component: ApunteAdminDeleteRoutedComponent,
+  },
 ];
