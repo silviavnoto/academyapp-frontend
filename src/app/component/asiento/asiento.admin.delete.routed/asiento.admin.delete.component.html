@@ -9,51 +9,69 @@
       <tbody>
         <tr class="text-center">
           <th scope="row" class="bg-danger text-white text-end pe-5">Id</th>
-          <td class="text-start ps-5">{{ oUsuario!.id }}</td>
+          <td class="text-start ps-5">{{ oAsiento!.id }}</td>
         </tr>
         <tr class="text-center">
           <th scope="row" class="bg-primary text-white text-end pe-5">
-            Nombre
+            Descripcion
           </th>
-          <td class="text-start ps-5">{{ oUsuario!.nombre }}</td>
+          <td class="text-start ps-5">{{ oAsiento!.descripcion }}</td>
         </tr>
         <tr class="text-center">
           <th scope="row" class="bg-primary text-white text-end pe-5">
-            Primer Apellido
+            Comentarios
           </th>
-          <td class="text-start ps-5">{{ oUsuario!.apellido1 }}</td>
+          <td class="text-start ps-5">{{ oAsiento!.comentarios }}</td>
         </tr>
         <tr class="text-center">
           <th scope="row" class="bg-primary text-white text-end pe-5">
-            Segundo Apellido
+            Inventariable
           </th>
-          <td class="text-start ps-5">{{ oUsuario!.apellido2 }}</td>
+          <td class="text-start ps-5">{{ oAsiento!.inventariable }}</td>
         </tr>
         <tr class="text-center">
           <th scope="row" class="bg-primary text-white text-end pe-5">
-            Correo
+            Momentstamp
           </th>
-          <td class="text-start ps-5">{{ oUsuario!.email }}</td>
+          <td class="text-start ps-5">{{ oAsiento!.momentstamp }}</td>
+        </tr>
+        <tr class="text-center">
+          <th scope="row" class="bg-primary text-white text-end pe-5">
+            Id Tipo de Asiento
+          </th>
+          <td class="text-start ps-5">{{ oAsiento!.id_tipoasiento }}</td>
+        </tr>
+        <tr class="text-center">
+          <th scope="row" class="bg-primary text-white text-end pe-5">
+            Id de Usuario
+          </th>
+          <td class="text-start ps-5">{{ oAsiento!.id_usuario }}</td>
+        </tr>
+        <tr class="text-center">
+          <th scope="row" class="bg-primary text-white text-end pe-5">
+            Id de Periodo 	
+          </th>
+          <td class="text-start ps-5">{{ oAsiento!.id_periodo }}</td>
         </tr>
       </tbody>
     </table>
   </div>
 
   <div class="d-flex justify-content-center mt-4">
-    <p class="fs-3">¿Seguro que desea borrar el usuario?</p>
+    <p class="fs-3">¿Seguro que desea borrar el asiento?</p>
   </div>
 
   <div class="d-flex justify-content-center mt-4">
     <button
       class="btn btn-warning mt-4 mx-1"
-      [routerLink]="['/admin', 'usuario', 'plist']"
+      [routerLink]="['/admin', 'asiento', 'plist']"
     >
       <i class="bi bi-list"></i>
-      Ir a listado de Usuarios
+      Ir a listado de asientos
     </button>
     <button class="btn btn-danger mt-4 mx-1" (click)="delete()">
       <i class="bi bi-trash"></i>
-      Borrar usuario
+      Borrar asiento
     </button>
   </div>
 </div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { UsuarioService } from '../../../service/usuario.service';
-import { IUsuario } from '../../../model/usuario.interface';
+import { AsientoService } from '../../../service/asiento.service';
+import { IAsiento } from '../../../model/asiento.interface';
 import {
   FormControl,
   FormGroup,
@@ -14,7 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 declare let bootstrap: any;
 
 @Component({
-  selector: 'app-usuario-admin-edit-routed',
+  selector: 'app-asiento-admin-edit-routed',
   templateUrl: './asiento.admin.edit.routed.component.html',
   styleUrls: ['./asiento.admin.edit.routed.component.css'],
   standalone: true,
@@ -27,15 +27,15 @@ declare let bootstrap: any;
 })
 export class AsientoAdminEditRoutedComponent implements OnInit {
   id: number = 0;
-  oUsuarioForm: FormGroup | undefined = undefined;
-  oUsuario: IUsuario | null = null;
+  oAsientoForm: FormGroup | undefined = undefined;
+  oAsiento: IAsiento | null = null;
   message: string = '';
 
   myModal: any;
 
   constructor(
     private oActivatedRoute: ActivatedRoute,
-    private oUsuarioService: UsuarioService,
+    private oAsientoService: AsientoService,
     private oRouter: Router
   ) {
     this.oActivatedRoute.params.subscribe((params) => {
@@ -46,31 +46,40 @@ export class AsientoAdminEditRoutedComponent implements OnInit {
   ngOnInit() {
     this.createForm();
     this.get();
-    this.oUsuarioForm?.markAllAsTouched();
+    this.oAsientoForm?.markAllAsTouched();
   }
 
   createForm() {
-    this.oUsuarioForm = new FormGroup({
+    this.oAsientoForm = new FormGroup({
       id: new FormControl('', [Validators.required]),
-      nombre: new FormControl('', [
+      descripcion: new FormControl('', [
         Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(50),
+        Validators.minLength(1),
+        Validators.maxLength(255),
       ]),
-      apellido1: new FormControl('', [
+      comentarios: new FormControl('', [
         Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(50),
+        Validators.minLength(1),
+        Validators.maxLength(255),
       ]),
-      apellido2: new FormControl(''),
-      email: new FormControl('', [Validators.required, Validators.email]),
+      inventariable: new FormControl(''),
+      momentstamp: new FormControl('', [
+        Validators.required,
+        //Validators.pattern(
+          //'^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}$'
+        //),
+      ]),
+      id_tipoasiento: new FormControl('',[Validators.required]),
+      id_usuario: new FormControl('',[Validators.required]),
+      id_periodo: new FormControl('',[Validators.required]),
+
     });
   }
 
   onReset() {
-    this.oUsuarioService.get(this.id).subscribe({
-      next: (oUsuario: IUsuario) => {
-        this.oUsuario = oUsuario;
+    this.oAsientoService.get(this.id).subscribe({
+      next: (oAsiento: IAsiento) => {
+        this.oAsiento = oAsiento;
         this.updateForm();
       },
       error: (error) => {
@@ -81,17 +90,21 @@ export class AsientoAdminEditRoutedComponent implements OnInit {
   }
 
   updateForm() {
-    this.oUsuarioForm?.controls['id'].setValue(this.oUsuario?.id);
-    this.oUsuarioForm?.controls['nombre'].setValue(this.oUsuario?.nombre);
-    this.oUsuarioForm?.controls['apellido1'].setValue(this.oUsuario?.apellido1);
-    this.oUsuarioForm?.controls['apellido2'].setValue(this.oUsuario?.apellido2);
-    this.oUsuarioForm?.controls['email'].setValue(this.oUsuario?.email);
+    this.oAsientoForm?.controls['id'].setValue(this.oAsiento?.id);
+    this.oAsientoForm?.controls['descripcion'].setValue(this.oAsiento?.descripcion);
+    this.oAsientoForm?.controls['comentarios'].setValue(this.oAsiento?.comentarios);
+    this.oAsientoForm?.controls['inventariable'].setValue(this.oAsiento?.inventariable);
+    this.oAsientoForm?.controls['momentstamp'].setValue(this.oAsiento?.momentstamp);
+    this.oAsientoForm?.controls['id_tipoasiento'].setValue(this.oAsiento?.id_tipoasiento);
+    this.oAsientoForm?.controls['id_usuario'].setValue(this.oAsiento?.id_usuario);
+    this.oAsientoForm?.controls['id_periodo'].setValue(this.oAsiento?.id_periodo);
+
   }
 
   get() {
-    this.oUsuarioService.get(this.id).subscribe({
-      next: (oUsuario: IUsuario) => {
-        this.oUsuario = oUsuario;
+    this.oAsientoService.get(this.id).subscribe({
+      next: (oAsiento: IAsiento) => {
+        this.oAsiento = oAsiento;
         this.updateForm();
       },
       error: (error) => {
@@ -110,22 +123,22 @@ export class AsientoAdminEditRoutedComponent implements OnInit {
 
   hideModal = () => {
     this.myModal.hide();
-    this.oRouter.navigate(['/admin/usuario/view/' + this.oUsuario?.id]);
+    this.oRouter.navigate(['/admin/asiento/view/' + this.oAsiento?.id]);
   };
 
   onSubmit() {
-    if (!this.oUsuarioForm?.valid) {
+    if (!this.oAsientoForm?.valid) {
       this.showModal('Formulario no válido');
       return;
     } else {
-      this.oUsuarioService.update(this.oUsuarioForm?.value).subscribe({
-        next: (oUsuario: IUsuario) => {
-          this.oUsuario = oUsuario;
+      this.oAsientoService.update(this.oAsientoForm?.value).subscribe({
+        next: (oAsiento: IAsiento) => {
+          this.oAsiento = oAsiento;
           this.updateForm();
-          this.showModal('Usuario ' + this.oUsuario.id + ' actualizado');
+          this.showModal('Asiento ' + this.oAsiento.id + ' actualizado');
         },
         error: (error) => {
-          this.showModal('Error al actualizar el usuario');
+          this.showModal('Error al actualizar el asiento');
           console.error(error);
         },
       });

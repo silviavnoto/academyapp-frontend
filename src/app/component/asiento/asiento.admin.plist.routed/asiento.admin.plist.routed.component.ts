@@ -80,7 +80,7 @@ export class AsientoAdminPlistRoutedComponent implements OnInit {
   goToPage(p: number) {
     if (p) {
       this.nPage = p - 1;
-      //this.getPage();
+      this.getPage();
     }
     return false;
   }
