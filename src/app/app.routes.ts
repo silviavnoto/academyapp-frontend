@@ -10,8 +10,11 @@ import { ApunteAdminPlistRoutedComponent } from './component/apunte/apunte.admin
 import { ApunteAdminEditRoutedComponent } from './component/apunte/apunte.admin.edit.routed/apunte.admin.edit.routed.component';
 import { ApunteAdminViewRoutedComponent } from './component/apunte/apunte.admin.view.routed/apunte.admin.view.routed.component';
 import { ApunteAdminCreateRoutedComponent } from './component/apunte/apunte.admin.create.routed/apunte.admin.create.routed.component';
-
-
+import { TipoAsientoAdminPlistRoutedComponent } from './component/tipoAsiento/tipoAsiento.admin.plist.routed/tipoAsiento.admin.plist.routed.component';
+import { TipoAsientoAdminEditRoutedComponent } from './component/tipoAsiento/tipoAsiento.admin.edit.routed/tipoAsiento.admin.edit.routed.component';
+import { TipoAsientoAdminViewRoutedComponent } from './component/tipoAsiento/tipoAsiento.admin.view.routed/tipoAsiento.admin.view.routed.component';
+import { TipoAsientoAdminCreateRoutedComponent } from './component/tipoAsiento/tipoAsiento.admin.create.routed/tipoAsiento.admin.create.routed.component';
+import { TipoAsientoAdminDeleteRoutedComponent } from './component/tipoAsiento/tipoAsiento.admin.delete.routed/tipoAsiento.admin.delete.routed.component';
 
 export const routes: Routes = [
   { path: '', component: SharedHomeRoutedComponent },
@@ -27,5 +30,12 @@ export const routes: Routes = [
   { path: 'admin/apunte/view/:id', component: ApunteAdminViewRoutedComponent },
   { path: 'admin/apunte/create', component: ApunteAdminCreateRoutedComponent, pathMatch: 'full' },
   { path: 'admin/apunte/delete/:id', component: ApunteAdminDeleteRoutedComponent },
+
+  { path: 'admin/tipoAsiento/plist', component: TipoAsientoAdminPlistRoutedComponent },
+  { path: 'admin/tipoAsiento/edit/:id', component: TipoAsientoAdminEditRoutedComponent },
+  { path: 'admin/tipoAsiento/view/:id', component: TipoAsientoAdminViewRoutedComponent },
+  { path: 'admin/tipoAsiento/create', component: TipoAsientoAdminCreateRoutedComponent, pathMatch: 'full' },
+  { path: 'admin/tipoAsiento/delete/:id', component: TipoAsientoAdminDeleteRoutedComponent },
+  
 
 ];

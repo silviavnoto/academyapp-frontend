@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioService } from '../../../service/usuario.service';
-import { IUsuario } from '../../../model/usuario.interface';
 import { CommonModule } from '@angular/common';
 import { IPage } from '../../../model/model.interface';
 import { FormsModule } from '@angular/forms';
@@ -8,17 +6,19 @@ import { BotoneraService } from '../../../service/botonera.service';
 import { debounceTime, Subject } from 'rxjs';
 import { Router, RouterModule } from '@angular/router';
 import { TrimPipe } from '../../../pipe/trim.pipe';
+import { ITipoAsiento } from '../../../model/tipoAsiento.interface';
+import { TipoAsientoService } from '../../../service/tipoAsiento.service';
 
 @Component({
-  selector: 'app-usuario.admin.routed',
-  templateUrl: './usuario.admin.plist.routed.component.html',
-  styleUrls: ['./usuario.admin.plist.routed.component.css'],
+  selector: 'app-tipoAsiento.admin.plist.routed',
+  templateUrl: './tipoAsiento.admin.plist.routed.component.html',
+  styleUrls: ['./tipoAsiento.admin.plist.routed.component.css'],
   standalone: true,
   imports: [CommonModule, FormsModule, TrimPipe, RouterModule],
 })
-export class UsuarioAdminPlistRoutedComponent implements OnInit {
-  
-  oPage: IPage<IUsuario> | null = null;
+export class TipoAsientoAdminPlistRoutedComponent implements OnInit {
+
+  oPage: IPage<ITipoAsiento> | null = null;
   //
   nPage: number = 0; // 0-based server count
   nRpp: number = 10;
@@ -32,24 +32,24 @@ export class UsuarioAdminPlistRoutedComponent implements OnInit {
   //
   private debounceSubject = new Subject<string>();
   constructor(
-    private oUsuarioService: UsuarioService,
+    private oTipoAsientoService: TipoAsientoService,
     private oBotoneraService: BotoneraService,
     private oRouter: Router
   ) {
     this.debounceSubject.pipe(debounceTime(10)).subscribe((value) => {
       this.getPage();
     });
-  }
+   }
 
   ngOnInit() {
     this.getPage();
   }
-
+  
   getPage() {
-    this.oUsuarioService
+    this.oTipoAsientoService
       .getPage(this.nPage, this.nRpp, this.strField, this.strDir, this.strFiltro)
       .subscribe({
-        next: (oPageFromServer: IPage<IUsuario>) => {
+        next: (oPageFromServer: IPage<ITipoAsiento>) => {
           this.oPage = oPageFromServer;
           this.arrBotonera = this.oBotoneraService.getBotonera(
             this.nPage,
@@ -62,18 +62,18 @@ export class UsuarioAdminPlistRoutedComponent implements OnInit {
       });
   }
 
-  edit(oUsuario: IUsuario) {
+  edit(oTipoAsiento: ITipoAsiento) {
     //navegar a la página de edición
-    this.oRouter.navigate(['admin/usuario/edit', oUsuario.id]);
+    this.oRouter.navigate(['admin/tipoAsiento/edit', oTipoAsiento.id]);
   }
 
-  view(oUsuario: IUsuario) {
+  view(oTipoAsiento: ITipoAsiento) {
     //navegar a la página de edición
-    this.oRouter.navigate(['admin/usuario/view', oUsuario.id]);
+    this.oRouter.navigate(['admin/tipoAsiento/view', oTipoAsiento.id]);
   }
 
-  remove(oUsuario: IUsuario) {
-    this.oRouter.navigate(['admin/usuario/delete/', oUsuario.id]);
+  remove(oTipoAsiento: ITipoAsiento) {
+    this.oRouter.navigate(['admin/tipoAsiento/delete/', oTipoAsiento.id]);
   }
 
   goToPage(p: number) {
@@ -112,4 +112,5 @@ export class UsuarioAdminPlistRoutedComponent implements OnInit {
   filter(event: KeyboardEvent) {
     this.debounceSubject.next(this.strFiltro);
   }
+
 }
