@@ -49,7 +49,7 @@
               formControlName="id_cuenta"
               placeholder="Escribe id_cuenta"
             />
-            <mat-hint align="start">De 3 caracteres a 255 caracteres</mat-hint>
+            <mat-hint align="start">Debe ser un numero entero</mat-hint>
             @if (osubcuentaForm?.get('id_cuenta')?.hasError('required')){
             <mat-error> El campo nombre es obligatorio </mat-error>
             } @if (osubcuentaForm?.get('id_cuenta')?.hasError('minlength')){

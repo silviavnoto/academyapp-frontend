@@ -38,6 +38,7 @@ export class SubcuentaAdminPlistRoutedComponent implements OnInit {
     private oRouter: Router
   ) {
     this.debounceSubject.pipe(debounceTime(10)).subscribe((value) => {
+      this.nPage = 0;
       this.getPage();
     });
   }

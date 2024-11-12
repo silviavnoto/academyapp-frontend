@@ -117,7 +117,7 @@ export class SubcuentaAdminEditRoutedComponent implements OnInit {
 
   hideModal = () => {
     this.myModal.hide();
-    this.oRouter.navigate(['/admin/Subcuenta/view/' + this.oSubcuenta?.id]);
+    this.oRouter.navigate(['/admin/subcuenta/view/' + this.oSubcuenta?.id]);
   };
 
   onSubmit() {
