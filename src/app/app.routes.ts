@@ -5,12 +5,12 @@ import { SharedHomeRoutedComponent } from './component/shared/shared.home.routed
 import { UsuarioAdminViewRoutedComponent } from './component/usuario/usuario.admin.view.routed/usuario.admin.view.routed.component';
 import { UsuarioAdminCreateRoutedComponent } from './component/usuario/usuario.admin.create.routed/usuario.admin.create.routed.component';
 import { UsuarioAdminDeleteRoutedComponent } from './component/usuario/usuario.admin.delete.routed/usuario.admin.delete.component';
+import { BalanceAdminPlistRoutedComponent } from './component/balance/balance.admin.plist.routed/balance.admin.plist.routed.component';
 import { ApunteAdminDeleteRoutedComponent } from './component/apunte/apunte.admin.delete.routed/apunte.admin.delete.component';
 import { ApunteAdminPlistRoutedComponent } from './component/apunte/apunte.admin.plist.routed/apunte.admin.plist.routed.component';
 import { ApunteAdminEditRoutedComponent } from './component/apunte/apunte.admin.edit.routed/apunte.admin.edit.routed.component';
 import { ApunteAdminViewRoutedComponent } from './component/apunte/apunte.admin.view.routed/apunte.admin.view.routed.component';
 import { ApunteAdminCreateRoutedComponent } from './component/apunte/apunte.admin.create.routed/apunte.admin.create.routed.component';
-import { BalanceAdminPlistRoutedComponent } from './component/balance/balance.admin.plist.routed/balance.admin.plist.routed.component';
 import { BalanceAdminCreateRoutedComponent } from './component/balance/balance.admin.create.routed/balance.admin.create.routed.component';
 import { BalanceAdminDeleteRoutedComponent } from './component/balance/balance.admin.delete.routed/balance.admin.delete.routed.component';
 import { BalanceAdminEditRoutedComponent } from './component/balance/balance.admin.edit.routed/balance.admin.edit.routed.component';
@@ -26,6 +26,7 @@ export const routes: Routes = [
   { path: 'admin/usuario/view/:id', component: UsuarioAdminViewRoutedComponent },
   { path: 'admin/usuario/create', component: UsuarioAdminCreateRoutedComponent, pathMatch: 'full' },
   { path: 'admin/usuario/delete/:id', component: UsuarioAdminDeleteRoutedComponent },
+  { path: 'admin/balance/plist', component: BalanceAdminPlistRoutedComponent},
 
   { path: 'admin/apunte/plist', component: ApunteAdminPlistRoutedComponent },
   { path: 'admin/apunte/edit/:id', component: ApunteAdminEditRoutedComponent },
