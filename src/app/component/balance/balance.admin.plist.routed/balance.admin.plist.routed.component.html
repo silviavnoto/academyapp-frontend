@@ -133,8 +133,8 @@
             @for (balance of oPage?.content; track balance.id) {
             <tr>
               <td class="text-center">{{ balance.id }}</td>
-              <td class="text-start">{{ balance.titulo | trim : 10 }}</td>
-              <td class="text-start">{{ balance.descripcion }}</td>
+              <td class="text-start">{{ balance.titulo | trim : 30 }}</td>
+              <td class="text-start">{{ balance.descripcion | trim : 40}}</td>
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">
                   <button

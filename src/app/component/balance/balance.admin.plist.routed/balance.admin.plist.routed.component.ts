@@ -36,7 +36,7 @@ export class BalanceAdminPlistRoutedComponent implements OnInit {
     private oBotoneraService: BotoneraService,
     private oRouter: Router
   ) {
-    this.debounceSubject.pipe(debounceTime(10)).subscribe((value) => {
+    this.debounceSubject.pipe(debounceTime(500)).subscribe((value) => {
       this.getPage();
     });
   }
