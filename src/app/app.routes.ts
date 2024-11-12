@@ -15,8 +15,11 @@ import { BalanceAdminCreateRoutedComponent } from './component/balance/balance.a
 import { BalanceAdminDeleteRoutedComponent } from './component/balance/balance.admin.delete.routed/balance.admin.delete.routed.component';
 import { BalanceAdminEditRoutedComponent } from './component/balance/balance.admin.edit.routed/balance.admin.edit.routed.component';
 import { BalanceAdminViewRoutedComponent } from './component/balance/balance.admin.view.routed/balance.admin.view.routed.component';
-
-
+import { TipoAsientoAdminPlistRoutedComponent } from './component/tipoAsiento/tipoAsiento.admin.plist.routed/tipoAsiento.admin.plist.routed.component';
+import { TipoAsientoAdminEditRoutedComponent } from './component/tipoAsiento/tipoAsiento.admin.edit.routed/tipoAsiento.admin.edit.routed.component';
+import { TipoAsientoAdminViewRoutedComponent } from './component/tipoAsiento/tipoAsiento.admin.view.routed/tipoAsiento.admin.view.routed.component';
+import { TipoAsientoAdminCreateRoutedComponent } from './component/tipoAsiento/tipoAsiento.admin.create.routed/tipoAsiento.admin.create.routed.component';
+import { TipoAsientoAdminDeleteRoutedComponent } from './component/tipoAsiento/tipoAsiento.admin.delete.routed/tipoAsiento.admin.delete.routed.component';
 
 export const routes: Routes = [
   { path: '', component: SharedHomeRoutedComponent },
@@ -33,11 +36,5 @@ export const routes: Routes = [
   { path: 'admin/apunte/view/:id', component: ApunteAdminViewRoutedComponent },
   { path: 'admin/apunte/create', component: ApunteAdminCreateRoutedComponent, pathMatch: 'full' },
   { path: 'admin/apunte/delete/:id', component: ApunteAdminDeleteRoutedComponent },
-
-  { path: 'admin/balance/plist', component: BalanceAdminPlistRoutedComponent },
-  { path: 'admin/balance/edit/:id', component: BalanceAdminEditRoutedComponent },
-  { path: 'admin/balance/view/:id', component: BalanceAdminViewRoutedComponent },
-  { path: 'admin/balance/create', component: BalanceAdminCreateRoutedComponent, pathMatch: 'full' },
-  { path: 'admin/balance/delete/:id', component: BalanceAdminDeleteRoutedComponent },
 
 ];
