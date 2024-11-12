@@ -55,6 +55,23 @@
           </mat-checkbox>
         </div>
 
+        <div class="row mb-4">
+          <label for="momentstamp" class="form-label">Momentstamp</label>
+          <div class="col-12">
+            <p-calendar class=" d-block"
+              formControlName="momentstamp"              
+              inputId="spanish"
+              [showIcon]="true"
+              [showTime]="true"
+              [showSeconds]="true"
+              [showButtonBar]="true"
+            ></p-calendar>
+            @if (oAsientoForm?.get('momentstamp')?.hasError('required')) {
+              <mat-error  >El campo debe es obligatorio</mat-error> 
+              } 
+          </div>
+                 </div>
+
         <div class="row mt-4">
           <mat-form-field>
             <mat-label>Id Tipo de Asiento</mat-label>

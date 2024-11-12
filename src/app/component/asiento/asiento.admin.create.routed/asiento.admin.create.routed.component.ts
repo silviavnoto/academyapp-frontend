@@ -12,6 +12,9 @@ import {
 import { IAsiento } from '../../../model/asiento.interface';
 import { AsientoService } from '../../../service/asiento.service';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { CalendarModule } from 'primeng/calendar';
+import { CALENDAR_ES } from '../../../environment/environment';
+import { PrimeNGConfig } from 'primeng/api';
 
 declare let bootstrap: any;
 
@@ -26,6 +29,7 @@ declare let bootstrap: any;
     ReactiveFormsModule,
     MatCheckboxModule,
     RouterModule,
+    CalendarModule,
   ],
   styleUrls: ['./asiento.admin.create.routed.component.css'],
 })
@@ -43,12 +47,14 @@ export class AsientoAdminCreateRoutedComponent implements OnInit {
 
   constructor(
     private oAsientoService: AsientoService,
-    private oRouter: Router
+    private oRouter: Router,
+    private oPrimeconfig: PrimeNGConfig
   ) {}
 
   ngOnInit() {
     this.createForm();
     this.oAsientoForm?.markAllAsTouched();
+    this.oPrimeconfig.setTranslation(CALENDAR_ES);
   }
 
   createForm() {
@@ -63,11 +69,8 @@ export class AsientoAdminCreateRoutedComponent implements OnInit {
         Validators.maxLength(255),
       ]),
       inventariable: new FormControl(''),
-      momentstamp: new FormControl('2024-11-11T16:29:42	', [
-        Validators.required,
-        //Validators.pattern(
-          //'^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}$'
-        //),
+      momentstamp: new FormControl('', [
+        Validators.required
       ]),
       id_tipoasiento: new FormControl('',[Validators.required]),
       id_usuario: new FormControl('',[Validators.required]),

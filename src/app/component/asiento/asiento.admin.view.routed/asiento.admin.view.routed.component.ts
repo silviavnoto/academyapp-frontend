@@ -2,10 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AsientoService } from '../../../service/asiento.service';
 import { IAsiento } from '../../../model/asiento.interface';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-asiento.admin.view.routed',
+  standalone: true,
+  imports: [
+    CommonModule
+  ],
   templateUrl: './asiento.admin.view.routed.component.html',
   styleUrls: ['./asiento.admin.view.routed.component.css']
 })

@@ -46,15 +46,21 @@
           </mat-checkbox>
         </div>
 
-        <div class="row mt-4">
-          <mat-form-field>
-            <mat-label>Momentstamp</mat-label>
-            <input matInput formControlName="momentstamp" placeholder="Momentstamp" />
-            <mat-hint align="end">Formato fecha y hora</mat-hint>
+        <div class="row mb-4">
+          <label for="momentstamp" class="form-label">Momentstamp</label>
+          <div class="col">
+            <p-calendar
+              formControlName="momentstamp"
+              inputId="spanish"
+              [showIcon]="true"
+              [showTime]="true"
+              [showSeconds]="true"
+              [showButtonBar]="true"
+            ></p-calendar>
             @if (oAsientoForm?.get('momentstamp')?.hasError('required')) {
-            <mat-error>Debes introducir un momentstamp</mat-error>
-            }
-          </mat-form-field>
+              <mat-error  >El campo debe es obligatorio</mat-error> 
+              }
+          </div>
         </div>
 
         <div class="row mt-4">

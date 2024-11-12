@@ -12,6 +12,9 @@ import {
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { CalendarModule } from 'primeng/calendar';
+import { CALENDAR_ES } from '../../../environment/environment';
+import { PrimeNGConfig } from 'primeng/api';
 
 
 declare let bootstrap: any;
@@ -28,12 +31,13 @@ declare let bootstrap: any;
     RouterModule,
     MatCheckboxModule,
     FormsModule,
+    CalendarModule,
   ],
 })
 export class AsientoAdminEditRoutedComponent implements OnInit {
   id: number = 0;
   oAsientoForm: FormGroup | undefined = undefined;
-  oAsiento: IAsiento | null = null;
+  oAsiento:IAsiento = {} as IAsiento;
   message: string = '';
   checkboxValue: number = 0;  // Inicia con 0
 
@@ -42,7 +46,8 @@ export class AsientoAdminEditRoutedComponent implements OnInit {
   constructor(
     private oActivatedRoute: ActivatedRoute,
     private oAsientoService: AsientoService,
-    private oRouter: Router
+    private oRouter: Router,
+    private oPrimeconfig: PrimeNGConfig
   ) {
     this.oActivatedRoute.params.subscribe((params) => {
       this.id = params['id'];
@@ -53,6 +58,7 @@ export class AsientoAdminEditRoutedComponent implements OnInit {
     this.createForm();
     this.get();
     this.oAsientoForm?.markAllAsTouched();
+    this.oPrimeconfig.setTranslation(CALENDAR_ES);
   }
 
   createForm() {
@@ -68,11 +74,9 @@ export class AsientoAdminEditRoutedComponent implements OnInit {
         Validators.maxLength(255),
       ]),
       inventariable: new FormControl(''),
-      momentstamp: new FormControl(new Date(Date.now()), [
-        Validators.required,
-        //Validators.pattern(
-          //'^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}$'
-        //),
+      momentstamp: new FormControl(new Date(), [
+        Validators.required
+      ,
       ]),
       id_tipoasiento: new FormControl('',[Validators.required]),
       id_usuario: new FormControl('',[Validators.required]),
@@ -99,7 +103,7 @@ export class AsientoAdminEditRoutedComponent implements OnInit {
     this.oAsientoForm?.controls['descripcion'].setValue(this.oAsiento?.descripcion);
     this.oAsientoForm?.controls['comentarios'].setValue(this.oAsiento?.comentarios);
     this.oAsientoForm?.controls['inventariable'].setValue(this.oAsiento?.inventariable);
-    this.oAsientoForm?.controls['momentstamp'].setValue(this.oAsiento?.momentstamp);
+    this.oAsientoForm?.controls['momentstamp'].setValue(new Date(this.oAsiento?.momentstamp));
     this.oAsientoForm?.controls['id_tipoasiento'].setValue(this.oAsiento?.id_tipoasiento);
     this.oAsientoForm?.controls['id_usuario'].setValue(this.oAsiento?.id_usuario);
     this.oAsientoForm?.controls['id_periodo'].setValue(this.oAsiento?.id_periodo);

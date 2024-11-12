@@ -33,7 +33,7 @@
           <th scope="row" class="bg-primary text-white text-end pe-5">
             Momentstamp
           </th>
-          <td class="text-start ps-5">{{ oAsiento.momentstamp }}</td>
+          <td class="text-start ps-5">{{ oAsiento.momentstamp| date: "dd/MM/yyyy hh:mm:ss" }}</td>
         </tr>
         <tr class="text-center">
           <th scope="row" class="bg-primary text-white text-end pe-5">
