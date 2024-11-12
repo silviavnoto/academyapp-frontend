@@ -36,26 +36,10 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            [class.active]="strRuta == '/admin/cuenta/plist'"
-            href="/admin/cuenta/plist"
-            >Cuenta</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
             [class.active]="strRuta == '/admin/apunte/plist'"
             href="/admin/apunte/plist"
             >Apuntes</a
           >
-        </li>
-
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            [class.active]="strRuta == '/admin/balance/plist'"
-            href="/admin/balance/plist"
-            >Balance</a>
         </li>
         <li class="nav-item">
           <a
@@ -80,6 +64,14 @@
             href="admin/tipoAsiento/plist"
             >Tipo Asiento
           </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [class.active]="strRuta == '/admin/tipoapunte/plist'"
+            href="/admin/tipoapunte/plist"
+            >Tipos de Apunte</a
+          >
         </li>
       </ul>
       
