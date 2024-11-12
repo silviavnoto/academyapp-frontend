@@ -11,6 +11,9 @@ import { ApunteAdminPlistRoutedComponent } from './component/apunte/apunte.admin
 import { ApunteAdminEditRoutedComponent } from './component/apunte/apunte.admin.edit.routed/apunte.admin.edit.routed.component';
 import { ApunteAdminViewRoutedComponent } from './component/apunte/apunte.admin.view.routed/apunte.admin.view.routed.component';
 import { ApunteAdminCreateRoutedComponent } from './component/apunte/apunte.admin.create.routed/apunte.admin.create.routed.component';
+import { CuentaAdminViewRoutedComponent } from './component/cuenta/cuenta.admin.view.routed/cuenta.admin.view.routed.component';
+import { CuentaAdminEditRoutedComponent } from './component/cuenta/cuenta.admin.edit.routed/cuenta.admin.edit.routed.component';
+import { CuentaAdminDeleteRoutedComponent } from './component/cuenta/cuenta.admin.delete.routed/cuenta.admin.delete.component';
 
 export const routes: Routes = [
   { path: '', component: SharedHomeRoutedComponent },
@@ -34,6 +37,9 @@ export const routes: Routes = [
     component: UsuarioAdminDeleteRoutedComponent,
   },
   { path: 'admin/cuenta/plist', component: CuentaAdminPlistRoutedComponent },
+  { path: 'admin/cuenta/view/:id', component: CuentaAdminViewRoutedComponent },
+  { path: 'admin/cuenta/edit/:id', component: CuentaAdminEditRoutedComponent },
+  { path: 'admin/cuenta/delete/:id', component: CuentaAdminDeleteRoutedComponent },
   {
     path: 'admin/usuario/edit/:id',
     component: UsuarioAdminEditRoutedComponent,

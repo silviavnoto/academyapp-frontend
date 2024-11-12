@@ -36,7 +36,8 @@ export class CuentaAdminPlistRoutedComponent implements OnInit {
     private oBotoneraService: BotoneraService,
     private oRouter: Router
   ) {
-    this.debounceSubject.pipe(debounceTime(10)).subscribe((value) => {
+    this.debounceSubject.pipe(debounceTime(500)).subscribe((value) => {
+      this.nPage = 0;
       this.getPage();
     });
   }
@@ -70,12 +71,12 @@ export class CuentaAdminPlistRoutedComponent implements OnInit {
 
   edit(oCuenta: ICuenta) {
     //navegar a la página de edición
-    this.oRouter.navigate(['admin/cuenta/edit', oCuenta.id]);
+    this.oRouter.navigate(['admin/cuenta/edit/', oCuenta.id]);
   }
 
   view(oCuenta: ICuenta) {
     //navegar a la página de edición
-    this.oRouter.navigate(['admin/cuenta/view', oCuenta.id]);
+    this.oRouter.navigate(['admin/cuenta/view/', oCuenta.id]);
   }
 
   remove(oCuenta: ICuenta) {
