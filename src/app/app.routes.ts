@@ -55,13 +55,19 @@ export const routes: Routes = [
   { path: 'admin/cuenta/plist', component: CuentaAdminPlistRoutedComponent },
   { path: 'admin/cuenta/edit/:id', component: CuentaAdminEditRoutedComponent },
   { path: 'admin/cuenta/view/:id', component: CuentaAdminViewRoutedComponent },  
-  { path: 'admin/cuenta/create', component: CuentaCreateViewRoutedComponent },  
+  { path: 'admin/cuenta/create', component: CuentaAdminViewRoutedComponent },  
   { path: 'admin/cuenta/delete/:id', component: CuentaAdminDeleteRoutedComponent },
+
+  { path: 'admin/subcuenta/plist', component: SubcuentaAdminPlistRoutedComponent },
+  { path: 'admin/subcuenta/edit/:id', component: SubcuentaAdminEditRoutedComponent },
+  { path: 'admin/subcuenta/view/:id', component: SubcuentaAdminViewRoutedComponent },  
+  { path: 'admin/subcuenta/create', component: SubcuentaAdminViewRoutedComponent },  
+  { path: 'admin/subcuenta/delete/:id', component: SubcuentaAdminDeleteRoutedComponent },
  
   { path: 'admin/balance/plist', component: BalanceAdminPlistRoutedComponent},
   { path: 'admin/balance/edit/:id', component: BalanceAdminEditRoutedComponent },
   { path: 'admin/balance/view/:id', component: BalanceAdminViewRoutedComponent },  
-  { path: 'admin/balance/create', component: BalanceCreateViewRoutedComponent },  
+  { path: 'admin/balance/create', component: BalanceAdminCreateRoutedComponent },  
   { path: 'admin/balance/delete/:id', component: BalanceAdminDeleteRoutedComponent },
     
   { path: 'admin/asiento/plist', component: AsientoAdminPlistRoutedComponent },
