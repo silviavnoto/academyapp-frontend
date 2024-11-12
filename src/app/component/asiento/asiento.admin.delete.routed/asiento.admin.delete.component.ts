@@ -1,36 +1,36 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioService } from '../../../service/usuario.service';
+import { AsientoService } from '../../../service/asiento.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { IUsuario } from '../../../model/usuario.interface';
+import { IAsiento } from '../../../model/asiento.interface';
 
 declare let bootstrap: any;
 
 @Component({
-  selector: 'app-usuario-admin-delete-routed',
+  selector: 'app-asiento-admin-delete-routed',
   standalone: true,
   imports: [RouterModule],
-  templateUrl: './usuario.admin.delete.component.html',
-  styleUrl: './usuario.admin.delete.component.css',
+  templateUrl: './asiento.admin.delete.component.html',
+  styleUrl: './asiento.admin.delete.component.css',
 })
-export class UsuarioAdminDeleteRoutedComponent implements OnInit {
-  oUsuario: IUsuario | null = null;
+export class AsientoAdminDeleteRoutedComponent implements OnInit {
+  oAsiento: IAsiento | null = null;
   strMessage: string = '';
   myModal: any;
 
   constructor(
-    private oUsuarioService: UsuarioService,
+    private oAsientoService: AsientoService,
     private oActivatedRoute: ActivatedRoute,
     private oRouter: Router
   ) {}
 
   ngOnInit(): void {
     let id = this.oActivatedRoute.snapshot.params['id'];
-    this.oUsuarioService.get(id).subscribe({
-      next: (oUsuario: IUsuario) => {
-        this.oUsuario = oUsuario;
+    this.oAsientoService.get(id).subscribe({
+      next: (oAsiento: IAsiento) => {
+        this.oAsiento = oAsiento;
       },
       error: (err) => {
-        this.showModal('Error al cargar el usuario');
+        this.showModal('Error al cargar el Asiento');
       },
     });
   }
@@ -44,21 +44,21 @@ export class UsuarioAdminDeleteRoutedComponent implements OnInit {
   }
 
   delete(): void {
-    this.oUsuarioService.delete(this.oUsuario!.id).subscribe({
+    this.oAsientoService.delete(this.oAsiento!.id).subscribe({
       next: (data) => {
         this.showModal(
-          'Usuario con id ' + this.oUsuario!.id + ' ha sido borrado'
+          'Asiento con id ' + this.oAsiento!.id + ' ha sido borrado'
         );
       },
       error: (error) => {
-        this.showModal('Error al borrar el usuario');
+        this.showModal('Error al borrar el asiento');
       },
     });
   }
 
   hideModal = () => {
     this.myModal.hide();
-    this.oRouter.navigate(['/admin/usuario/plist']);
+    this.oRouter.navigate(['/admin/asiento/plist']);
   }
   
 }

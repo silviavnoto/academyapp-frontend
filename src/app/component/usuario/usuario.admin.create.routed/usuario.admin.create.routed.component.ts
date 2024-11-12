@@ -36,6 +36,8 @@ export class UsuarioAdminCreateRoutedComponent implements OnInit {
 
   myModal: any;
 
+  form: FormGroup = new FormGroup({});
+
   constructor(
     private oUsuarioService: UsuarioService,
     private oRouter: Router
@@ -86,7 +88,7 @@ export class UsuarioAdminCreateRoutedComponent implements OnInit {
   hideModal = () => {
     this.myModal.hide();
     this.oRouter.navigate(['/admin/usuario/view/' + this.oUsuario?.id]);
-  };
+  }
 
   onSubmit() {
     if (this.oUsuarioForm?.invalid) {
@@ -105,4 +107,7 @@ export class UsuarioAdminCreateRoutedComponent implements OnInit {
       });
     }
   }
+
+
+
 }
