@@ -3,5 +3,5 @@ export interface ISubcuenta{
     codigo : number;
     descripcion : string;
     id_cuenta : number;
-    momentstamp : string;
+    momentstamp : Date;
 }

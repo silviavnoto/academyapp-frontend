@@ -1,9 +1,9 @@
 <div class="container mt-5 d-flex align-items-center justify-content-center">
   <div class="row">
-    <div class="col text-center">
+    <div class="col-12 text-center">
       <h2 class="my-2">
         <i class="bi bi-pencil"></i>
-        Creación de Subcuenta
+        Edicion de Subcuenta
         <i class="bi bi-newspaper"></i>
       </h2>
       <form [formGroup]="oSubcuentaForm!" (ngSubmit)="onSubmit()" novalidate>
@@ -65,21 +65,21 @@
             }
           </mat-form-field>
         </div>
-        <div class="row mt-4">
-          <mat-form-field>
-            <mat-label>Momentstamp</mat-label>
-            <input
-              matInput
-              formControlName="momentstamp"
-              placeholder="Escribe momentstamp"
-            />
-            <mat-hint align="start">Ejemplo: 2024-11-06 13:00:00</mat-hint>
-            @if (oSubcuentaForm?.get('momentstamp')?.hasError('required')){
-            <mat-error> El campo debe es obligatorio </mat-error>
-            } @if (oSubcuentaForm?.get('momentstamp')?.hasError('pattern')){
-            <mat-error> El debe debe tener formato: 2024-11-06 13:00:00 </mat-error>
+        <div class="row mb-4">
+          <label for="momentstamp" class="form-label">Momentstamp</label>
+          <div class="col">
+            <p-calendar
+            formControlName="momentstamp"
+            inputId="spanish"
+            [showIcon]="true"
+            [showTime]="true"
+            [showSeconds]="true"
+            [showButtonBar]="true"
+          ></p-calendar>
+          @if (oSubcuentaForm?.get('momentstamp')?.hasError('required')) {
+            <mat-error  >El campo fecha es obligatorio</mat-error> 
             }
-          </mat-form-field>
+        </div>
         </div>
 
         <br />

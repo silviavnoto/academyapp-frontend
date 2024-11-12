@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ISubcuenta } from '../../../model/subcuenta.interface';
 import { SubcuentaService } from '../../../service/subcuenta.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-subcuenta.admin.view.routed',
   templateUrl: './subcuenta.admin.view.routed.component.html',
-  styleUrls: ['./subcuenta.admin.view.routed.component.css']
+  styleUrls: ['./subcuenta.admin.view.routed.component.css'],
+  standalone: true,
+  imports: [CommonModule]
 })
 export class SubcuentaAdminViewRoutedComponent implements OnInit {
   id: number = 0;
@@ -16,7 +19,8 @@ export class SubcuentaAdminViewRoutedComponent implements OnInit {
     codigo: 0,
     descripcion: '',
     id_cuenta: 0,
-    momentstamp: ''
+    momentstamp: new Date(),
+    
   };
   constructor(
     private oActivatedRoute: ActivatedRoute,

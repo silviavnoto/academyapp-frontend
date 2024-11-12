@@ -147,7 +147,7 @@
               <td class="text-start">{{ subcuenta.codigo }}</td>
               <td class="text-start">{{ subcuenta.descripcion | trim : 20 }}</td>
               <td class="text-start">{{ subcuenta.id_cuenta }}</td>
-              <td class="text-start">{{ subcuenta.momentstamp | trim : 20 }}</td>
+              <td class="text-start">{{ subcuenta.momentstamp | date : "dd/MM/yyyy ..." }}</td>
 
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">

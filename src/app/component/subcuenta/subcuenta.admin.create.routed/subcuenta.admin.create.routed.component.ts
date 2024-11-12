@@ -3,11 +3,15 @@ import { Router, RouterModule } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { CalendarModule } from 'primeng/calendar';
+import { CALENDAR_ES } from '../../../environment/environment';
+import { PrimeNGConfig } from 'primeng/api';
 import {
   FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
+  
 } from '@angular/forms';
 import { ISubcuenta } from '../../../model/subcuenta.interface';
 import { SubcuentaService } from '../../../service/subcuenta.service';
@@ -24,6 +28,7 @@ declare let bootstrap: any;
     MatSelectModule,
     ReactiveFormsModule,
     RouterModule,
+    CalendarModule
   ],
 })
 export class SubcuentaAdminCreateRoutedComponent implements OnInit {
@@ -35,11 +40,12 @@ export class SubcuentaAdminCreateRoutedComponent implements OnInit {
 
   myModal: any;
 
-  constructor(private oSubcuentaService: SubcuentaService, private oRouter: Router) {}
+  constructor(private oSubcuentaService: SubcuentaService, private oRouter: Router,private oPrimeconfig: PrimeNGConfig) {}
 
   ngOnInit() {
     this.createForm();
     this.osubcuentaForm?.markAllAsTouched();
+    this.oPrimeconfig.setTranslation(CALENDAR_ES);
   }
 
   createForm() {
@@ -55,9 +61,6 @@ export class SubcuentaAdminCreateRoutedComponent implements OnInit {
       ]),
       momentstamp: new FormControl('', [
         Validators.required,
-        Validators.pattern(
-          '^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}$'
-        ),
       ]),
     });
   }

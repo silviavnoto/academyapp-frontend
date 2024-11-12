@@ -30,7 +30,7 @@
           <th scope="row" class="bg-primary text-white text-end pe-5">
             Momentstamp
           </th>
-          <td class="text-start ps-5">{{ oSubcuenta.momentstamp }}</td>
+          <td class="text-start ps-5">{{ oSubcuenta.momentstamp | date:'dd/MM/yyyy HH:mm:ss' }}</td>
         </tr>        
       </tbody>
     </table>

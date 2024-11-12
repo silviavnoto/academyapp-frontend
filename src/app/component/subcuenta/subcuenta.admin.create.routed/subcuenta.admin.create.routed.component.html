@@ -59,21 +59,21 @@
             }
           </mat-form-field>
         </div>
-        <div class="row mt-4">
-          <mat-form-field>
-            <mat-label>Momentstamp</mat-label>
-            <input
-              matInput
-              formControlName="momentstamp"
-              placeholder="Escribe momentstamp"
-            />
-            <mat-hint align="start">Ejemplo: 2024-11-06 13:00:00</mat-hint>
-            @if (osubcuentaForm?.get('momentstamp')?.hasError('required')){
-            <mat-error> El campo debe es obligatorio </mat-error>
-            } @if (osubcuentaForm?.get('momentstamp')?.hasError('pattern')){
-            <mat-error> El debe debe tener formato: 2024-11-06 13:00:00 </mat-error>
+        <div class="row mb-4">
+          <label for="momentstamp" class="form-label">Momentstamp</label>
+          <div class="col">
+            <p-calendar
+            formControlName="momentstamp"
+            inputId="spanish"
+            [showIcon]="true"
+            [showTime]="true"
+            [showSeconds]="true"
+            [showButtonBar]="true"
+          ></p-calendar>
+          @if (osubcuentaForm?.get('momentstamp')?.hasError('required')) {
+            <mat-error  >El campo fecha es obligatorio</mat-error> 
             }
-          </mat-form-field>
+        </div>
         </div>
       
         <br />

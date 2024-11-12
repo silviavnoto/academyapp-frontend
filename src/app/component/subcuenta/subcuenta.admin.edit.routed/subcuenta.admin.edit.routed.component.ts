@@ -2,9 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { SubcuentaService } from '../../../service/subcuenta.service';
 import { ISubcuenta } from '../../../model/subcuenta.interface';
+import { CalendarModule } from 'primeng/calendar';
+import { CALENDAR_ES } from '../../../environment/environment';
+import { PrimeNGConfig } from 'primeng/api';
 import {
   FormControl,
   FormGroup,
+  FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -24,20 +28,23 @@ declare let bootstrap: any;
     MatInputModule,
     ReactiveFormsModule,
     RouterModule,
+    FormsModule,
+    CalendarModule
   ],
 })
 export class SubcuentaAdminEditRoutedComponent implements OnInit {
 
   id: number = 0;
   oSubcuentaForm: FormGroup | undefined = undefined;
-  oSubcuenta: ISubcuenta | null = null;
+  oSubcuenta: ISubcuenta = {} as ISubcuenta;
   message: string = '';
   myModal: any;
 
   constructor(
     private oActivatedRoute: ActivatedRoute,
     private oSubcuentaService: SubcuentaService,
-    private oRouter: Router
+    private oRouter: Router,
+    private oPrimeconfig: PrimeNGConfig
   ) {
     this.oActivatedRoute.params.subscribe((params) => {
       this.id = params['id'];
@@ -48,6 +55,7 @@ export class SubcuentaAdminEditRoutedComponent implements OnInit {
     this.createForm();
     this.get();
     this.oSubcuentaForm?.markAllAsTouched();
+    this.oPrimeconfig.setTranslation(CALENDAR_ES);
   }
 
   createForm() {
@@ -65,9 +73,6 @@ export class SubcuentaAdminEditRoutedComponent implements OnInit {
       ]),
       momentstamp: new FormControl('', [
         Validators.required,
-        Validators.pattern(
-          '^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}$'
-        ),
       ]),
     });
   }
@@ -91,7 +96,7 @@ export class SubcuentaAdminEditRoutedComponent implements OnInit {
     this.oSubcuentaForm?.controls['codigo'].setValue(this.oSubcuenta?.codigo);
     this.oSubcuentaForm?.controls['descripcion'].setValue(this.oSubcuenta?.descripcion);
     this.oSubcuentaForm?.controls['id_cuenta'].setValue(this.oSubcuenta?.id_cuenta);
-    this.oSubcuentaForm?.controls['momentstamp'].setValue(this.oSubcuenta?.momentstamp);
+    this.oSubcuentaForm?.controls['momentstamp'].setValue(new Date(this.oSubcuenta?.momentstamp));
   }
 
   get() {
