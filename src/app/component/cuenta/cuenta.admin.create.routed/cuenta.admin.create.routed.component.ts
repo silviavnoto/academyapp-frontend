@@ -44,25 +44,22 @@ export class CuentaAdminCreateRoutedComponent implements OnInit {
 
   createForm() {
     this.oCuentaForm = new FormGroup({
-      nombre: new FormControl('', [
+      codigo: new FormControl('', [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(50),
       ]),
-      apellido1: new FormControl('', [
-        Validators.required,
-        Validators.minLength(3),
+      descripcion: new FormControl('', [
         Validators.maxLength(50),
       ]),
-      apellido2: new FormControl(''),
-      email: new FormControl('', [Validators.required, Validators.email]),
+      id_tipocuenta: new FormControl(''),
     });
   }
 
   updateForm() {
     this.oCuentaForm?.controls['codigo'].setValue('');
     this.oCuentaForm?.controls['descripcion'].setValue('');
-    this.oCuentaForm?.controls['tipocuenta'].setValue('');
+    this.oCuentaForm?.controls['id_tipocuenta'].setValue('');
   }
 
   showModal(mensaje: string) {
@@ -91,10 +88,10 @@ export class CuentaAdminCreateRoutedComponent implements OnInit {
       this.oCuentaService.create(this.oCuentaForm?.value).subscribe({
         next: (oCuenta: ICuenta) => {
           this.oCuenta = oCuenta;
-          this.showModal('Cuenta creado con el id: ' + this.oCuenta.id);
+          this.showModal('Cuenta creada con el id: ' + this.oCuenta.id);
         },
         error: (err) => {
-          this.showModal('Error al crear el cuenta');
+          this.showModal('Error al crear cuenta');
           console.log(err);
         },
       });

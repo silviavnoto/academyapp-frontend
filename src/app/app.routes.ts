@@ -32,6 +32,7 @@ import { TipoAsientoAdminEditRoutedComponent } from './component/tipoAsiento/tip
 import { TipoAsientoAdminViewRoutedComponent } from './component/tipoAsiento/tipoAsiento.admin.view.routed/tipoAsiento.admin.view.routed.component';
 import { TipoAsientoAdminCreateRoutedComponent } from './component/tipoAsiento/tipoAsiento.admin.create.routed/tipoAsiento.admin.create.routed.component';
 import { TipoAsientoAdminDeleteRoutedComponent } from './component/tipoAsiento/tipoAsiento.admin.delete.routed/tipoAsiento.admin.delete.routed.component';
+import { CuentaAdminCreateRoutedComponent } from './component/cuenta/cuenta.admin.create.routed/cuenta.admin.create.routed.component';
 
 export const routes: Routes = [
   { path: '', component: SharedHomeRoutedComponent },
@@ -56,6 +57,7 @@ export const routes: Routes = [
     component: UsuarioAdminDeleteRoutedComponent,
   },
   { path: 'admin/cuenta/plist', component: CuentaAdminPlistRoutedComponent },
+  { path: 'admin/cuenta/create', component: CuentaAdminCreateRoutedComponent },
   { path: 'admin/cuenta/view/:id', component: CuentaAdminViewRoutedComponent },
   { path: 'admin/cuenta/edit/:id', component: CuentaAdminEditRoutedComponent },
   { path: 'admin/cuenta/delete/:id', component: CuentaAdminDeleteRoutedComponent },
