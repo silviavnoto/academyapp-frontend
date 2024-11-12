@@ -38,6 +38,7 @@ export class TipoAsientoAdminPlistRoutedComponent implements OnInit {
   ) {
     this.debounceSubject.pipe(debounceTime(10)).subscribe((value) => {
       this.getPage();
+
     });
    }
 

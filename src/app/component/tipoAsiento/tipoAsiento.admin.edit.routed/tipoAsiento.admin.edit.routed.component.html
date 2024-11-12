@@ -4,7 +4,7 @@
       <h2 class="my-5">
         <i class="bi bi-pencil"></i>
         Edición de Tipo de Asiento
-        <i class="bi bi-person-circle"></i>
+        <i class="bi bi-newspaper"></i>
       </h2>
 
       <form [formGroup]="oTipoAsientoForm!" (ngSubmit)="onSubmit()" novalidate>
@@ -20,7 +20,7 @@
           <mat-form-field>
             <mat-label>Descripción</mat-label>
             <input matInput formControlName="descripcion" placeholder="Descripción" />
-            <mat-hint align="end">De 3 a 50 caracteres</mat-hint>
+            <mat-hint align="end">De 3 a 255 caracteres</mat-hint>
             @if (oTipoAsientoForm?.get('descripcion')?.hasError('required')) {
             <mat-error>Debes introducir una descripción </mat-error>
             } @if (oTipoAsientoForm?.get('descripcion')?.hasError('minlength')) {
