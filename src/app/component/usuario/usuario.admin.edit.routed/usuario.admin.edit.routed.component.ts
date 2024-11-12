@@ -30,6 +30,7 @@ export class UsuarioAdminEditRoutedComponent implements OnInit {
   oUsuarioForm: FormGroup | undefined = undefined;
   oUsuario: IUsuario | null = null;
   message: string = '';
+
   myModal: any;
 
   constructor(
