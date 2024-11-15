@@ -44,6 +44,14 @@
         <li class="nav-item">
           <a
             class="nav-link"
+            [class.active]="strRuta == '/admin/cuenta/plist'"
+            href="/admin/cuenta/plist"
+            >Cuenta</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
             [class.active]="strRuta == '/admin/subcuenta/plist'"
             href="/admin/subcuenta/plist"
             >Subcuenta</a

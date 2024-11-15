@@ -9,65 +9,44 @@
       <form [formGroup]="oCuentaForm!" (ngSubmit)="onSubmit()" novalidate>
         <div class="row mt-4">
           <mat-form-field>
-            <mat-label>Nombre</mat-label>
+            <mat-label>Codigo</mat-label>
             <input
               matInput
-              formControlName="nombre"
-              placeholder="Pon aquí tu nombre"
+              formControlName="codigo"
+              placeholder="Codigo"
             />
             <mat-hint align="start">De 3 caracteres a 50 caracteres</mat-hint>
-            @if (oCuentaForm?.get('nombre')?.hasError('required')){
-            <mat-error> El campo nombre es obligatorio </mat-error>
-            } @if (oCuentaForm?.get('nombre')?.hasError('minlength')){
-            <mat-error> El nombre debe ser mas largo </mat-error>
-            } @if (oCuentaForm?.get('nombre')?.hasError('maxlength')){
-            <mat-error> El nombre debe ser mas corto </mat-error>
+            @if (oCuentaForm?.get('codigo')?.hasError('required')){
+            <mat-error> El campo codigo es obligatorio </mat-error>
+            } @if (oCuentaForm?.get('codigo')?.hasError('minlength')){
+            <mat-error> El codigo debe ser mas largo </mat-error>
+            } @if (oCuentaForm?.get('codigo')?.hasError('maxlength')){
+            <mat-error> El codigo debe ser mas corto </mat-error>
             }
           </mat-form-field>
         </div>
         <div class="row mt-4">
           <mat-form-field>
-            <mat-label>Primer Apellido</mat-label>
+            <mat-label>Descripcion</mat-label>
             <input
               matInput
-              formControlName="apellido1"
-              placeholder="Escribe tu primer apellido"
+              formControlName="descripcion"
+              placeholder="Descripcion"
             />
             <mat-hint align="start">De 3 caracteres a 50 caracteres</mat-hint>
-            @if (oCuentaForm?.get('apellido1')?.hasError('required')) {
-            <mat-error>Debes introducir un primer apellido</mat-error>
-            } @if (oCuentaForm?.get('apellido1')?.hasError('minlength')) {
-            <mat-error>Debes introducir un apellido mas largo</mat-error>
-            } @if (oCuentaForm?.get('nombre')?.hasError('maxlength')) {
-            <mat-error>Debes introducir un apellido mas corto</mat-error>
+            @if (oCuentaForm?.get('nombre')?.hasError('maxlength')) {
+            <mat-error>Debes introducir una descripcion mas corta</mat-error>
             }
           </mat-form-field>
         </div>
         <div class="row mt-4">
           <mat-form-field>
-            <mat-label>Segundo Apellido</mat-label>
+            <mat-label>Tipo Cuenta</mat-label>
             <input
               matInput
-              formControlName="apellido2"
-              placeholder="Escribe tu segundo apellido"
+              formControlName="id_tipocuenta"
+              placeholder="Tipo Cuenta"
             />
-          </mat-form-field>
-        </div>
-        <div class="row mt-4">
-          <mat-form-field>
-            <mat-label>Email</mat-label>
-            <input
-              matInput
-              formControlName="email"
-              placeholder="Pon aquí tu email"
-              required
-            />
-            <mat-hint align="start">Formato email</mat-hint>
-            @if (oCuentaForm?.get('email')?.hasError('required')) {
-            <mat-error>Debes introducir un email</mat-error>
-            } @if (oCuentaForm?.get('email')?.hasError('email')) {
-            <mat-error>Debes introducir un email correcto</mat-error>
-            }
           </mat-form-field>
         </div>
         <br />
