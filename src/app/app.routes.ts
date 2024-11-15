@@ -48,12 +48,6 @@ import { CuentaAdminViewRoutedComponent } from './component/cuenta/cuenta.admin.
 import { CuentaAdminEditRoutedComponent } from './component/cuenta/cuenta.admin.edit.routed/cuenta.admin.edit.routed.component';
 import { CuentaAdminPlistRoutedComponent } from './component/cuenta/cuenta.admin.plist.routed/cuenta.admin.plist.routed.component';
 
-import { BalanceAdminPlistRoutedComponent } from './component/balance/balance.admin.plist.routed/balance.admin.plist.routed.component';
-import { BalanceAdminEditRoutedComponent } from './component/balance/balance.admin.edit.routed/balance.admin.edit.routed.component';
-import { BalanceAdminViewRoutedComponent } from './component/balance/balance.admin.view.routed/balance.admin.view.routed.component';
-import { BalanceAdminCreateRoutedComponent } from './component/balance/balance.admin.create.routed/balance.admin.create.routed.component';
-import { BalanceAdminDeleteRoutedComponent } from './component/balance/balance.admin.delete.routed/balance.admin.delete.routed.component';
-
 import { PeriodoAdminCreateRoutedComponent } from './component/periodo/periodo.admin.create.routed/periodo.admin.create.routed.component';
 import { PeriodoAdminDeleteRoutedComponent } from './component/periodo/periodo.admin.delete.routed/periodo.admin.delete.routed.component';
 import { PeriodoAdminEditRoutedComponent } from './component/periodo/periodo.admin.edit.routed/periodo.admin.edit.routed.component';
@@ -116,12 +110,6 @@ export const routes: Routes = [
   { path: 'admin/tipoapunte/view/:id', component: TipoApunteAdminViewRoutedComponent },
   { path: 'admin/tipoapunte/create', component: TipoApunteAdminCreateRoutedComponent, pathMatch: 'full' },
   { path: 'admin/tipoapunte/delete/:id', component: TipoApunteAdminDeleteRoutedComponent },
-
-  { path: 'admin/balance/plist', component: BalanceAdminPlistRoutedComponent},
-  { path: 'admin/balance/edit/:id', component: BalanceAdminEditRoutedComponent },
-  { path: 'admin/balance/view/:id', component: BalanceAdminViewRoutedComponent },  
-  { path: 'admin/balance/create', component: BalanceAdminCreateRoutedComponent },  
-  { path: 'admin/balance/delete/:id', component: BalanceAdminDeleteRoutedComponent },
 
   { path: 'admin/periodo/create', component: PeriodoAdminCreateRoutedComponent, pathMatch: 'full' },
   { path: 'admin/periodo/delete/:id', component: PeriodoAdminDeleteRoutedComponent },
