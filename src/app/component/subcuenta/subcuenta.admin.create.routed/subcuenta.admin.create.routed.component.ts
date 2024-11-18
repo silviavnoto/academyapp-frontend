@@ -52,8 +52,7 @@ export class SubcuentaAdminCreateRoutedComponent implements OnInit {
     this.osubcuentaForm = new FormGroup({
       codigo: new FormControl('', [
         Validators.required,
-        // validar solo enteros
-        Validators.pattern('^[0-9]*$'),
+        Validators.pattern('^[0-9]+$'),
       ]),
       descripcion: new FormControl('', [
         Validators.required,
@@ -61,6 +60,8 @@ export class SubcuentaAdminCreateRoutedComponent implements OnInit {
         Validators.maxLength(255),
       ]),
       id_cuenta: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^[0-9]+$'),
       ]),
       momentstamp: new FormControl('', [
         Validators.required,
