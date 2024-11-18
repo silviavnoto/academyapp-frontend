@@ -13,6 +13,11 @@ import { ApunteAdminPlistRoutedComponent } from './component/apunte/apunte.admin
 import { ApunteAdminEditRoutedComponent } from './component/apunte/apunte.admin.edit.routed/apunte.admin.edit.routed.component';
 import { ApunteAdminViewRoutedComponent } from './component/apunte/apunte.admin.view.routed/apunte.admin.view.routed.component';
 import { ApunteAdminCreateRoutedComponent } from './component/apunte/apunte.admin.create.routed/apunte.admin.create.routed.component';
+import { TipoCuentaAdminEditRoutedComponent } from './component/tipoCuenta/tipoCuenta.admin.edit.routed/tipoCuenta.admin.edit.routed.component';
+import { TipoCuentaAdminViewRoutedComponent } from './component/tipoCuenta/tipoCuenta.admin.view.routed/tipoCuenta.admin.view.routed.component';
+import { TipoCuentaAdminCreateRoutedComponent } from './component/tipoCuenta/tipoCuenta.admin.create.routed/tipoCuenta.admin.create.routed.component';
+import { TipoCuentaAdminDeleteRoutedComponent } from './component/tipoCuenta/tipoCuenta.admin.delete.routed/tipoCuenta.admin.delete.component';
+import { TipoCuentaAdminPlistRoutedComponent } from './component/tipoCuenta/tipoCuenta.admin.plist.routed/tipoCuenta.admin.plist.routed.component';
 
 import { SubcuentaAdminPlistRoutedComponent } from './component/subcuenta/subcuenta.admin.plist.routed/subcuenta.admin.plist.routed.component';
 import { SubcuentaAdminEditRoutedComponent } from './component/subcuenta/subcuenta.admin.edit.routed/subcuenta.admin.edit.routed.component';
@@ -116,6 +121,12 @@ export const routes: Routes = [
   { path: 'admin/periodo/edit/:id', component: PeriodoAdminEditRoutedComponent },
   { path: 'admin/periodo/plist', component: PeriodoAdminPlistRoutedComponent },
   { path: 'admin/periodo/view/:id', component: PeriodoAdminViewRoutedComponent },
+
+  { path: 'admin/tipoCuenta/create', component: TipoCuentaAdminCreateRoutedComponent, pathMatch: 'full' },
+  { path: 'admin/tipoCuenta/delete/:id', component: TipoCuentaAdminDeleteRoutedComponent },
+  { path: 'admin/tipoCuenta/edit/:id', component: TipoCuentaAdminEditRoutedComponent },
+  { path: 'admin/tipoCuenta/plist', component: TipoCuentaAdminPlistRoutedComponent },
+  { path: 'admin/tipoCuenta/view/:id', component: TipoCuentaAdminViewRoutedComponent },
     
   
 ];
