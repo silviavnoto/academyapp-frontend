@@ -68,6 +68,7 @@ import { ApunteXTipoapunteAdminPlistRoutedComponent } from './component/apunte/a
 import { CuentaXTipoCuentaAdminPlistRoutedComponent } from './component/cuenta/cuenta.xtipocuenta.admin.plist.routed/cuenta.xtipocuenta.admin.plist.routed.component';
 import { ApunteXAsientoAdminPlistRoutedComponent } from './component/apunte/apunte.xasiento.admin.plist.routed/apunte.xasiento.admin.plist.routed.component';
 import { AsientoXTipoasientoAdminPlistRoutedComponent } from './component/asiento/asiento.xtipoasiento.admin.plist.routed/asiento.xtipoasiento.admin.plist.routed.component';
+import { AsientoXPeriodoAdminPlistRoutedComponent } from './component/asiento/asiento.xperiodo.admin.plist.routed/asiento.xperiodo.admin.plist.routed.component';
 
 export const routes: Routes = [
   { path: '', component: SharedHomeRoutedComponent },
@@ -98,8 +99,9 @@ export const routes: Routes = [
   { path: 'admin/usuario/delete/:id', component: UsuarioAdminDeleteRoutedComponent },
 
   { path: 'admin/asiento/plist', component: AsientoAdminPlistRoutedComponent },
-  { path: 'admin/asiento/plist/xusuario/:id', component: AsientoXUsuarioAdminPlistRoutedComponent }, //pte de desarrollo
-  { path: 'admin/asiento/plist/xtipoasiento/:id', component: AsientoXTipoasientoAdminPlistRoutedComponent }, //pte de desarrollo
+  { path: 'admin/asiento/plist/xusuario/:id', component: AsientoXUsuarioAdminPlistRoutedComponent }, 
+  { path: 'admin/asiento/plist/xtipoasiento/:id', component: AsientoXTipoasientoAdminPlistRoutedComponent }, 
+  { path: 'admin/asiento/plist/xperiodo/:id', component: AsientoXPeriodoAdminPlistRoutedComponent }, 
   { path: 'admin/asiento/edit/:id', component: AsientoAdminEditRoutedComponent },
   { path: 'admin/asiento/view/:id', component: AsientoAdminViewRoutedComponent },
   { path: 'admin/asiento/create', component: AsientoAdminCreateRoutedComponent, pathMatch: 'full' },
