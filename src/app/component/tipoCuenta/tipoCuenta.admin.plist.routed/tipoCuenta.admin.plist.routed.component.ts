@@ -16,6 +16,7 @@ import { TipoCuentaService } from '../../../service/tipoCuenta.service';
   standalone: true,
   imports: [CommonModule, FormsModule, TrimPipe, RouterModule],
 })
+
 export class TipoCuentaAdminPlistRoutedComponent implements OnInit {
   oPage: IPage<ITipocuenta> | null = null;
   //
