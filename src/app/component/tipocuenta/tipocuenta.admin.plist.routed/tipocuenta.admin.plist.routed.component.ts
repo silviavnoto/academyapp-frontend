@@ -10,14 +10,14 @@ import { ITipocuenta } from '../../../model/tipocuenta.interface';
 import { TipoCuentaService } from '../../../service/tipoCuenta.service';
 
 @Component({
-  selector: 'app-tipoCuenta.admin.routed',
-  templateUrl: './tipoCuenta.admin.plist.routed.component.html',
-  styleUrls: ['./tipoCuenta.admin.plist.routed.component.css'],
+  selector: 'app-tipocuenta-admin-routed',
+  templateUrl: './tipocuenta.admin.plist.routed.component.html',
+  styleUrls: ['./tipocuenta.admin.plist.routed.component.css'],
   standalone: true,
   imports: [CommonModule, FormsModule, TrimPipe, RouterModule],
 })
 
-export class TipoCuentaAdminPlistRoutedComponent implements OnInit {
+export class TipocuentaAdminPlistRoutedComponent implements OnInit {
   oPage: IPage<ITipocuenta> | null = null;
   //
   nPage: number = 0; // 0-based server count
