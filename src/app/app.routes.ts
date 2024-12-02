@@ -38,7 +38,7 @@ import { AsientoAdminViewRoutedComponent } from './component/asiento/asiento.adm
 import { AsientoAdminEditRoutedComponent } from './component/asiento/asiento.admin.edit.routed/asiento.admin.edit.routed.component';
 import { AsientoAdminPlistRoutedComponent } from './component/asiento/asiento.admin.plist.routed/asiento.admin.plist.routed.component';
 
-import { TipoasientoAdminPlistRoutedComponent } from './component/tipoasiento/tipoasiento.admin.plist.routed/tipoAsiento.admin.plist.routed.component';
+import { TipoasientoAdminPlistRoutedComponent } from './component/tipoasiento/tipoasiento.admin.plist.routed/tipoasiento.admin.plist.routed.component';
 import { TipoasientoAdminEditRoutedComponent } from './component/tipoasiento/tipoasiento.admin.edit.routed/tipoasiento.admin.edit.routed.component';
 import { TipoasientoAdminViewRoutedComponent } from './component/tipoasiento/tipoasiento.admin.view.routed/tipoAsiento.admin.view.routed.component';
 import { TipoasientoAdminCreateRoutedComponent } from './component/tipoasiento/tipoasiento.admin.create.routed/tipoasiento.admin.create.routed.component';
