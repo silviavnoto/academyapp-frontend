@@ -14,11 +14,11 @@ import { ApunteAdminEditRoutedComponent } from './component/apunte/apunte.admin.
 import { ApunteAdminViewRoutedComponent } from './component/apunte/apunte.admin.view.routed/apunte.admin.view.routed.component';
 import { ApunteAdminCreateRoutedComponent } from './component/apunte/apunte.admin.create.routed/apunte.admin.create.routed.component';
 
-import { TipoCuentaAdminEditRoutedComponent } from './component/tipoCuenta/tipoCuenta.admin.edit.routed/tipoCuenta.admin.edit.routed.component';
-import { TipoCuentaAdminViewRoutedComponent } from './component/tipoCuenta/tipoCuenta.admin.view.routed/tipoCuenta.admin.view.routed.component';
-import { TipoCuentaAdminCreateRoutedComponent } from './component/tipoCuenta/tipoCuenta.admin.create.routed/tipoCuenta.admin.create.routed.component';
-import { TipoCuentaAdminDeleteRoutedComponent } from './component/tipoCuenta/tipoCuenta.admin.delete.routed/tipoCuenta.admin.delete.component';
-import { TipoCuentaAdminPlistRoutedComponent } from './component/tipoCuenta/tipoCuenta.admin.plist.routed/tipoCuenta.admin.plist.routed.component';
+import { TipoCuentaAdminEditRoutedComponent } from './component/tipocuenta/tipocuenta.admin.edit.routed/tipoCuenta.admin.edit.routed.component';
+import { TipoCuentaAdminViewRoutedComponent } from './component/tipocuenta/tipocuenta.admin.view.routed/tipoCuenta.admin.view.routed.component';
+import { TipoCuentaAdminCreateRoutedComponent } from './component/tipocuenta/tipocuenta.admin.create.routed/tipoCuenta.admin.create.routed.component';
+import { TipoCuentaAdminDeleteRoutedComponent } from './component/tipocuenta/tipocuenta.admin.delete.routed/tipoCuenta.admin.delete.component';
+import { TipoCuentaAdminPlistRoutedComponent } from './component/tipocuenta/tipocuenta.admin.plist.routed/tipoCuenta.admin.plist.routed.component';
 
 import { SubcuentaAdminPlistRoutedComponent } from './component/subcuenta/subcuenta.admin.plist.routed/subcuenta.admin.plist.routed.component';
 import { SubcuentaAdminEditRoutedComponent } from './component/subcuenta/subcuenta.admin.edit.routed/subcuenta.admin.edit.routed.component';
@@ -38,11 +38,11 @@ import { AsientoAdminViewRoutedComponent } from './component/asiento/asiento.adm
 import { AsientoAdminEditRoutedComponent } from './component/asiento/asiento.admin.edit.routed/asiento.admin.edit.routed.component';
 import { AsientoAdminPlistRoutedComponent } from './component/asiento/asiento.admin.plist.routed/asiento.admin.plist.routed.component';
 
-import { TipoAsientoAdminPlistRoutedComponent } from './component/tipoAsiento/tipoAsiento.admin.plist.routed/tipoAsiento.admin.plist.routed.component';
-import { TipoAsientoAdminEditRoutedComponent } from './component/tipoAsiento/tipoAsiento.admin.edit.routed/tipoAsiento.admin.edit.routed.component';
-import { TipoAsientoAdminViewRoutedComponent } from './component/tipoAsiento/tipoAsiento.admin.view.routed/tipoAsiento.admin.view.routed.component';
-import { TipoAsientoAdminCreateRoutedComponent } from './component/tipoAsiento/tipoAsiento.admin.create.routed/tipoAsiento.admin.create.routed.component';
-import { TipoAsientoAdminDeleteRoutedComponent } from './component/tipoAsiento/tipoAsiento.admin.delete.routed/tipoAsiento.admin.delete.routed.component';
+import { TipoAsientoAdminPlistRoutedComponent } from './component/tipoasiento/tipoasiento.admin.plist.routed/tipoAsiento.admin.plist.routed.component';
+import { TipoAsientoAdminEditRoutedComponent } from './component/tipoasiento/tipoasiento.admin.edit.routed/tipoAsiento.admin.edit.routed.component';
+import { TipoAsientoAdminViewRoutedComponent } from './component/tipoasiento/tipoasiento.admin.view.routed/tipoAsiento.admin.view.routed.component';
+import { TipoAsientoAdminCreateRoutedComponent } from './component/tipoasiento/tipoasiento.admin.create.routed/tipoAsiento.admin.create.routed.component';
+import { TipoAsientoAdminDeleteRoutedComponent } from './component/tipoasiento/tipoasiento.admin.delete.routed/tipoAsiento.admin.delete.routed.component';
 import { CuentaAdminCreateRoutedComponent } from './component/cuenta/cuenta.admin.create.routed/cuenta.admin.create.routed.component';
 
 import { BalanceAdminDeleteRoutedComponent } from './component/balance/balance.admin.delete.routed/balance.admin.delete.routed.component';
