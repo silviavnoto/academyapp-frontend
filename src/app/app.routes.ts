@@ -42,7 +42,7 @@ import { TipoAsientoAdminPlistRoutedComponent } from './component/tipoasiento/ti
 import { TipoAsientoAdminEditRoutedComponent } from './component/tipoasiento/tipoasiento.admin.edit.routed/tipoAsiento.admin.edit.routed.component';
 import { TipoAsientoAdminViewRoutedComponent } from './component/tipoasiento/tipoasiento.admin.view.routed/tipoAsiento.admin.view.routed.component';
 import { TipoAsientoAdminCreateRoutedComponent } from './component/tipoasiento/tipoasiento.admin.create.routed/tipoasiento.admin.create.routed.component';
-import { TipoAsientoAdminDeleteRoutedComponent } from './component/tipoasiento/tipoasiento.admin.delete.routed/tipoAsiento.admin.delete.routed.component';
+import { TipoasientoAdminDeleteRoutedComponent } from './component/tipoasiento/tipoasiento.admin.delete.routed/tipoasiento.admin.delete.routed.component';
 import { CuentaAdminCreateRoutedComponent } from './component/cuenta/cuenta.admin.create.routed/cuenta.admin.create.routed.component';
 
 import { BalanceAdminDeleteRoutedComponent } from './component/balance/balance.admin.delete.routed/balance.admin.delete.routed.component';
@@ -138,7 +138,7 @@ export const routes: Routes = [
   { path: 'admin/tipoAsiento/edit/:id', component: TipoAsientoAdminEditRoutedComponent },
   { path: 'admin/tipoAsiento/view/:id', component: TipoAsientoAdminViewRoutedComponent },
   { path: 'admin/tipoAsiento/create', component: TipoAsientoAdminCreateRoutedComponent, pathMatch: 'full' },
-  { path: 'admin/tipoAsiento/delete/:id', component: TipoAsientoAdminDeleteRoutedComponent },
+  { path: 'admin/tipoAsiento/delete/:id', component: TipoasientoAdminDeleteRoutedComponent },
 
   { path: 'admin/tipoapunte/plist', component: TipoApunteAdminPlistRoutedComponent },
   { path: 'admin/tipoapunte/edit/:id', component: TipoApunteAdminEditRoutedComponent },
