@@ -16,7 +16,7 @@ import { ApunteAdminCreateRoutedComponent } from './component/apunte/apunte.admi
 
 import { TipoCuentaAdminEditRoutedComponent } from './component/tipocuenta/tipocuenta.admin.edit.routed/tipoCuenta.admin.edit.routed.component';
 import { TipoCuentaAdminViewRoutedComponent } from './component/tipocuenta/tipocuenta.admin.view.routed/tipoCuenta.admin.view.routed.component';
-import { TipoCuentaAdminCreateRoutedComponent } from './component/tipocuenta/tipocuenta.admin.create.routed/tipoCuenta.admin.create.routed.component';
+import { TipocuentaAdminCreateRoutedComponent } from './component/tipocuenta/tipocuenta.admin.create.routed/tipocuenta.admin.create.routed.component';
 import { TipoCuentaAdminDeleteRoutedComponent } from './component/tipocuenta/tipocuenta.admin.delete.routed/tipoCuenta.admin.delete.component';
 import { TipoCuentaAdminPlistRoutedComponent } from './component/tipocuenta/tipocuenta.admin.plist.routed/tipoCuenta.admin.plist.routed.component';
 
@@ -152,7 +152,7 @@ export const routes: Routes = [
   { path: 'admin/periodo/plist', component: PeriodoAdminPlistRoutedComponent },
   { path: 'admin/periodo/view/:id', component: PeriodoAdminViewRoutedComponent },
 
-  { path: 'admin/tipoCuenta/create', component: TipoCuentaAdminCreateRoutedComponent, pathMatch: 'full' },
+  { path: 'admin/tipoCuenta/create', component: TipocuentaAdminCreateRoutedComponent, pathMatch: 'full' },
   { path: 'admin/tipoCuenta/delete/:id', component: TipoCuentaAdminDeleteRoutedComponent },
   { path: 'admin/tipoCuenta/edit/:id', component: TipoCuentaAdminEditRoutedComponent },
   { path: 'admin/tipoCuenta/plist', component: TipoCuentaAdminPlistRoutedComponent },
