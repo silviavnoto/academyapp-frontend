@@ -40,7 +40,7 @@ import { AsientoAdminPlistRoutedComponent } from './component/asiento/asiento.ad
 
 import { TipoasientoAdminPlistRoutedComponent } from './component/tipoasiento/tipoasiento.admin.plist.routed/tipoasiento.admin.plist.routed.component';
 import { TipoasientoAdminEditRoutedComponent } from './component/tipoasiento/tipoasiento.admin.edit.routed/tipoasiento.admin.edit.routed.component';
-import { TipoasientoAdminViewRoutedComponent } from './component/tipoasiento/tipoasiento.admin.view.routed/tipoAsiento.admin.view.routed.component';
+import { TipoasientoAdminViewRoutedComponent } from './component/tipoasiento/tipoasiento.admin.view.routed/tipoasiento.admin.view.routed.component';
 import { TipoasientoAdminCreateRoutedComponent } from './component/tipoasiento/tipoasiento.admin.create.routed/tipoasiento.admin.create.routed.component';
 import { TipoasientoAdminDeleteRoutedComponent } from './component/tipoasiento/tipoasiento.admin.delete.routed/tipoasiento.admin.delete.routed.component';
 import { CuentaAdminCreateRoutedComponent } from './component/cuenta/cuenta.admin.create.routed/cuenta.admin.create.routed.component';
