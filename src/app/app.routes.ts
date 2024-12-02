@@ -71,9 +71,9 @@ import { AsientoXTipoasientoAdminPlistRoutedComponent } from './component/asient
 import { AsientoXPeriodoAdminPlistRoutedComponent } from './component/asiento/asiento.xperiodo.admin.plist.routed/asiento.xperiodo.admin.plist.routed.component';
 import { BalanceXTipoapunteAdminPlistRoutedComponent } from './component/balance/balance.xtipoapunte.admin.plist.routed/balance.xtipoapunte.admin.plist.routed.component';
 import { BalanceXSubcuentaAdminPlistRoutedComponent } from './component/balance/balance.xsubcuenta.admin.plist.routed /balance.xsubcuenta.admin.plist.routed.component';
-import { BalanceXTipoasientoAdminPlistRoutedComponent } from './component/balance/balance.xtipoasiento.admin.plist.routed/balance.xtipoasiento.admin.plist.routed.component';
 import { BalanceXTipocuentaAdminPlistRoutedComponent } from './component/balance/balance.xtipocuenta.admin.plist.routed/balance.xtipocuenta.admin.plist.routed.component';
-import { BalanceXTipoasientoAdminPlistRoutedComponent } from './component/balance/balance.xtipoasiento.admin.plist.routed /balance.xtipoasiento.admin.plist.routed.component';
+import { BalanceXTipoasientoAdminPlistRoutedComponent } from './component/balance/balance.xtipoasiento.admin.plist.routed/balance.xtipoasiento.admin.plist.routed.component';
+
 
 
 export const routes: Routes = [
@@ -81,43 +81,44 @@ export const routes: Routes = [
   { path: 'home', component: SharedHomeRoutedComponent },
 
   { path: 'admin/usuario/plist', component: UsuarioAdminPlistRoutedComponent },
-  { path: 'admin/usuario/edit/:id',    component: UsuarioAdminEditRoutedComponent,  },
-  { path: 'admin/usuario/view/:id',    component: UsuarioAdminViewRoutedComponent,  },
-  { path: 'admin/usuario/create',    component: UsuarioAdminCreateRoutedComponent,    pathMatch: 'full',  },
-  { path: 'admin/usuario/delete/:id',    component: UsuarioAdminDeleteRoutedComponent,  },
-  
+  { path: 'admin/usuario/edit/:id', component: UsuarioAdminEditRoutedComponent, },
+  { path: 'admin/usuario/view/:id', component: UsuarioAdminViewRoutedComponent, },
+  { path: 'admin/usuario/create', component: UsuarioAdminCreateRoutedComponent, pathMatch: 'full', },
+  { path: 'admin/usuario/delete/:id', component: UsuarioAdminDeleteRoutedComponent, },
+
   { path: 'admin/cuenta/plist', component: CuentaAdminPlistRoutedComponent },
   { path: 'admin/cuenta/plist/xtipocuenta/:id', component: CuentaXTipoCuentaAdminPlistRoutedComponent }, //pte de desarrollo
   { path: 'admin/cuenta/create', component: CuentaAdminCreateRoutedComponent },
   { path: 'admin/cuenta/view/:id', component: CuentaAdminViewRoutedComponent },
   { path: 'admin/cuenta/edit/:id', component: CuentaAdminEditRoutedComponent },
   { path: 'admin/cuenta/delete/:id', component: CuentaAdminDeleteRoutedComponent },
- 
-  { path: 'admin/balance/plist', component: BalanceAdminPlistRoutedComponent},
-  { path: 'admin/balance/plist/xtipoapunte/:id', component: BalanceXTipoapunteAdminPlistRoutedComponent},
-  { path: 'admin/balance/plist/xtipocuenta/:id', component: BalanceXTipocuentaAdminPlistRoutedComponent},
-  { path: 'admin/balance/plist/xtipoasiento/:id', component: BalanceXTipoasientoAdminPlistRoutedComponent},
-  {path: 'admin/balance/plist/xsubcuenta/:id', component: BalanceXSubcuentaAdminPlistRoutedComponent},
+
+  { path: 'admin/balance/plist', component: BalanceAdminPlistRoutedComponent },
+  { path: 'admin/balance/plist/xtipoapunte/:id', component: BalanceXTipoapunteAdminPlistRoutedComponent },
+  { path: 'admin/balance/plist/xtipocuenta/:id', component: BalanceXTipocuentaAdminPlistRoutedComponent },
+  { path: 'admin/balance/plist/xtipoasiento/:id', component: BalanceXTipoasientoAdminPlistRoutedComponent },
+
+  { path: 'admin/balance/plist/xsubcuenta/:id', component: BalanceXSubcuentaAdminPlistRoutedComponent },
   { path: 'admin/balance/edit/:id', component: BalanceAdminEditRoutedComponent },
-  { path: 'admin/balance/view/:id', component: BalanceAdminViewRoutedComponent },  
-  { path: 'admin/balance/create', component: BalanceAdminCreateRoutedComponent },  
+  { path: 'admin/balance/view/:id', component: BalanceAdminViewRoutedComponent },
+  { path: 'admin/balance/create', component: BalanceAdminCreateRoutedComponent },
   { path: 'admin/balance/delete/:id', component: BalanceAdminDeleteRoutedComponent },
 
-    
+
   { path: 'admin/usuario/edit/:id', component: UsuarioAdminEditRoutedComponent },
   { path: 'admin/usuario/view/:id', component: UsuarioAdminViewRoutedComponent },
   { path: 'admin/usuario/create', component: UsuarioAdminCreateRoutedComponent, pathMatch: 'full' },
   { path: 'admin/usuario/delete/:id', component: UsuarioAdminDeleteRoutedComponent },
 
   { path: 'admin/asiento/plist', component: AsientoAdminPlistRoutedComponent },
-  { path: 'admin/asiento/plist/xusuario/:id', component: AsientoXUsuarioAdminPlistRoutedComponent }, 
-  { path: 'admin/asiento/plist/xtipoasiento/:id', component: AsientoXTipoasientoAdminPlistRoutedComponent }, 
-  { path: 'admin/asiento/plist/xperiodo/:id', component: AsientoXPeriodoAdminPlistRoutedComponent }, 
+  { path: 'admin/asiento/plist/xusuario/:id', component: AsientoXUsuarioAdminPlistRoutedComponent },
+  { path: 'admin/asiento/plist/xtipoasiento/:id', component: AsientoXTipoasientoAdminPlistRoutedComponent },
+  { path: 'admin/asiento/plist/xperiodo/:id', component: AsientoXPeriodoAdminPlistRoutedComponent },
   { path: 'admin/asiento/edit/:id', component: AsientoAdminEditRoutedComponent },
   { path: 'admin/asiento/view/:id', component: AsientoAdminViewRoutedComponent },
   { path: 'admin/asiento/create', component: AsientoAdminCreateRoutedComponent, pathMatch: 'full' },
   { path: 'admin/asiento/delete/:id', component: AsientoAdminDeleteRoutedComponent },
-  
+
   { path: 'admin/apunte/plist', component: ApunteAdminPlistRoutedComponent },
   { path: 'admin/apunte/plist/xsubcuenta/:id', component: ApunteXSubcuentaAdminPlistRoutedComponent },
   { path: 'admin/apunte/plist/xtipoapunte/:id', component: ApunteXTipoapunteAdminPlistRoutedComponent },
@@ -156,7 +157,7 @@ export const routes: Routes = [
   { path: 'admin/tipoCuenta/edit/:id', component: TipoCuentaAdminEditRoutedComponent },
   { path: 'admin/tipoCuenta/plist', component: TipoCuentaAdminPlistRoutedComponent },
   { path: 'admin/tipoCuenta/view/:id', component: TipoCuentaAdminViewRoutedComponent },
-  
 
-  
+
+
 ];
