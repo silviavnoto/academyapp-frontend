@@ -27,6 +27,7 @@ declare let bootstrap: any;
   ],
   styleUrls: ['./tipocuenta.admin.create.routed.component.css'],
 })
+
 export class TipocuentaAdminCreateRoutedComponent implements OnInit {
   id: number = 0;
   oTipoCuentaForm: FormGroup | undefined = undefined;
