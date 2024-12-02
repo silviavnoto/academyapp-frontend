@@ -16,7 +16,7 @@ import { TipoAsientoService } from '../../../service/tipoAsiento.service';
   standalone: true,
   imports: [CommonModule, FormsModule, TrimPipe, RouterModule],
 })
-export class TipoAsientoAdminPlistRoutedComponent implements OnInit {
+export class TipoasientoAdminPlistRoutedComponent implements OnInit {
 
   oPage: IPage<ITipoasiento> | null = null;
   //

@@ -22,7 +22,7 @@ declare let bootstrap: any;
     RouterModule,
   ],
 })
-export class TipoAsientoAdminCreateRoutedComponent implements OnInit {
+export class TipoasientoAdminCreateRoutedComponent implements OnInit {
   
   id: number = 0;
   oTipoAsientoForm: FormGroup | undefined = undefined;

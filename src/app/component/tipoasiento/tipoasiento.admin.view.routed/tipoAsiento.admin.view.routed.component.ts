@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './tipoAsiento.admin.view.routed.component.html',
   styleUrls: ['./tipoAsiento.admin.view.routed.component.css']
 })
-export class TipoAsientoAdminViewRoutedComponent implements OnInit {
+export class TipoasientoAdminViewRoutedComponent implements OnInit {
   id: number = 0;
   route: string = '';
   oTipoAsiento: ITipoasiento = {} as ITipoasiento;
