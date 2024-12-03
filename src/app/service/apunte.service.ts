@@ -142,9 +142,15 @@ export class ApunteService {
     return this.oHttp.get<IPage<IApunte>>(URL, httpOptions);
   }
 
-  getTotalAsiento(id : number):Observable<ISumas>{
+  getTotalApuntesXAsiento(id_asiento : number):Observable<ISumas>{
     let URL: string = '';
-    URL += this.serverURL + '/asiento/total/' + id;
+    URL += this.serverURL + '/xasiento/total/' + id_asiento;
+    return this.oHttp.get<ISumas>(URL);
+  }
+
+  getTotalApuntesXSubcuenta(id_subcuenta : number):Observable<ISumas>{
+    let URL: string = '';
+    URL += this.serverURL + '/xsubcuenta/total/' + id_subcuenta;
     return this.oHttp.get<ISumas>(URL);
   }
 

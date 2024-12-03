@@ -62,11 +62,10 @@ export class ApunteXAsientoAdminPlistRoutedComponent implements OnInit {
       });
 
       this.oActivatedRoute.params.subscribe((params) => {
-        this.oApunteService.getTotalAsiento(params['id']).subscribe({
+        this.oApunteService.getTotalApuntesXAsiento(params['id']).subscribe({
           next: (oSuma: ISumas) => {
             this.oTotal = oSuma;
             console.log(this.oTotal);
-            this.getPage();
           },
           error: (err: HttpErrorResponse) => {
             console.log(err);
