@@ -92,7 +92,7 @@ export class CuentaService {
   update(oCuenta: ICuenta): Observable<ICuenta> {
     let URL: string = '';
     URL += this.serverURL;
-    return this.oHttp.put<ICuenta>(URL, oCuenta);
+    return this.oHttp.post<ICuenta>(URL, oCuenta);
   }
 
   getOne(id: number): Observable<ICuenta> {
