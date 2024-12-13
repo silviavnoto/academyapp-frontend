@@ -179,12 +179,8 @@ export class ApunteService {
     return this.oHttp.put<IApunte>(URL, oApunte);
   }
 
-  getOne(id: number): Observable<IApunte> {
-    let URL: string = '';
-    URL += 'http://localhost:8085';
-    URL += '/apunte';
-    URL += '/' + id;
-    return this.oHttp.get<IApunte>(URL);
+  getOne(id: number): Observable<IApunte> {    
+    return this.oHttp.get<IApunte>(this.serverURL + '/' + id);
   }
 
   delete(id: number) {
