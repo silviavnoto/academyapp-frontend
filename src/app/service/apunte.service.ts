@@ -188,6 +188,11 @@ export class ApunteService {
   }
 
   delete(id: number) {
-    return this.oHttp.delete('http://localhost:8085/apunte/' + id);
+    return this.oHttp.delete(this.serverURL + "/" + id);
   }
+
+  setTipoapunte(id: number, id_tipoapunte: number): Observable<IApunte> {
+    return this.oHttp.put<IApunte>(this.serverURL + '/settipoapunte/' + id + '/' + id_tipoapunte, null);
+  }
+
 }
