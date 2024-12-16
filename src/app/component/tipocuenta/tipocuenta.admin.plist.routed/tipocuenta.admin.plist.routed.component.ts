@@ -34,7 +34,7 @@ export class TipocuentaAdminPlistRoutedComponent implements OnInit {
   arrBotonera: string[] = [];
   //
   private debounceSubject = new Subject<string>();
-  oTipocuenta : ITipocuenta = {} as ITipocuenta;
+  oTipocuenta: ITipocuenta = {} as ITipocuenta;
   numeroSubcuentas: number = 0;
   id: number = 0;
   arrNumSubcuentas: Number[] = [];
@@ -59,7 +59,7 @@ export class TipocuentaAdminPlistRoutedComponent implements OnInit {
     this.oTipoCuentaService.getOne(this.id).subscribe({
       next: (data: ITipocuenta) => {
         this.oTipocuenta = data;
-        
+
       },
     });
   }
@@ -78,17 +78,18 @@ export class TipocuentaAdminPlistRoutedComponent implements OnInit {
           this.oPage = oPageFromServer;
           this.arrBotonera = this.oBotoneraService.getBotonera(
             this.nPage,
-            oPageFromServer.totalPages            
+            oPageFromServer.totalPages
           );
-          
+
+          this.arrNumSubcuentas = [];
           oPageFromServer.content.forEach(element => {
             this.oSubcuentaService.countSubcuentaXTipocuenta(element.id).subscribe({
               next: (data: number) => {
-                 // add to array
+                // add to array                
                 this.arrNumSubcuentas.push(data);
               }
             })
-            
+
           });
 
         },
@@ -149,7 +150,7 @@ export class TipocuentaAdminPlistRoutedComponent implements OnInit {
     this.debounceSubject.next(this.strFiltro);
   }
 
-  getPageSubcuenta(id: number){
+  getPageSubcuenta(id: number) {
     this.oTipoCuentaService.getPageSubcuenta(id).subscribe({
       next: (data: number) => {
         this.numeroSubcuentas = data;
