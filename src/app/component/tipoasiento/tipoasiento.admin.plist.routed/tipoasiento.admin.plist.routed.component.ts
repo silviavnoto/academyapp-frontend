@@ -8,13 +8,14 @@ import { Router, RouterModule } from '@angular/router';
 import { TrimPipe } from '../../../pipe/trim.pipe';
 import { ITipoasiento } from '../../../model/tipoasiento.interface';
 import { TipoAsientoService } from '../../../service/tipoAsiento.service';
+import { SharedHeaderUnroutedComponent } from "../../shared/shared.header.unrouted/shared.header.unrouted.component";
 
 @Component({
   selector: 'app-tipoasiento-admin-plist-routed',
   templateUrl: './tipoasiento.admin.plist.routed.component.html',
   styleUrls: ['./tipoasiento.admin.plist.routed.component.css'],
   standalone: true,
-  imports: [CommonModule, FormsModule, TrimPipe, RouterModule],
+  imports: [CommonModule, FormsModule, TrimPipe, RouterModule, SharedHeaderUnroutedComponent],
 })
 export class TipoasientoAdminPlistRoutedComponent implements OnInit {
 

@@ -8,13 +8,14 @@ import { BotoneraService } from '../../../service/botonera.service';
 import { debounceTime, Subject } from 'rxjs';
 import { Router, RouterModule } from '@angular/router';
 import { TrimPipe } from '../../../pipe/trim.pipe';
+import { SharedHeaderUnroutedComponent } from "../../shared/shared.header.unrouted/shared.header.unrouted.component";
 
 @Component({
   selector: 'app-usuario.admin.routed',
   templateUrl: './usuario.admin.plist.routed.component.html',
   styleUrls: ['./usuario.admin.plist.routed.component.css'],
   standalone: true,
-  imports: [CommonModule, FormsModule, TrimPipe, RouterModule],
+  imports: [CommonModule, FormsModule, TrimPipe, RouterModule, SharedHeaderUnroutedComponent],
 })
 export class UsuarioAdminPlistRoutedComponent implements OnInit {
   

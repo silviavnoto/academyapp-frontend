@@ -1,11 +1,7 @@
 <div class="container mt-5 d-flex align-items-center justify-content-center">
   <div class="row">
     <div class="col text-center">
-      <h2 class="my-2">
-        <i class="bi bi-list"></i>
-        Lista de Usuarios
-        <i class="bi bi-person-circle"></i>
-      </h2>
+      <app-shared-header-unrouted [strTitulo]="'usuarios'" [strIcono1]="'list'" [strIcono2]="'person-circle'"></app-shared-header-unrouted>
       <a href="admin/usuario/create"><button class="btn btn-primary my-2 mx-2">
           <i class="bi bi-plus-square"></i>
           Crear nuevo usuario
