@@ -11,5 +11,5 @@ import { SharedMenuUnroutedComponent } from "./component/shared/shared.menu.unro
 })
 
 export class AppComponent {
-  title = 'userges';
+  title = 'smart_academy';
 }

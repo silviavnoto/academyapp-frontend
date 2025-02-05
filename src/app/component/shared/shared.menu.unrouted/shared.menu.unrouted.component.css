@@ -1,0 +1,10 @@
+img {
+    border: 2px solid #007bff; /* Borde azul */
+    padding: 5px;             /* Espaciado dentro del borde */
+    transition: transform 0.3s ease; /* Efecto de transición al pasar el ratón */
+  }
+  
+  img:hover {
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño al hacer hover */
+  }
+  

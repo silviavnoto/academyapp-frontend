@@ -1,0 +1,132 @@
+<div class="container mt-5 d-flex align-items-center justify-content-center">
+  <div class="row">
+    <div class="col text-center">
+      <h2 class="my-2">
+        <i class="bi bi-plus-square"></i>
+        Creación de Alquiler
+        <i class="bi bi-person-circle"></i>
+      </h2>
+      <form [formGroup]="oAlquilerForm!" (ngSubmit)="onSubmit()" novalidate>
+        <div class="row mb-4">
+          <label for="inicio" class="form-label">Fecha de Inicio</label>
+          <div class="col">
+            <p-calendar
+              formControlName="inicio"
+              inputId="inicio"
+              [showIcon]="true"
+              [showTime]="false"
+              dateFormat="dd-mm-yy"
+              [showButtonBar]="true"
+            ></p-calendar>
+            @if (oAlquilerForm?.get('inicio')?.hasError('required')) {
+              <mat-error  >El campo fecha de inicio es obligatorio</mat-error> 
+              }
+          </div>
+        </div>
+        <div class="row mb-4">
+          <label for="fin" class="form-label">Fecha de Fin</label>
+          <div class="col">
+            <p-calendar
+              formControlName="fin"
+              inputId="fin"
+              [showIcon]="true"
+              [showTime]="false"
+              dateFormat="dd-mm-yy"
+              [showButtonBar]="true"
+            ></p-calendar>
+            @if (oAlquilerForm?.get('fin')?.hasError('required')) {
+              <mat-error  >El campo fecha de fin es obligatorio</mat-error> 
+              }
+          </div>
+        </div>
+        
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Precio</mat-label>
+            <input
+              matInput
+              formControlName="precio"
+              placeholder="Cuánto es"
+            />
+            <mat-hint align="start">De ser un numero decimal 4 enteros max y 2 decimales max y el punto como separador</mat-hint>
+            @if (oAlquilerForm?.get('precio')?.hasError('required')){
+            <mat-error> El campo precio debe es obligatorio </mat-error>
+            } @if (oAlquilerForm?.get('precio')?.hasError('pattern')){
+            <mat-error> El precio ser un numero decimal 4 enteros max y 2 decimales max y el punto como separador </mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Id Alumno</mat-label>
+            <input
+              matInput
+              formControlName="id_alumno"
+              placeholder="Escribe la id de alumno"
+            />
+            <mat-hint align="start">Un numero entero</mat-hint>
+            @if (oAlquilerForm?.get('id_alumno')?.hasError('required')){
+            <mat-error> El campo debe es obligatorio </mat-error>
+            } @if (oAlquilerForm?.get('id_alumno')?.hasError('pattern')){
+            <mat-error> Debe ser un numero entero </mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Id Taquilla</mat-label>
+            <input
+              matInput
+              formControlName="id_taquilla"
+              placeholder="Escribe la id taquilla"
+            />
+            <mat-hint align="start">Un numero entero</mat-hint>
+            @if (oAlquilerForm?.get('id_taquilla')?.hasError('required')){
+            <mat-error> El campo debe es obligatorio </mat-error>
+            } @if (oAlquilerForm?.get('id_taquilla')?.hasError('pattern')){
+            <mat-error> Debe ser un numero entero </mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+          <br />
+          <button class="btn btn-warning mt-4 mx-1" [routerLink]="['/admin', 'alquiler', 'plist']">
+            <i class="bi bi-list"></i>
+            Ir a listado de Alquileres
+          </button>
+
+          <button class="btn btn-secondary mt-4 mx-1" (click)="onReset()">
+            <i class="bi bi-x-lg"></i>
+            Reset
+          </button>
+
+          <button class="btn btn-primary mt-4 mx-1" type="submit" [disabled]="!oAlquilerForm?.valid">
+            <i class="bi bi-floppy"></i>
+            Guardar
+          </button>
+        </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" [id]="'mimodal'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Smart Academy</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          (click)="hideModal()"></button>
+      </div>
+      <div class="modal-body">
+        <p>{{ strMessage }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="hideModal()">
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
