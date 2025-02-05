@@ -5,4 +5,5 @@ export interface ITaquilla {
   numero: number;
   bloque: string;
   disponible: boolean;
+  alquileres?: any;
 }

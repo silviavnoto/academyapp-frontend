@@ -1,3 +1,4 @@
+
 export interface IPage<T> {
   content: T[];
   pageable: Pageable;

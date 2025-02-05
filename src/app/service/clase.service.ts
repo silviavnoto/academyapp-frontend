@@ -2,10 +2,12 @@ import { Injectable } from '@angular/core';
 import { IClase } from '../model/clase.interface';
 import { Observable } from 'rxjs/internal/Observable';
 import { HttpClient } from '@angular/common/http';
+import { catchError } from 'rxjs/operators';
 import { IPage } from '../model/model.interface';
 import { httpOptions, serverURL } from '../environment/environment';
 import { IProfesor } from '../model/profesor.interface';
 import { IAlumno } from './../model/alumno.interface';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -50,13 +52,18 @@ export class ClaseService {
     let URL: string = '';
     URL += this.serverURL;
     URL += '/' + id;
-    return this.oHttp.get<IClase>(URL);
+    return this.oHttp.get<IClase>(URL).pipe(
+      catchError(error => {
+        console.error('Error obteniendo la clase:', error);
+        return throwError(() => new Error('No se pudo obtener la clase. Verifica que tenga un alumno asignado.'));
+      })
+    );
   }
 
   create(oClase: IClase): Observable<IClase> {
     let URL: string = '';
     URL += this.serverURL;
-    return this.oHttp.put<IClase>(URL, oClase);
+    return this.oHttp.post<IClase>(URL, oClase, httpOptions);
   }
 
   update(oClase: IClase): Observable<IClase> {
@@ -77,10 +84,10 @@ export class ClaseService {
   }
 
   setAlumno(id: number, id_alumno: number): Observable<IClase> {
-    return this.oHttp.put<IClase>(this.serverURL + '/setalumno/' + id + '/' + id_alumno, null);
+    return this.oHttp.put<IClase>(this.serverURL + '/setalumno/' + id + '/' + id_alumno, {}, httpOptions);
   }
 
   setProfesor(id: number, id_profesor: number): Observable<IProfesor> {
-    return this.oHttp.put<IProfesor>(this.serverURL + '/setprofesor/' + id + '/' + id_profesor, null);
+    return this.oHttp.put<IProfesor>(this.serverURL + '/setprofesor/' + id + '/' + id_profesor, {}, httpOptions);
   }
 }

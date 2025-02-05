@@ -67,12 +67,36 @@ export class ClaseAdminCreateRoutedComponent implements OnInit {
 
   constructor(
     private oClaseService: ClaseService,
-    private oRouter: Router
+    private oRouter: Router,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit() {
+    this.id = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+
     this.createForm();
+    
+    if (this.id) {
+      this.getClase(this.id); // Llama a la API para obtener la clase
+    }
     this.oClaseForm?.markAllAsTouched();
+  }
+
+  getClase(id: number): void {
+    this.oClaseService.get(id).subscribe({
+      next: (data: IClase) => {
+        if (!data.alumno) {
+          alert("El alumno es nulo en esta clase");
+        } else {
+          this.oClase = data;
+          this.updateForm(); // Llena el formulario con los datos obtenidos
+        }
+      },
+      error: (error) => {
+        console.error('Error obteniendo la clase:', error);
+        alert('No se pudo obtener la clase. Verifica que tenga un alumno asignado.');
+      }
+    });
   }
 
   createForm() {
@@ -101,8 +125,7 @@ export class ClaseAdminCreateRoutedComponent implements OnInit {
       ]),
     });
   }
-
-  updateForm() {
+ /* updateForm() {
     this.oClaseForm?.controls['asignatura'].setValue('');
     this.oClaseForm?.controls['tipo'].setValue('');
     this.oClaseForm?.controls['precio'].setValue('');
@@ -110,7 +133,19 @@ export class ClaseAdminCreateRoutedComponent implements OnInit {
     this.oClaseForm?.controls['id_alumno'].setValue('');
     this.oClaseForm?.controls['id_profesor'].setValue('');
     console.log(this.oClase);
+  } */
+  
+  updateForm() {
+    if (this.oClaseForm && this.oClase) {
+      this.oClaseForm.controls['asignatura'].setValue(this.oClase.asignatura);
+      this.oClaseForm.controls['tipo'].setValue(this.oClase.tipo);
+      this.oClaseForm.controls['precio'].setValue(this.oClase.precio);
+      this.oClaseForm.controls['hora'].setValue(this.oClase.hora);
+      this.oClaseForm.controls['id_alumno'].setValue(this.oClase.alumno?.id || '');
+      this.oClaseForm.controls['id_profesor'].setValue(this.oClase.profesor?.id || '');
+    }
   }
+  
 
   showModal(mensaje: string) {
     this.strMessage = mensaje;
@@ -135,7 +170,20 @@ export class ClaseAdminCreateRoutedComponent implements OnInit {
       this.showModal('Formulario inválido');
       return;
     } else {
-     // console.log(this.oClaseForm?.value); // Inspeccionar datos enviados
+      const formData = this.oClaseForm?.value;
+
+      const body = {
+        asignatura: formData.asignatura,
+        tipo: formData.tipo,
+        precio: formData.precio,
+        hora: formData.hora,
+        alumno: { id: formData.id_alumno },
+        profesor: { id: formData.id_profesor }
+      };
+  
+      console.log('Datos enviados:', body);
+   //   console.log('Datos enviados anteriores:', this.oClaseForm?.value);
+
       this.oClaseService.create(this.oClaseForm?.value).subscribe({
         next: (oClase: IClase) => {
           this.oClase = oClase;

@@ -7,4 +7,6 @@ export interface IProfesor {
   apellido2: string;
   email: string;
   telefono: string;
+  clases?: any;
+  alquileres?: any;
 }
