@@ -1,18 +1,5 @@
 import { Routes } from '@angular/router';
 
-import { SharedHomeRoutedComponent } from './component/shared/shared.home.routed/shared.home.routed.component';
-
-import { AlumnoAdminPlistRoutedComponent } from './component/alumno/alumno.admin.plist.routed/alumno.admin.plist.routed.component';
-import { AlumnoAdminEditRoutedComponent } from './component/alumno/alumno.admin.edit.routed/alumno.admin.edit.routed.component';
-import { AlumnoAdminViewRoutedComponent } from './component/alumno/alumno.admin.view.routed/alumno.admin.view.routed.component';
-import { AlumnoAdminCreateRoutedComponent } from './component/alumno/alumno.admin.create.routed/alumno.admin.create.routed.component';
-import { AlumnoAdminDeleteRoutedComponent } from './component/alumno/alumno.admin.delete.routed/alumno.admin.delete.component';
-
-import { ProfesorAdminPlistRoutedComponent } from './component/profesor/profesor.admin.plist.routed/profesor.admin.plist.routed.component';
-import { ProfesorAdminEditRoutedComponent } from './component/profesor/profesor.admin.edit.routed/profesor.admin.edit.routed.component';
-import { ProfesorAdminViewRoutedComponent } from './component/profesor/profesor.admin.view.routed/profesor.admin.view.routed.component';
-import { ProfesorAdminCreateRoutedComponent } from './component/profesor/profesor.admin.create.routed/profesor.admin.create.routed.component';
-import { ProfesorAdminDeleteRoutedComponent } from './component/profesor/profesor.admin.delete.routed/profesor.admin.delete.component';
 
 import { ClaseAdminPlistRoutedComponent } from './component/clase/clase.admin.plist.routed/clase.admin.plist.routed.component';
 import { ClaseAdminEditRoutedComponent } from './component/clase/clase.admin.edit.routed/clase.admin.edit.routed.component';
@@ -20,34 +7,45 @@ import { ClaseAdminViewRoutedComponent } from './component/clase/clase.admin.vie
 import { ClaseAdminCreateRoutedComponent } from './component/clase/clase.admin.create.routed/clase.admin.create.routed.component';
 import { ClaseAdminDeleteRoutedComponent } from './component/clase/clase.admin.delete.routed/clase.admin.delete.component';
 
-import { AlquilerAdminPlistRoutedComponent } from './component/alquiler/alquiler.admin.plist.routed/alquiler.admin.plist.routed.component';
-import { AlquilerAdminEditRoutedComponent } from './component/alquiler/alquiler.admin.edit.routed/alquiler.admin.edit.routed.component';
-import { AlquilerAdminViewRoutedComponent } from './component/alquiler/alquiler.admin.view.routed/alquiler.admin.view.routed.component';
-import { AlquilerAdminCreateRoutedComponent } from './component/alquiler/alquiler.admin.create.routed/alquiler.admin.create.routed.component';
-import { AlquilerAdminDeleteRoutedComponent } from './component/alquiler/alquiler.admin.delete.routed/alquiler.admin.delete.component';
+import { UsuarioPlistComponent } from './component/usuario/usuario.plist/usuario.plist.component';
+import { UsuarioEditComponent } from './component/usuario/usuario.edit/usuario.edit.component';
+import { UsuarioCreateComponent } from './component/usuario/usuario.create/usuario.create.component';
+import { UsuarioViewComponent } from './component/usuario/usuario.view/usuario.view.component';
+import { UsuarioDeleteComponent } from './component/usuario/usuario.delete/usuario.delete.component';
 
-import { TaquillaAdminPlistRoutedComponent } from './component/taquilla/taquilla.admin.plist.routed/taquilla.admin.plist.routed.component';
-import { TaquillaAdminCreateRoutedComponent } from './component/taquilla/taquilla.admin.create.routed/taquilla.admin.create.routed.component';
-import { TaquillaAdminViewRoutedComponent } from './component/taquilla/taquilla.admin.view.routed/taquilla.admin.view.routed.component';
-import { TaquillaAdminDeleteRoutedComponent } from './component/taquilla/taquilla.admin.delete.routed/taquilla.admin.delete.component';
-import { TaquillaAdminEditRoutedComponent } from './component/taquilla/taquilla.admin.edit.routed/taquilla.admin.edit.routed.component';
+import { ContableGuard } from './guards/contable.guard';
+import { AdminGuard } from './guards/admin.guard';
+import { AdminOrContableGuard } from './guards/admin-or-contable.guard';
+
+import { SharedLogoutRoutedComponent } from './shared/shared.logout.routed/shared.logout.routed';
+import { SharedLoginRoutedComponent } from './shared/shared.login.routed/shared.login.routed';
+import { SharedByemailRoutedComponent } from './shared/shared.byemail.routed/shared.byemail.routed.component';
+import { SharedHomeRoutedComponent } from './shared/shared.home.routed/shared.home.routed.component';
+
+import { ProfesorPlistComponent } from './component/usuario/profesor.usuario.plist/profesor.plist.component';
+import { ProfesorClasePlistComponent } from './component/clase/profesor.clase.plist/profesor.clase.plist.component';
+import { AuditorGuard } from './guards/auditor.guard';
+
+
+import { AlumnoPlistComponent } from './component/usuario/alumno.usuario.plist/alumno.plist.component';
+import { AlumnoClasePlistComponent } from './component/clase/alumno.clase.plist/alumno.clase.plist.component';
+import { ProfesorViewComponent } from './component/usuario/profesor.usuario.view/profesor.view.component';
+import { AlumnoClaseViewComponent } from './component/clase/alumno.clase.view/alumno.clase.view.component';
+import { ProfesorClaseCreateComponent } from './component/clase/profesor.clase.create/profesor.clase.create.component';
+import { ProfesorClaseViewComponent } from './component/clase/profesor.clase.view/profesor.clase.view.component';
+import { ProfesorClaseEditComponent } from './component/clase/profesor.clase.edit/profesor.clase.edit.component';
+import { ProfesorClaseDeleteComponent } from './component/clase/profesor.clase.delete/profesor.clase.delete.component';
+//import { ProfesorClaseEditComponent } from './component/clase/profesor.clase.edit/profesor.clase.edit.component';
+
+//import { ProfesorViewComponent } from './component/usuario/profesor.usuario.view/profesor.view.component';
+
+
+
 
 
 export const routes: Routes = [
   { path: '', component: SharedHomeRoutedComponent },
   { path: 'home', component: SharedHomeRoutedComponent },
-
-  { path: 'admin/alumno/plist', component: AlumnoAdminPlistRoutedComponent },
-  { path: 'admin/alumno/edit/:id', component: AlumnoAdminEditRoutedComponent, },
-  { path: 'admin/alumno/view/:id', component: AlumnoAdminViewRoutedComponent, },
-  { path: 'admin/alumno/create', component: AlumnoAdminCreateRoutedComponent, pathMatch: 'full', },
-  { path: 'admin/alumno/delete/:id', component: AlumnoAdminDeleteRoutedComponent, },
-
-  { path: 'admin/profesor/plist', component: ProfesorAdminPlistRoutedComponent },
-  { path: 'admin/profesor/edit/:id', component: ProfesorAdminEditRoutedComponent, },
-  { path: 'admin/profesor/view/:id', component: ProfesorAdminViewRoutedComponent, },
-  { path: 'admin/profesor/create', component: ProfesorAdminCreateRoutedComponent, pathMatch: 'full', },
-  { path: 'admin/profesor/delete/:id', component: ProfesorAdminDeleteRoutedComponent, },
 
   { path: 'admin/clase/plist', component: ClaseAdminPlistRoutedComponent },
   { path: 'admin/clase/edit/:id', component: ClaseAdminEditRoutedComponent, },
@@ -55,16 +53,36 @@ export const routes: Routes = [
   { path: 'admin/clase/create', component: ClaseAdminCreateRoutedComponent, pathMatch: 'full', },
   { path: 'admin/clase/delete/:id', component: ClaseAdminDeleteRoutedComponent, },
 
-  { path: 'admin/taquilla/plist', component: TaquillaAdminPlistRoutedComponent },
-  { path: 'admin/taquilla/edit/:id', component: TaquillaAdminEditRoutedComponent, },
-  { path: 'admin/taquilla/view/:id', component: TaquillaAdminViewRoutedComponent, },
-  { path: 'admin/taquilla/create', component: TaquillaAdminCreateRoutedComponent, pathMatch: 'full', },
-  { path: 'admin/taquilla/delete/:id', component: TaquillaAdminDeleteRoutedComponent, },
+  
 
-  { path: 'admin/alquiler/plist', component: AlquilerAdminPlistRoutedComponent },
-  { path: 'admin/alquiler/edit/:id', component: AlquilerAdminEditRoutedComponent, },
-  { path: 'admin/alquiler/view/:id', component: AlquilerAdminViewRoutedComponent, },
-  { path: 'admin/alquiler/create', component: AlquilerAdminCreateRoutedComponent, pathMatch: 'full', },
-  { path: 'admin/alquiler/delete/:id', component: AlquilerAdminDeleteRoutedComponent, },
+
+  { path: '', component: SharedHomeRoutedComponent },
+  { path: 'home', component: SharedHomeRoutedComponent },
+  { path: 'login', component: SharedLoginRoutedComponent },
+  { path: 'logout', component: SharedLogoutRoutedComponent },
+  { path: 'byemail/:email', component: SharedByemailRoutedComponent, canActivate: [ContableGuard] },
+
+
+  { path: 'admin/usuario/plist', component: UsuarioPlistComponent, canActivate: [AdminGuard]},
+  { path: 'admin/usuario/edit/:id', component: UsuarioEditComponent, canActivate: [AdminGuard] },
+  { path: 'admin/usuario/view/:id', component: UsuarioViewComponent, canActivate: [AdminOrContableGuard] },
+  { path: 'admin/usuario/create', component: UsuarioCreateComponent, canActivate: [AdminGuard] },
+  { path: 'admin/usuario/delete/:id', component: UsuarioDeleteComponent, canActivate: [AdminGuard] },
+
+  { path: 'profesor/usuario/plist', component: ProfesorPlistComponent, canActivate: [ContableGuard]},
+  { path: 'alumno/usuario/plist', component: AlumnoPlistComponent, canActivate: [AuditorGuard]},
+
+  { path: 'profesor/usuario/view/:id', component: ProfesorViewComponent, canActivate: [ContableGuard]},
+
+  { path: 'alumno/clase/plist', component: AlumnoClasePlistComponent, canActivate: [AuditorGuard]},
+  { path: 'alumno/clase/view/:id', component: AlumnoClaseViewComponent, canActivate: [AuditorGuard]},
+
+
+  { path: 'profesor/clase/plist', component: ProfesorClasePlistComponent, canActivate: [ContableGuard]},
+  { path: 'profesor/clase/edit/:id', component: ProfesorClaseEditComponent, canActivate: [ContableGuard]},
+  { path: 'profesor/clase/view/:id', component: ProfesorClaseViewComponent, canActivate: [ContableGuard]},
+  { path: 'profesor/clase/create', component: ProfesorClaseCreateComponent, canActivate: [ContableGuard]},
+  { path: 'profesor/clase/delete/:id', component: ProfesorClaseDeleteComponent, canActivate: [ContableGuard]},
+
 
 ];

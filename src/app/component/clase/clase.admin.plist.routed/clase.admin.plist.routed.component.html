@@ -89,13 +89,7 @@
                 } @else {
                 <i class="bi bi-caret-up-fill"></i>} }
               </th>
-              <th (click)="sort('tipo')" class="bg-primary text-white">
-                Tipo @if (strField === 'tipo') { @if (strDir ===
-                'desc') {
-                <i class="bi bi-caret-down-fill"></i>
-                } @else {
-                <i class="bi bi-caret-up-fill"></i>} }
-              </th>
+
               <th (click)="sort('precio')" class="bg-primary text-white">
                 Precio @if (strField === 'precio') { @if (strDir === 'desc') {
                 <i class="bi bi-caret-down-fill"></i>
@@ -108,8 +102,7 @@
                 } @else {
                 <i class="bi bi-caret-up-fill"></i>} }
               </th>   
-              <th class="bg-primary text-white">Alumno</th>
-              <th class="bg-primary text-white">Profesor</th> 
+              <th class="bg-primary text-white">usuario</th>
 
               <th class="bg-warning text-black">Acciones</th>
             </tr>
@@ -120,19 +113,15 @@
             <tr>
               <td class="text-center">{{ clase.id }}</td>
               <td class="text-start">{{ clase.asignatura | trim : 10 }}</td>
-              <td class="text-start">{{ clase.tipo }}</td>
               <td class="text-start">{{ clase.precio }}</td>
               <td class="text-start" style="font-size: small">
                 {{ clase.hora }}
               </td>
               <td class="text-start">
-                {{ clase.alumno.id }}
+                <a [routerLink]="['/admin/usuario/view', clase.usuario.id]">
+                  {{ clase.usuario.nombre | trim :10 }}({{ clase.usuario.id }})
+                </a>
               </td>
-              <td class="text-start">
-                {{ clase.profesor.id }}
-              </td>
-              
-              
              
               <td>
                 <div class="btn-group" role="group" aria-label="Basic example">

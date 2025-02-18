@@ -24,21 +24,6 @@
         </div>
 
         <div class="row mt-4">
-          <mat-form-field appearance="outline">
-            <mat-label>Selecciona un Tipo</mat-label>
-            <mat-select formControlName="tipo">
-              <mat-option value="" disabled>Selecciona un tipo</mat-option>
-              <mat-option value="INDIVIDUAL">INDIVIDUAL</mat-option>
-              <mat-option value="GRUPAL">GRUPAL</mat-option>
-            </mat-select>
-            <mat-hint align="start">Selecciona el tipo de clase</mat-hint>
-            <mat-error *ngIf="oClaseForm?.get('tipo')?.hasError('required')">
-              El tipo es obligatorio.
-            </mat-error>
-          </mat-form-field>
-        </div>
-
-        <div class="row mt-4">
           <mat-form-field>
             <mat-label>Precio</mat-label>
             <input
@@ -72,7 +57,22 @@
           </mat-form-field>
         </div>
         
-
+        <div class="row mt-4">
+          <mat-form-field>
+            <mat-label>Usuario Id</mat-label>
+            <input 
+              matInput
+              formControlName="id_usuario"
+              placeholder="Escribe la id de usuario"
+            />
+            <mat-hint align="start">Un numero entero</mat-hint>
+            @if (oClaseForm?.get('id_usuario')?.hasError('required')){
+            <mat-error> El campo alumno es obligatorio </mat-error>
+            } @if (oClaseForm?.get('id_usuario')?.hasError('pattern')){
+            <mat-error> Debe ser un numero entero </mat-error>
+            }
+          </mat-form-field>
+        </div>
        
 
         <div class="mt-4">

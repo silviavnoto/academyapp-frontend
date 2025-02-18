@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { SharedMenuUnroutedComponent } from "./component/shared/shared.menu.unrouted/shared.menu.unrouted.component";
+import { SharedMenuUnroutedComponent } from './shared/shared.menu.unrouted/shared.menu.unrouted.component';
 
 @Component({
   selector: 'app-root',

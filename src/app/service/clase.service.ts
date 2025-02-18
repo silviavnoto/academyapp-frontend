@@ -5,9 +5,8 @@ import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { IPage } from '../model/model.interface';
 import { httpOptions, serverURL } from '../environment/environment';
-import { IProfesor } from '../model/profesor.interface';
-import { IAlumno } from './../model/alumno.interface';
 import { throwError } from 'rxjs';
+import { ISumas } from '../model/sumas.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -48,6 +47,45 @@ export class ClaseService {
     return this.oHttp.get<IPage<IClase>>(URL, httpOptions);
   }
 
+  /*getPageXUsuario(
+    page: number,
+    size: number,
+    field: string,
+    dir: string,
+    filtro: string,
+    id_usuario: number
+  ): Observable<IPage<IClase>> {
+
+    let URL: string = '';
+    URL += this.serverURL + '/xusuario/' + id_usuario;
+    if (!page) {
+      page = 0;
+    }
+    URL += '?page=' + page;
+    if (!size) {
+      size = 10;
+    }
+    URL += '&size=' + size;
+    if (field) {
+      URL += '&sort=' + field;
+      if (dir === 'asc') {
+        URL += ',asc';
+      } else {
+        URL += ',desc';
+      }
+    }
+    if (filtro) {
+      URL += '&filter=' + filtro;
+    }
+    return this.oHttp.get<IPage<IClase>>(URL, httpOptions);
+  }
+
+  getTotalClasesXUsuario(id_usuario: number): Observable<ISumas> {
+    let URL: string = '';
+    URL += this.serverURL + '/xusuario/total/' + id_usuario;
+    return this.oHttp.get<ISumas>(URL);
+  }*/
+
   get(id: number): Observable<IClase> {
     let URL: string = '';
     URL += this.serverURL;
@@ -55,18 +93,26 @@ export class ClaseService {
     return this.oHttp.get<IClase>(URL).pipe(
       catchError(error => {
         console.error('Error obteniendo la clase:', error);
-        return throwError(() => new Error('No se pudo obtener la clase. Verifica que tenga un alumno asignado.'));
+        return throwError(() => new Error('No se pudo obtener la clase. Verifica que tenga un usuario asignado.'));
       })
     );
   }
 
   create(oClase: IClase): Observable<IClase> {
+  //  oClase.usuario.tipousuario.usuarios = [];
+    let URL: string = '';
+    URL += this.serverURL;
+    return this.oHttp.post<IClase>('/clase/new', oClase);
+ //   return this.oHttp.post<IClase>('http://localhost:8085/clase/new', oClase);
+  }
+
+ /* create(oClase: IClase): Observable<IClase> {
     let URL: string = '';
     URL += this.serverURL;
     return this.oHttp.post<IClase>(URL, oClase, httpOptions);
-  }
+  }*/
 
-  update(oClase: IClase): Observable<IClase> {
+  update(oClase: IClase): Observable<IClase> {  
     let URL: string = '';
     URL += this.serverURL;
     return this.oHttp.put<IClase>(URL, oClase);
@@ -83,11 +129,4 @@ export class ClaseService {
     return this.oHttp.delete(this.serverURL + '/' + id);
   }
 
-  setAlumno(id: number, id_alumno: number): Observable<IClase> {
-    return this.oHttp.put<IClase>(this.serverURL + '/setalumno/' + id + '/' + id_alumno, {}, httpOptions);
-  }
-
-  setProfesor(id: number, id_profesor: number): Observable<IProfesor> {
-    return this.oHttp.put<IProfesor>(this.serverURL + '/setprofesor/' + id + '/' + id_profesor, {}, httpOptions);
-  }
 }

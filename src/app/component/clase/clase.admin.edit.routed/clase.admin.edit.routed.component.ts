@@ -66,11 +66,6 @@ export class ClaseAdminEditRoutedComponent implements OnInit {
         Validators.minLength(3),
         Validators.maxLength(50),
       ]),
-      tipo: new FormControl('', [
-        Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(50),
-      ]),
       precio: new FormControl('', [
         Validators.required,
         Validators.pattern('^\\d{1,4}(\\.\\d{1,2})?$'),
@@ -79,11 +74,7 @@ export class ClaseAdminEditRoutedComponent implements OnInit {
         Validators.required,
         Validators.pattern('^\\d{1,2}(\\.\\d{1,2})?$'),
       ]),
-      id_alumno: new FormControl('', [
-        Validators.required,
-        Validators.pattern('^\\d+$'),
-      ]),
-      id_profesor: new FormControl('', [
+      id_usuario: new FormControl('', [
         Validators.required,
         Validators.pattern('^\\d+$'),
       ]),
@@ -105,11 +96,9 @@ export class ClaseAdminEditRoutedComponent implements OnInit {
 
   updateForm() {
     this.oClaseForm?.controls['asignatura'].setValue(this.oClase?.asignatura);
-    this.oClaseForm?.controls['tipo'].setValue(this.oClase?.tipo);
     this.oClaseForm?.controls['precio'].setValue(this.oClase?.precio);
     this.oClaseForm?.controls['hora'].setValue(this.oClase?.hora);
-    this.oClaseForm?.controls['id_alumno'].setValue(this.oClase?.alumno?.id); 
-    this.oClaseForm?.controls['id_profesor'].setValue(this.oClase?.profesor?.id);
+    this.oClaseForm?.controls['id_usuario'].setValue(this.oClase?.usuario?.id); 
   }
 
   get() {
