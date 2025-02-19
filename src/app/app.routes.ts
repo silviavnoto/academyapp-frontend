@@ -1,44 +1,42 @@
 import { Routes } from '@angular/router';
 
 
-import { ClaseAdminPlistRoutedComponent } from './component/clase/clase.admin.plist.routed/clase.admin.plist.routed.component';
-import { ClaseAdminEditRoutedComponent } from './component/clase/clase.admin.edit.routed/clase.admin.edit.routed.component';
-import { ClaseAdminViewRoutedComponent } from './component/clase/clase.admin.view.routed/clase.admin.view.routed.component';
-import { ClaseAdminCreateRoutedComponent } from './component/clase/clase.admin.create.routed/clase.admin.create.routed.component';
-import { ClaseAdminDeleteRoutedComponent } from './component/clase/clase.admin.delete.routed/clase.admin.delete.component';
-
-import { UsuarioPlistComponent } from './component/usuario/usuario.plist/usuario.plist.component';
-import { UsuarioEditComponent } from './component/usuario/usuario.edit/usuario.edit.component';
-import { UsuarioCreateComponent } from './component/usuario/usuario.create/usuario.create.component';
-import { UsuarioViewComponent } from './component/usuario/usuario.view/usuario.view.component';
-import { UsuarioDeleteComponent } from './component/usuario/usuario.delete/usuario.delete.component';
-
 import { ContableGuard } from './guards/contable.guard';
 import { AdminGuard } from './guards/admin.guard';
 import { AdminOrContableGuard } from './guards/admin-or-contable.guard';
+import { AuditorGuard } from './guards/auditor.guard';
 
 import { SharedLogoutRoutedComponent } from './shared/shared.logout.routed/shared.logout.routed';
 import { SharedLoginRoutedComponent } from './shared/shared.login.routed/shared.login.routed';
 import { SharedByemailRoutedComponent } from './shared/shared.byemail.routed/shared.byemail.routed.component';
 import { SharedHomeRoutedComponent } from './shared/shared.home.routed/shared.home.routed.component';
+//ADMIN
+//CLASE
+import { ClaseAdminPlistRoutedComponent } from './component/admin/clase/clase.admin.plist.routed/clase.admin.plist.routed.component';
+import { ClaseAdminEditRoutedComponent } from './component/admin/clase/clase.admin.edit.routed/clase.admin.edit.routed.component';
+import { ClaseAdminViewRoutedComponent } from './component/admin/clase/clase.admin.view.routed/clase.admin.view.routed.component';
+import { ClaseAdminCreateRoutedComponent } from './component/admin/clase/clase.admin.create.routed/clase.admin.create.routed.component';
+import { ClaseAdminDeleteRoutedComponent } from './component/admin/clase/clase.admin.delete.routed/clase.admin.delete.component';
+//ADMIN
+//USUARIO
+import { UsuarioPlistComponent } from './component/admin/usuario/usuario.plist/usuario.plist.component';
+import { UsuarioEditComponent } from './component/admin/usuario/usuario.edit/usuario.edit.component';
+import { UsuarioCreateComponent } from './component/admin/usuario/usuario.create/usuario.create.component';
+import { UsuarioViewComponent } from './component/admin/usuario/usuario.view/usuario.view.component';
+import { UsuarioDeleteComponent } from './component/admin/usuario/usuario.delete/usuario.delete.component';
 
-import { ProfesorPlistComponent } from './component/usuario/profesor.usuario.plist/profesor.plist.component';
-import { ProfesorClasePlistComponent } from './component/clase/profesor.clase.plist/profesor.clase.plist.component';
-import { AuditorGuard } from './guards/auditor.guard';
+//PROFESOR
+//CLASE
+import { ProfesorClaseCreateComponent } from './component/profesor/clase/profesor.clase.create/profesor.clase.create.component';
+import { ProfesorClaseViewComponent } from './component/profesor/clase/profesor.clase.view/profesor.clase.view.component';
+import { ProfesorClaseEditComponent } from './component/profesor/clase/profesor.clase.edit/profesor.clase.edit.component';
+import { ProfesorClaseDeleteComponent } from './component/profesor/clase/profesor.clase.delete/profesor.clase.delete.component';
+import { ProfesorClasePlistComponent } from './component/profesor/clase/profesor.clase.plist/profesor.clase.plist.component';
 
-
-import { AlumnoPlistComponent } from './component/usuario/alumno.usuario.plist/alumno.plist.component';
-import { AlumnoClasePlistComponent } from './component/clase/alumno.clase.plist/alumno.clase.plist.component';
-import { ProfesorViewComponent } from './component/usuario/profesor.usuario.view/profesor.view.component';
-import { AlumnoClaseViewComponent } from './component/clase/alumno.clase.view/alumno.clase.view.component';
-import { ProfesorClaseCreateComponent } from './component/clase/profesor.clase.create/profesor.clase.create.component';
-import { ProfesorClaseViewComponent } from './component/clase/profesor.clase.view/profesor.clase.view.component';
-import { ProfesorClaseEditComponent } from './component/clase/profesor.clase.edit/profesor.clase.edit.component';
-import { ProfesorClaseDeleteComponent } from './component/clase/profesor.clase.delete/profesor.clase.delete.component';
-//import { ProfesorClaseEditComponent } from './component/clase/profesor.clase.edit/profesor.clase.edit.component';
-
-//import { ProfesorViewComponent } from './component/usuario/profesor.usuario.view/profesor.view.component';
-
+//ALUMNO
+//CLASE
+import { AlumnoClasePlistComponent } from './component/alumno/clase/alumno.clase.plist/alumno.clase.plist.component';
+import { AlumnoClaseViewComponent } from './component/alumno/clase/alumno.clase.view/alumno.clase.view.component';
 
 
 
@@ -69,10 +67,6 @@ export const routes: Routes = [
   { path: 'admin/usuario/create', component: UsuarioCreateComponent, canActivate: [AdminGuard] },
   { path: 'admin/usuario/delete/:id', component: UsuarioDeleteComponent, canActivate: [AdminGuard] },
 
-  { path: 'profesor/usuario/plist', component: ProfesorPlistComponent, canActivate: [ContableGuard]},
-  { path: 'alumno/usuario/plist', component: AlumnoPlistComponent, canActivate: [AuditorGuard]},
-
-  { path: 'profesor/usuario/view/:id', component: ProfesorViewComponent, canActivate: [ContableGuard]},
 
   { path: 'alumno/clase/plist', component: AlumnoClasePlistComponent, canActivate: [AuditorGuard]},
   { path: 'alumno/clase/view/:id', component: AlumnoClaseViewComponent, canActivate: [AuditorGuard]},

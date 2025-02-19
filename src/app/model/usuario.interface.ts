@@ -1,3 +1,4 @@
+import { IParticipa } from "./participa.interface";
 import { ITipoUsuario } from "./tipoUsuario.interface";
 
 export interface IUsuario {

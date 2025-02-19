@@ -14,32 +14,18 @@
               strRuta == '/home' || strRuta == '/' || strRuta == ''
             " aria-current="page" href="/home">Inicio</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" [class.active]="strRuta == '/admin/usuario/plist'"
-            href="/admin/usuario/plist">Usuarios</a>
-        </li>
-        
-        @if(tipoUsuario == 2){
+
+        @if(tipoUsuario == 1) {  <!-- Si es admin -->
+          <li class="nav-item">
+            <a class="nav-link" [class.active]="strRuta == '/admin/usuario/plist'"
+              href="/admin/usuario/plist">Usuarios</a>
+          </li>
+        } @else if(tipoUsuario == 2) {  <!-- Si es profesor -->
           <li class="nav-item">
             <a class="nav-link" [class.active]="strRuta == '/profesor/usuario/plist'"
               href="/profesor/usuario/plist">Usuarios</a>
           </li>
-        }
-
-
-        @if(tipoUsuario == 2){
-          <li class="nav-item">
-            <a class="nav-link" [class.active]="strRuta == '/profesor/clase/plist'"
-              href="/profesor/clase/plist">Clase</a>
-          </li>
-        }
-        
-
-
-
-
-
-        @if(tipoUsuario == 3){
+        } @else if(tipoUsuario == 3) {  <!-- Si es alumno -->
           <li class="nav-item">
             <a class="nav-link" [class.active]="strRuta == '/alumno/usuario/plist'"
               href="/alumno/usuario/plist">Usuarios</a>
@@ -47,14 +33,23 @@
         }
 
 
-        @if(tipoUsuario == 3){
+        
+        @if(tipoUsuario == 1) {  <!-- Si es admin -->
+          <li class="nav-item">
+            <a class="nav-link" [class.active]="strRuta == '/admin/clase/plist'"
+              href="/admin/clase/plist">Clases</a>
+          </li>
+        } @else if(tipoUsuario == 2) {  <!-- Si es profesor -->
+          <li class="nav-item">
+            <a class="nav-link" [class.active]="strRuta == '/profesor/clase/plist'"
+              href="/profesor/clase/plist">Clases</a>
+          </li>
+        } @else if(tipoUsuario == 3) {  <!-- Si es alumno -->
           <li class="nav-item">
             <a class="nav-link" [class.active]="strRuta == '/alumno/clase/plist'"
-              href="/alumno/clase/plist">Clase</a>
+              href="/alumno/clase/plist">Clases</a>
           </li>
         }
-            
-
       </ul>
 
 
